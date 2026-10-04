@@ -1,0 +1,10 @@
+{
+  "iterations": 100000,
+  "elapsed_seconds": 3.5012,
+  "per_negotiation_us": 35.01,
+  "python_peak_bytes": 16172,
+  "python_peak_mb": 0.02,
+  "process_peak_rss_mb": 31.5,
+  "python_version": "3.12.3",
+  "platform": "linux"
+}

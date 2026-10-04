@@ -1,0 +1,708 @@
+{
+  "alias_exact": {
+    "exportable_fields": [
+      "id",
+      "name"
+    ],
+    "family": "json",
+    "format": "ndjson",
+    "missing_fields": [],
+    "options": [
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name"
+        ],
+        "family": "json",
+        "format": "json",
+        "missing_fields": [],
+        "note": "通用结构化格式，类型保真度最高",
+        "preference": 5,
+        "reason": "json 族首选格式 json，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name"
+        ],
+        "family": "tabular",
+        "format": "csv",
+        "missing_fields": [],
+        "note": "通用表格格式，仅支持标量列",
+        "preference": 10,
+        "reason": "tabular 族首选格式 csv，可无损导出全部字段",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name"
+        ],
+        "family": "json",
+        "format": "ndjson",
+        "missing_fields": [],
+        "note": "行式 JSON，适合流式/大数据量导出",
+        "preference": 15,
+        "reason": "json 族首选格式 ndjson，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name"
+        ],
+        "family": "tabular",
+        "format": "tsv",
+        "missing_fields": [],
+        "note": "制表符分隔表格，兼容性次于 CSV",
+        "preference": 20,
+        "reason": "tabular 族首选格式 tsv，可无损导出全部字段",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      }
+    ],
+    "reason": "格式 ndjson 精确命中，全部字段可无损导出",
+    "requested": "jsonl",
+    "status": "exact",
+    "trace": [
+      "精确匹配：jsonl 规范化为 ndjson 在注册表中命中",
+      "字段覆盖：全部可导出 -> exact"
+    ]
+  },
+  "downgrade": {
+    "exportable_fields": [
+      "id",
+      "name",
+      "created"
+    ],
+    "family": "tabular",
+    "format": "csv",
+    "missing_fields": [],
+    "options": [
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "json",
+        "format": "json",
+        "missing_fields": [],
+        "note": "通用结构化格式，类型保真度最高",
+        "preference": 5,
+        "reason": "json 族首选格式 json，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "tabular",
+        "format": "csv",
+        "missing_fields": [],
+        "note": "通用表格格式，仅支持标量列",
+        "preference": 10,
+        "reason": "tabular 族首选格式 csv，可无损导出全部字段",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "json",
+        "format": "ndjson",
+        "missing_fields": [],
+        "note": "行式 JSON，适合流式/大数据量导出",
+        "preference": 15,
+        "reason": "json 族首选格式 ndjson，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "tabular",
+        "format": "tsv",
+        "missing_fields": [],
+        "note": "制表符分隔表格，兼容性次于 CSV",
+        "preference": 20,
+        "reason": "tabular 族首选格式 tsv，可无损导出全部字段",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      }
+    ],
+    "reason": "按同族（tabular）首选降级 -> csv，全部字段可导出",
+    "requested": "xlsx",
+    "status": "downgraded",
+    "trace": [
+      "格式 xlsx 已知但不受支持，允许在同族 tabular 内降级",
+      "族内首选：csv（coverage=1.00）",
+      "字段全部可导出 -> downgraded"
+    ]
+  },
+  "exact_hit": {
+    "exportable_fields": [
+      "id",
+      "name",
+      "created"
+    ],
+    "family": "json",
+    "format": "json",
+    "missing_fields": [],
+    "options": [
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "json",
+        "format": "json",
+        "missing_fields": [],
+        "note": "通用结构化格式，类型保真度最高",
+        "preference": 5,
+        "reason": "json 族首选格式 json，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "tabular",
+        "format": "csv",
+        "missing_fields": [],
+        "note": "通用表格格式，仅支持标量列",
+        "preference": 10,
+        "reason": "tabular 族首选格式 csv，可无损导出全部字段",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "json",
+        "format": "ndjson",
+        "missing_fields": [],
+        "note": "行式 JSON，适合流式/大数据量导出",
+        "preference": 15,
+        "reason": "json 族首选格式 ndjson，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "name",
+          "created"
+        ],
+        "family": "tabular",
+        "format": "tsv",
+        "missing_fields": [],
+        "note": "制表符分隔表格，兼容性次于 CSV",
+        "preference": 20,
+        "reason": "tabular 族首选格式 tsv，可无损导出全部字段",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      }
+    ],
+    "reason": "格式 json 精确命中，全部字段可无损导出",
+    "requested": "json",
+    "status": "exact",
+    "trace": [
+      "精确匹配：json 在注册表中命中",
+      "字段覆盖：全部可导出 -> exact"
+    ]
+  },
+  "partial_fields": {
+    "exportable_fields": [
+      "id"
+    ],
+    "family": "tabular",
+    "format": "csv",
+    "missing_fields": [
+      {
+        "name": "tags",
+        "reason": "格式 csv 不支持字段类型 array",
+        "type": "array"
+      },
+      {
+        "name": "meta",
+        "reason": "格式 csv 不支持字段类型 object",
+        "type": "object"
+      }
+    ],
+    "options": [
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "tags",
+          "meta"
+        ],
+        "family": "json",
+        "format": "json",
+        "missing_fields": [],
+        "note": "通用结构化格式，类型保真度最高",
+        "preference": 5,
+        "reason": "json 族首选格式 json，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "tags",
+          "meta"
+        ],
+        "family": "json",
+        "format": "ndjson",
+        "missing_fields": [],
+        "note": "行式 JSON，适合流式/大数据量导出",
+        "preference": 15,
+        "reason": "json 族首选格式 ndjson，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.3333333333333333,
+        "exportable_fields": [
+          "id"
+        ],
+        "family": "tabular",
+        "format": "csv",
+        "missing_fields": [
+          {
+            "name": "tags",
+            "reason": "格式 csv 不支持字段类型 array",
+            "type": "array"
+          },
+          {
+            "name": "meta",
+            "reason": "格式 csv 不支持字段类型 object",
+            "type": "object"
+          }
+        ],
+        "note": "通用表格格式，仅支持标量列",
+        "preference": 10,
+        "reason": "tabular 族格式 csv 仅覆盖 33% 字段，缺失：tags, meta",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.3333333333333333,
+        "exportable_fields": [
+          "id"
+        ],
+        "family": "tabular",
+        "format": "tsv",
+        "missing_fields": [
+          {
+            "name": "tags",
+            "reason": "格式 tsv 不支持字段类型 array",
+            "type": "array"
+          },
+          {
+            "name": "meta",
+            "reason": "格式 tsv 不支持字段类型 object",
+            "type": "object"
+          }
+        ],
+        "note": "制表符分隔表格，兼容性次于 CSV",
+        "preference": 20,
+        "reason": "tabular 族格式 tsv 仅覆盖 33% 字段，缺失：tags, meta",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      }
+    ],
+    "reason": "按同族（tabular）首选降级，csv 只能导出 1/3 个字段",
+    "requested": "xlsx",
+    "status": "partial",
+    "trace": [
+      "格式 xlsx 已知但不受支持，允许在同族 tabular 内降级",
+      "族内首选：csv（coverage=0.33）",
+      "字段覆盖不全 -> partial"
+    ]
+  },
+  "unknown_format_best_effort": {
+    "exportable_fields": [
+      "id",
+      "tags"
+    ],
+    "family": "json",
+    "format": "json",
+    "missing_fields": [],
+    "options": [
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "tags"
+        ],
+        "family": "json",
+        "format": "json",
+        "missing_fields": [],
+        "note": "通用结构化格式，类型保真度最高",
+        "preference": 5,
+        "reason": "json 族首选格式 json，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 1.0,
+        "exportable_fields": [
+          "id",
+          "tags"
+        ],
+        "family": "json",
+        "format": "ndjson",
+        "missing_fields": [],
+        "note": "行式 JSON，适合流式/大数据量导出",
+        "preference": 15,
+        "reason": "json 族首选格式 ndjson，可无损导出全部字段",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.5,
+        "exportable_fields": [
+          "id"
+        ],
+        "family": "tabular",
+        "format": "csv",
+        "missing_fields": [
+          {
+            "name": "tags",
+            "reason": "格式 csv 不支持字段类型 array",
+            "type": "array"
+          }
+        ],
+        "note": "通用表格格式，仅支持标量列",
+        "preference": 10,
+        "reason": "tabular 族格式 csv 仅覆盖 50% 字段，缺失：tags",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.5,
+        "exportable_fields": [
+          "id"
+        ],
+        "family": "tabular",
+        "format": "tsv",
+        "missing_fields": [
+          {
+            "name": "tags",
+            "reason": "格式 tsv 不支持字段类型 array",
+            "type": "array"
+          }
+        ],
+        "note": "制表符分隔表格，兼容性次于 CSV",
+        "preference": 20,
+        "reason": "tabular 族格式 tsv 仅覆盖 50% 字段，缺失：tags",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      }
+    ],
+    "reason": "请求格式未知，选用全局覆盖最优格式 -> json，全部字段可导出",
+    "requested": "yaml",
+    "status": "downgraded",
+    "trace": [
+      "格式 yaml 未知，按覆盖率/首选度对全部可用格式排序",
+      "最优选项：json（coverage=1.00）",
+      "字段全部可导出 -> downgraded"
+    ]
+  },
+  "unsupported": {
+    "exportable_fields": [],
+    "family": null,
+    "format": null,
+    "missing_fields": [
+      {
+        "name": "blob",
+        "reason": "无任何已注册格式支持字段类型 binary",
+        "type": "binary"
+      }
+    ],
+    "options": [
+      {
+        "coverage": 0.0,
+        "exportable_fields": [],
+        "family": "json",
+        "format": "json",
+        "missing_fields": [
+          {
+            "name": "blob",
+            "reason": "格式 json 不支持字段类型 binary",
+            "type": "binary"
+          }
+        ],
+        "note": "通用结构化格式，类型保真度最高",
+        "preference": 5,
+        "reason": "json 族格式 json 仅覆盖 0% 字段，缺失：blob",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.0,
+        "exportable_fields": [],
+        "family": "tabular",
+        "format": "csv",
+        "missing_fields": [
+          {
+            "name": "blob",
+            "reason": "格式 csv 不支持字段类型 binary",
+            "type": "binary"
+          }
+        ],
+        "note": "通用表格格式，仅支持标量列",
+        "preference": 10,
+        "reason": "tabular 族格式 csv 仅覆盖 0% 字段，缺失：blob",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.0,
+        "exportable_fields": [],
+        "family": "json",
+        "format": "ndjson",
+        "missing_fields": [
+          {
+            "name": "blob",
+            "reason": "格式 ndjson 不支持字段类型 binary",
+            "type": "binary"
+          }
+        ],
+        "note": "行式 JSON，适合流式/大数据量导出",
+        "preference": 15,
+        "reason": "json 族格式 ndjson 仅覆盖 0% 字段，缺失：blob",
+        "supported_field_types": [
+          "array",
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "object",
+          "str"
+        ]
+      },
+      {
+        "coverage": 0.0,
+        "exportable_fields": [],
+        "family": "tabular",
+        "format": "tsv",
+        "missing_fields": [
+          {
+            "name": "blob",
+            "reason": "格式 tsv 不支持字段类型 binary",
+            "type": "binary"
+          }
+        ],
+        "note": "制表符分隔表格，兼容性次于 CSV",
+        "preference": 20,
+        "reason": "tabular 族格式 tsv 仅覆盖 0% 字段，缺失：blob",
+        "supported_field_types": [
+          "bool",
+          "date",
+          "datetime",
+          "float",
+          "int",
+          "str"
+        ]
+      }
+    ],
+    "reason": "没有任何可用格式能导出请求字段",
+    "requested": "parquet",
+    "status": "unsupported",
+    "trace": [
+      "格式 parquet 未知，按覆盖率/首选度对全部可用格式排序",
+      "最优选项 json 覆盖率为 0 -> unsupported"
+    ]
+  }
+}
