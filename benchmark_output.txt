@@ -1,0 +1,35 @@
+=== 生成 1,000,000 条候选 ===
+生成耗时 0.4s，RSS=144.8 MB
+=== 构建索引（排序） ===
+索引构建 0.10s，索引驻留 RSS=158.9 MB
+=== 基准：100,000 次补全（limit=10） ===
+总耗时 0.66s，QPS=150,637，平均扫描 58.5 条/次
+
+--- 补全耗时分布（µs） ---
+all                          n=100000 min=     1.7us p50=     2.5us p90=     6.0us p95=    14.2us p99=    26.9us p99.9=    44.9us max=   4020.5us mean=     4.2us
+prefix:real                  n= 64907 min=     2.2us p50=     2.5us p90=     3.6us p95=     4.3us p99=     9.2us p99.9=    30.0us max=    233.0us mean=     3.0us
+prefix:sensitive             n= 10024 min=     2.3us p50=    14.1us p90=    26.7us p95=    28.3us p99=    44.3us p99.9=    61.2us max=   1233.7us mean=    15.6us
+prefix:heavy                 n= 15069 min=     2.1us p50=     2.4us p90=     3.5us p95=     4.2us p99=     9.2us p99.9=    26.8us max=     53.8us mean=     2.8us
+prefix:miss                  n= 10000 min=     1.7us p50=     1.9us p90=     2.7us p95=     3.1us p99=     5.9us p99.9=    23.0us max=   4020.5us mean=     2.6us
+
+--- 权限校验 ---
+10 万次补全返回项逐个复核，无权限名称出现次数: 0
+抽样 200 次与暴力参考实现对比，不一致次数: 0
+非授权用户补全 'secret-' 前缀，越权敏感名称泄露数: 0
+  对照: carol 已授权组 777，合法可见敏感名称数: 500（应=500 条 secret-finance-*）
+  对照: dave 无任何授权，可见敏感名称数: 0（应=0）
+  对照: 超级用户 root 可见敏感名称数: 1000（应=1000）
+
+--- 权限变更耗时（grant/revoke 各 1000 次） ---
+acl.grant                    n=  1000 min=     1.4us p50=     1.4us p90=     1.5us p95=     1.8us p99=     4.2us p99.9=    26.1us max=     26.7us mean=     1.6us
+acl.revoke                   n=  1000 min=     1.6us p50=     1.6us p90=     1.8us p95=     2.1us p99=     6.8us p99.9=    24.9us max=     36.9us mean=     1.9us
+
+--- 内存 ---
+索引构建后 RSS : 158.9 MB
+基准结束时 RSS : 177.1 MB
+进程峰值 RSS   : 177.1 MB
+
+=== 小候选集对照（30 条候选，2 万次补全） ===
+small(30 items)              n= 20000 min=     1.5us p50=     1.6us p90=     2.0us p95=     2.1us p99=     7.2us p99.9=    35.2us max=    100.0us mean=     2.0us
+
+结果: PASS
