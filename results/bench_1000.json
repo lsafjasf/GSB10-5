@@ -1,0 +1,37 @@
+{
+  "rule_count": 1000,
+  "summary": {
+    "total": 1000,
+    "by_status": {
+      "OK": 950,
+      "TIMEOUT": 20,
+      "OUTPUT_EXCEEDED": 15,
+      "MEMORY_EXCEEDED": 15
+    },
+    "all_passed": false,
+    "wall_time_s": 8.004
+  },
+  "duration_ms": {
+    "min": 2.83,
+    "p50": 11.1,
+    "p90": 20.06,
+    "p95": 26.11,
+    "p99": 2007.35,
+    "max": 2014.66,
+    "mean": 52.01
+  },
+  "memory_peak": {
+    "per_rule_rss_kb_min": 15756,
+    "per_rule_rss_kb_p99": 18220,
+    "per_rule_rss_kb_max": 18848,
+    "any_child_peak_kb": 19236,
+    "parent_engine_peak_kb": 20728
+  },
+  "limits": {
+    "wall_time_s": 2.0,
+    "cpu_time_s": 2,
+    "memory_mb": 128,
+    "output_bytes": 65536
+  },
+  "workers": 8
+}

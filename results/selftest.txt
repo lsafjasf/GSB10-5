@@ -1,0 +1,15 @@
+test_one_bad_rule_does_not_drag_others (__main__.TestEnginePartialFailure.test_one_bad_rule_does_not_drag_others) ... /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=190839) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  self.pid = os.fork()
+ok
+test_catastrophic_regex_is_killed (__main__.TestSandbox.test_catastrophic_regex_is_killed) ... ok
+test_exception_isolated (__main__.TestSandbox.test_exception_isolated) ... ok
+test_forbidden_capabilities (__main__.TestSandbox.test_forbidden_capabilities) ... ok
+test_huge_output_is_capped (__main__.TestSandbox.test_huge_output_is_capped) ... ok
+test_infinite_loop_is_killed (__main__.TestSandbox.test_infinite_loop_is_killed) ... ok
+test_memory_bomb_is_contained (__main__.TestSandbox.test_memory_bomb_is_contained) ... ok
+test_normal_pass_and_fail (__main__.TestSandbox.test_normal_pass_and_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.046s
+
+OK
