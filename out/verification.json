@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "invariant_A_reclaimed_have_zero_referrers": true,
+  "invariant_B_retained_have_at_least_one": true,
+  "invariant_C_partition_exhaustive": true,
+  "reclaimed_checked": 3,
+  "retained_checked": 1,
+  "violations": {
+    "reclaimed": [],
+    "retained": []
+  }
+}

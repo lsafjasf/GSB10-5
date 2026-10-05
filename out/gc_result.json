@@ -1,0 +1,32 @@
+{
+  "reclaimed_count": 3,
+  "retained_count": 1,
+  "reclaimed": [
+    "cache-x",
+    "data-b",
+    "data-c"
+  ],
+  "retained": [
+    "data-a"
+  ],
+  "pruned_dangling_count": 1,
+  "pruned_expired_count": 1,
+  "pruned_dangling": [
+    {
+      "referrer_id": "ghost-9",
+      "volume_id": "data-c",
+      "kind": "mount",
+      "created_at": 0.0,
+      "expires_at": null
+    }
+  ],
+  "pruned_expired": [
+    {
+      "referrer_id": "web-1",
+      "volume_id": "cache-x",
+      "kind": "tmp",
+      "created_at": 900.0,
+      "expires_at": 999.0
+    }
+  ]
+}

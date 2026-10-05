@@ -1,0 +1,15 @@
+{
+  "volumes": 100000,
+  "references_requested": 500000,
+  "references_actual_unique": 499987,
+  "build_seconds": 7.595,
+  "gc_seconds": 1.255,
+  "verify_seconds": 0.026,
+  "total_decision_seconds": 1.281,
+  "peak_python_bytes_tracemalloc": 180484953,
+  "peak_python_mb": 172.1,
+  "max_rss_mb": 495.0,
+  "reclaimed": 20000,
+  "retained": 80000,
+  "verify_ok": true
+}

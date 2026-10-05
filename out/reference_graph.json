@@ -1,0 +1,33 @@
+{
+  "cache-x": {
+    "web-1": {
+      "kind": "tmp",
+      "expires_at": 999.0,
+      "referrer_alive": true,
+      "valid": false
+    }
+  },
+  "data-a": {
+    "web-1": {
+      "kind": "mount",
+      "expires_at": null,
+      "referrer_alive": true,
+      "valid": true
+    },
+    "web-2": {
+      "kind": "mount",
+      "expires_at": null,
+      "referrer_alive": true,
+      "valid": true
+    }
+  },
+  "data-b": {},
+  "data-c": {
+    "ghost-9": {
+      "kind": "mount",
+      "expires_at": null,
+      "referrer_alive": false,
+      "valid": false
+    }
+  }
+}
