@@ -1,0 +1,38 @@
+临时根目录: /tmp/gsb1tmp-rs0xrqij
+命名样例: /tmp/gsb1tmp-rs0xrqij/web01-p4210-20261006T021530Z-a3f9/upload--web01-p4210-20261006T021530Z-a3f9--4210--000017--9c2bd4e1.tmp
+
+== 用例1 单实例：只收自己过期的 ==
+  stats: {'reclaimed': 2, 'skipped_young': 1, 'skipped_in_use': 0, 'skipped_foreign': 1, 'raced': 0} => PASS
+== 用例2 多实例并发（10 实例 x 200 文件，并发清理）==
+  并发回收校验: 实例=10 每实例文件=200(100过期/100在用) 回收=1000 越界匹配=0 误删在用文件=0 耗时=0.03s
+  => PASS
+== 用例3 强杀残留：识别并回收 ==
+  残留清单(5个):
+   - export--victim--193828--000001--4d642730.tmp
+   - export--victim--193828--000002--a0b06aaa.tmp
+   - export--victim--193828--000003--a1a9ba2c.tmp
+   - export--victim--193828--000004--5c5b4962.tmp
+   - export--victim--193828--000005--07098f6e.tmp
+  回收结果: {'reclaimed': 5, 'skipped_young': 0, 'skipped_in_use': 0, 'alive_dirs': 0, 'dead_dirs': 1, 'raced': 0} 目录已删除
+  => PASS
+== 用例4 文件正在被使用：不得回收（flock 占用）==
+  持锁期间: reclaimed=0 skipped_in_use=1 文件仍在=True
+  释放锁后: reclaimed=1 文件已删=True
+  => PASS
+== 用例5 多个回收者并发扫同一批残留（竞争安全）==
+  残留=5000 并发回收者=5 总回收=5000 竞争让位(raced)=7484 实际剩余=0 耗时=0.12s
+  => PASS
+== 基准 10 万文件 / 10 并发实例 ==
+  文件总数=100000 实例=10 每实例=10000
+  总回收=100000 残留=0 残留样例=[]
+  端到端耗时(建文件+并发回收)=0.85s  单实例sweep最大=0.26s
+  内存峰值 ru_maxrss: 子进程最大=16.2MiB RUSAGE_CHILDREN=19.2MiB
+  => PASS
+
+== 汇总 ==
+  single_instance: PASS
+  concurrent_10: PASS
+  orphan_residue: PASS
+  in_use_protected: PASS
+  concurrent_reapers: PASS
+  benchmark_100k: PASS
