@@ -1,0 +1,362 @@
+[
+  {
+    "scenario": "1. 完全相同（A == B）",
+    "layer": 1,
+    "instruction": "WORKDIR /app",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "1. 完全相同（A == B）",
+    "layer": 2,
+    "instruction": "COPY app.py /app/app.py",
+    "decision": "reused",
+    "diff_digest_replayed": "e7abcd1d18c287dd",
+    "diff_digest_shadow": "e7abcd1d18c287dd",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "1. 完全相同（A == B）",
+    "layer": 3,
+    "instruction": "RUN write /app/config.txt mode=prod",
+    "decision": "reused",
+    "diff_digest_replayed": "2f57ebb12153b255",
+    "diff_digest_shadow": "2f57ebb12153b255",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "1. 完全相同（A == B）",
+    "layer": 4,
+    "instruction": "RUN mkdir /app/data && write /app/data/seed.txt v1",
+    "decision": "reused",
+    "diff_digest_replayed": "02f9dd05f1a20980",
+    "diff_digest_shadow": "02f9dd05f1a20980",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "1. 完全相同（A == B）",
+    "layer": 5,
+    "instruction": "ENV APP_ENV production",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "1. 完全相同（A == B）",
+    "layer": 6,
+    "instruction": "RUN chmod 755 /app/app.py",
+    "decision": "reused",
+    "diff_digest_replayed": "119303779e1da440",
+    "diff_digest_shadow": "119303779e1da440",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "2. 仅顺序调整（COPY 与 RUN 互换）",
+    "layer": 1,
+    "instruction": "WORKDIR /app",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "2. 仅顺序调整（COPY 与 RUN 互换）",
+    "layer": 2,
+    "instruction": "RUN write /app/config.txt mode=prod",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "eca5bac7e6921a90",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "2. 仅顺序调整（COPY 与 RUN 互换）",
+    "layer": 3,
+    "instruction": "COPY app.py /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "d96027f13621740e",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "2. 仅顺序调整（COPY 与 RUN 互换）",
+    "layer": 4,
+    "instruction": "RUN mkdir /app/data && write /app/data/seed.txt v1",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "02f9dd05f1a20980",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "2. 仅顺序调整（COPY 与 RUN 互换）",
+    "layer": 5,
+    "instruction": "ENV APP_ENV production",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "2. 仅顺序调整（COPY 与 RUN 互换）",
+    "layer": 6,
+    "instruction": "RUN chmod 755 /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "119303779e1da440",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "3. 中间一层变化（RUN mode=prod -> mode=debug）",
+    "layer": 1,
+    "instruction": "WORKDIR /app",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "3. 中间一层变化（RUN mode=prod -> mode=debug）",
+    "layer": 2,
+    "instruction": "COPY app.py /app/app.py",
+    "decision": "reused",
+    "diff_digest_replayed": "e7abcd1d18c287dd",
+    "diff_digest_shadow": "e7abcd1d18c287dd",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "3. 中间一层变化（RUN mode=prod -> mode=debug）",
+    "layer": 3,
+    "instruction": "RUN write /app/config.txt mode=debug",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "e80a3bd4bd31ec59",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "3. 中间一层变化（RUN mode=prod -> mode=debug）",
+    "layer": 4,
+    "instruction": "RUN mkdir /app/data && write /app/data/seed.txt v1",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "02f9dd05f1a20980",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "3. 中间一层变化（RUN mode=prod -> mode=debug）",
+    "layer": 5,
+    "instruction": "ENV APP_ENV production",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "3. 中间一层变化（RUN mode=prod -> mode=debug）",
+    "layer": 6,
+    "instruction": "RUN chmod 755 /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "119303779e1da440",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "4. 仅时间戳/所有者变化（上下文 mtime/uid/gid + RUN touch/chown）",
+    "layer": 1,
+    "instruction": "WORKDIR /app",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "4. 仅时间戳/所有者变化（上下文 mtime/uid/gid + RUN touch/chown）",
+    "layer": 2,
+    "instruction": "COPY app.py /app/app.py",
+    "decision": "reused",
+    "diff_digest_replayed": "e7abcd1d18c287dd",
+    "diff_digest_shadow": "e7abcd1d18c287dd",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "4. 仅时间戳/所有者变化（上下文 mtime/uid/gid + RUN touch/chown）",
+    "layer": 3,
+    "instruction": "RUN write /app/config.txt mode=prod",
+    "decision": "reused",
+    "diff_digest_replayed": "2f57ebb12153b255",
+    "diff_digest_shadow": "2f57ebb12153b255",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "4. 仅时间戳/所有者变化（上下文 mtime/uid/gid + RUN touch/chown）",
+    "layer": 4,
+    "instruction": "RUN mkdir /app/data && write /app/data/seed.txt v1",
+    "decision": "reused",
+    "diff_digest_replayed": "02f9dd05f1a20980",
+    "diff_digest_shadow": "02f9dd05f1a20980",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "4. 仅时间戳/所有者变化（上下文 mtime/uid/gid + RUN touch/chown）",
+    "layer": 5,
+    "instruction": "ENV APP_ENV production",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "4. 仅时间戳/所有者变化（上下文 mtime/uid/gid + RUN touch/chown）",
+    "layer": 6,
+    "instruction": "RUN chmod 755 /app/app.py && touch /app/config.txt && chown www-data /app/config.txt",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "119303779e1da440",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "5. 反向用例：仅权限位变化（不得错误复用）",
+    "layer": 1,
+    "instruction": "WORKDIR /app",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "5. 反向用例：仅权限位变化（不得错误复用）",
+    "layer": 2,
+    "instruction": "COPY app.py /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "272cae6e0ebf1041",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "5. 反向用例：仅权限位变化（不得错误复用）",
+    "layer": 3,
+    "instruction": "RUN write /app/config.txt mode=prod",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "2f57ebb12153b255",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "5. 反向用例：仅权限位变化（不得错误复用）",
+    "layer": 4,
+    "instruction": "RUN mkdir /app/data && write /app/data/seed.txt v1",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "02f9dd05f1a20980",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "5. 反向用例：仅权限位变化（不得错误复用）",
+    "layer": 5,
+    "instruction": "ENV APP_ENV production",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "5. 反向用例：仅权限位变化（不得错误复用）",
+    "layer": 6,
+    "instruction": "RUN chmod 755 /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "6. 反向用例：仅内容变化（不得错误复用）",
+    "layer": 1,
+    "instruction": "WORKDIR /app",
+    "decision": "reused",
+    "diff_digest_replayed": "8bc47ae7a65ad76f",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": true,
+    "byte_for_byte_match": true
+  },
+  {
+    "scenario": "6. 反向用例：仅内容变化（不得错误复用）",
+    "layer": 2,
+    "instruction": "COPY app.py /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "36f640d05f06a136",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "6. 反向用例：仅内容变化（不得错误复用）",
+    "layer": 3,
+    "instruction": "RUN write /app/config.txt mode=prod",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "2f57ebb12153b255",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "6. 反向用例：仅内容变化（不得错误复用）",
+    "layer": 4,
+    "instruction": "RUN mkdir /app/data && write /app/data/seed.txt v1",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "02f9dd05f1a20980",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "6. 反向用例：仅内容变化（不得错误复用）",
+    "layer": 5,
+    "instruction": "ENV APP_ENV production",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "8bc47ae7a65ad76f",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  },
+  {
+    "scenario": "6. 反向用例：仅内容变化（不得错误复用）",
+    "layer": 6,
+    "instruction": "RUN chmod 755 /app/app.py",
+    "decision": "rebuilt",
+    "diff_digest_replayed": "",
+    "diff_digest_shadow": "4bac88879b54c010",
+    "digest_match": false,
+    "byte_for_byte_match": false
+  }
+]

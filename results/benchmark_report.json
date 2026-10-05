@@ -1,0 +1,15 @@
+{
+  "pairs": 500,
+  "scripts": 1000,
+  "total_layers_analyzed": 3000,
+  "reused_layers": 1750,
+  "overall_layer_reuse_ratio": 0.5833,
+  "wall_time_seconds": 1.2206,
+  "avg_ms_per_pair": 2.441,
+  "avg_ms_per_script": 1.221,
+  "pairs_per_second": 409.6,
+  "tracemalloc_peak_mb": 0.04,
+  "tracemalloc_current_mb": 0.02,
+  "process_maxrss_mb": 21.09,
+  "process_maxrss_delta_mb": 0.12
+}
