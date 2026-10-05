@@ -1,0 +1,114 @@
+{
+  "scale": {
+    "services": 10000,
+    "edges": 100000,
+    "redundancy_groups": 599
+  },
+  "build": {
+    "seconds": 2.606,
+    "peak_mb": 229.5
+  },
+  "single_fault": {
+    "seconds": 0.191,
+    "peak_mb": 3.1,
+    "report": {
+      "faults": [
+        "svc-00010"
+      ],
+      "affected_user_ratio": 0.003333,
+      "services_down": 1,
+      "services_affected": 1,
+      "down": [
+        "svc-00010"
+      ],
+      "degraded": [
+        "svc-00010"
+      ],
+      "affected_entries": [
+        "svc-00010"
+      ],
+      "critical_path_count": 1,
+      "critical_path_capped": false,
+      "critical_path_log10": 0.0,
+      "critical_path_exact": true,
+      "broken_groups": []
+    }
+  },
+  "az_fault": {
+    "faults": 3316,
+    "seconds": 0.455,
+    "peak_mb": 8.6,
+    "report": {
+      "affected_user_ratio": 0.61098,
+      "services_down": 3316,
+      "services_affected": 9983,
+      "critical_path_count": 3527649761865286,
+      "critical_path_capped": false,
+      "critical_path_log10": 15.55,
+      "critical_path_exact": true,
+      "broken_groups": [
+        {
+          "group_id": "grp-0226",
+          "caller": "svc-00987",
+          "failed_share": 1.0,
+          "members_down": [
+            "svc-02887",
+            "svc-03277",
+            "svc-07613"
+          ],
+          "correlated": true,
+          "shared_zone": "az-a"
+        },
+        {
+          "group_id": "grp-0376",
+          "caller": "svc-01041",
+          "failed_share": 1.0,
+          "members_down": [
+            "svc-02292",
+            "svc-05745",
+            "svc-08933"
+          ],
+          "correlated": true,
+          "shared_zone": "az-a"
+        },
+        {
+          "group_id": "grp-0138",
+          "caller": "svc-01156",
+          "failed_share": 1.0,
+          "members_down": [
+            "svc-00865",
+            "svc-08942",
+            "svc-09432"
+          ],
+          "correlated": true,
+          "shared_zone": "az-a"
+        },
+        {
+          "group_id": "grp-0092",
+          "caller": "svc-02010",
+          "failed_share": 1.0,
+          "members_down": [
+            "svc-01786",
+            "svc-03162",
+            "svc-08352"
+          ],
+          "correlated": true,
+          "shared_zone": "az-a"
+        },
+        {
+          "group_id": "grp-0341",
+          "caller": "svc-02731",
+          "failed_share": 1.0,
+          "members_down": [
+            "svc-03657",
+            "svc-06251",
+            "svc-06623"
+          ],
+          "correlated": true,
+          "shared_zone": "az-a"
+        }
+      ]
+    },
+    "correlated_broken_groups": 18
+  }
+}

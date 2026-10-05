@@ -1,0 +1,157 @@
+{
+  "1_no_impact": {
+    "faults": [
+      "stock-a"
+    ],
+    "affected_user_ratio": 0.0,
+    "services_down": 1,
+    "services_affected": 1,
+    "down": [
+      "stock-a"
+    ],
+    "degraded": [
+      "stock-a"
+    ],
+    "affected_entries": [],
+    "critical_path_count": 0,
+    "critical_path_capped": false,
+    "critical_path_log10": -Infinity,
+    "critical_path_exact": true,
+    "broken_groups": []
+  },
+  "2_single_point": {
+    "faults": [
+      "searchdb"
+    ],
+    "affected_user_ratio": 0.15,
+    "services_down": 2,
+    "services_affected": 3,
+    "down": [
+      "search",
+      "searchdb"
+    ],
+    "degraded": [
+      "search",
+      "searchdb",
+      "web"
+    ],
+    "affected_entries": [
+      "web"
+    ],
+    "critical_path_count": 1,
+    "critical_path_capped": false,
+    "critical_path_log10": 0.0,
+    "critical_path_exact": true,
+    "broken_groups": []
+  },
+  "3_cascade": {
+    "faults": [
+      "pay"
+    ],
+    "affected_user_ratio": 0.3,
+    "services_down": 1,
+    "services_affected": 4,
+    "down": [
+      "pay"
+    ],
+    "degraded": [
+      "app",
+      "order",
+      "pay",
+      "web"
+    ],
+    "affected_entries": [
+      "app",
+      "web"
+    ],
+    "critical_path_count": 2,
+    "critical_path_capped": false,
+    "critical_path_log10": 0.3,
+    "critical_path_exact": true,
+    "broken_groups": []
+  },
+  "4_correlated_redundancy": {
+    "faults": [
+      "paydb-1",
+      "paydb-2"
+    ],
+    "affected_user_ratio": 0.3,
+    "services_down": 3,
+    "services_affected": 6,
+    "down": [
+      "pay",
+      "paydb-1",
+      "paydb-2"
+    ],
+    "degraded": [
+      "app",
+      "order",
+      "pay",
+      "paydb-1",
+      "paydb-2",
+      "web"
+    ],
+    "affected_entries": [
+      "app",
+      "web"
+    ],
+    "critical_path_count": 4,
+    "critical_path_capped": false,
+    "critical_path_log10": 0.6,
+    "critical_path_exact": true,
+    "broken_groups": [
+      {
+        "group_id": "paydb-grp",
+        "caller": "pay",
+        "failed_share": 1.0,
+        "members_down": [
+          "paydb-1",
+          "paydb-2"
+        ],
+        "correlated": true,
+        "shared_zone": "az-a"
+      }
+    ]
+  },
+  "5_group_wipeout": {
+    "faults": [
+      "stock-a",
+      "stock-b"
+    ],
+    "affected_user_ratio": 0.24,
+    "services_down": 2,
+    "services_affected": 5,
+    "down": [
+      "stock-a",
+      "stock-b"
+    ],
+    "degraded": [
+      "app",
+      "order",
+      "stock-a",
+      "stock-b",
+      "web"
+    ],
+    "affected_entries": [
+      "app",
+      "web"
+    ],
+    "critical_path_count": 4,
+    "critical_path_capped": false,
+    "critical_path_log10": 0.6,
+    "critical_path_exact": true,
+    "broken_groups": [
+      {
+        "group_id": "stock-grp",
+        "caller": "order",
+        "failed_share": 1.0,
+        "members_down": [
+          "stock-a",
+          "stock-b"
+        ],
+        "correlated": true,
+        "shared_zone": null
+      }
+    ]
+  }
+}

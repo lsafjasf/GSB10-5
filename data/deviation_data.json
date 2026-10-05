@@ -1,0 +1,49 @@
+{
+  "4a_domain_collateral": {
+    "predicted_user_ratio": 0.3,
+    "observed_user_ratio": 0.375,
+    "gap_pp": 7.5,
+    "precision": 1.0,
+    "recall": 0.8571,
+    "f1": 0.9231,
+    "predicted_only": [],
+    "observed_only": [
+      "session"
+    ],
+    "predicted_paths": 4,
+    "observed_paths": 5,
+    "path_gap_pct": -20.0,
+    "attribution": [
+      {
+        "source": "共故障域连带/冗余同时失效（估算遗漏）",
+        "share_pp": 7.5,
+        "entries": [
+          "web"
+        ]
+      }
+    ]
+  },
+  "5_overestimate_fallback": {
+    "predicted_user_ratio": 0.24,
+    "observed_user_ratio": 0.06,
+    "gap_pp": -18.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "predicted_only": [],
+    "observed_only": [],
+    "predicted_paths": 4,
+    "observed_paths": 4,
+    "path_gap_pct": 0.0,
+    "attribution": [
+      {
+        "source": "切流/降级预案实际生效（估算高估）",
+        "share_pp": -18.0,
+        "entries": [
+          "app",
+          "web"
+        ]
+      }
+    ]
+  }
+}
