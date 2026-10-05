@@ -1,0 +1,36 @@
+{
+  "scenario": "additive_fields",
+  "total": 100000,
+  "read_ok": 100000,
+  "read_failed": 0,
+  "verify_elapsed_sec": 0.312,
+  "conclusion": "可回滚",
+  "handling_steps": [
+    "按常规发布流程重新部署旧版本；",
+    "回滚后抽查读取日志，确认无解析错误；",
+    "后续若恢复新版本，注意新写入数据仍需保持向后兼容。"
+  ],
+  "incompatibilities": [],
+  "informational": [
+    {
+      "kind": "unknown_field",
+      "path": "phone",
+      "severity": "info",
+      "count": 100000,
+      "first_line": 1,
+      "detail": "v1 未定义该字段，按 ignore 策略丢弃",
+      "sample": "'+86-138-00000001'",
+      "suggestion": "无需处理：v1 按 ignore 策略丢弃，不影响读取"
+    },
+    {
+      "kind": "unknown_field",
+      "path": "tags",
+      "severity": "info",
+      "count": 100000,
+      "first_line": 1,
+      "detail": "v1 未定义该字段，按 ignore 策略丢弃",
+      "sample": "[]",
+      "suggestion": "无需处理：v1 按 ignore 策略丢弃，不影响读取"
+    }
+  ]
+}

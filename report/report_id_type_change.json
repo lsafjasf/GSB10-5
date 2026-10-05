@@ -1,0 +1,26 @@
+{
+  "scenario": "id_type_change",
+  "total": 100000,
+  "read_ok": 0,
+  "read_failed": 100000,
+  "verify_elapsed_sec": 0.236,
+  "conclusion": "不可回滚",
+  "handling_steps": [
+    "禁止直接回滚：旧版本无法读取该数据，直接回滚会导致读取失败/脏数据；",
+    "制定迁移方案：外部映射表（新旧 id 对照）、数据迁移脚本或前滚修复 fix-forward；",
+    "迁移完成并在预发环境用旧版本读取验证通过前，保持新版本运行。"
+  ],
+  "incompatibilities": [
+    {
+      "kind": "type_mismatch",
+      "path": "id",
+      "severity": "error",
+      "count": 100000,
+      "first_line": 1,
+      "detail": "期望 int，实际 str",
+      "sample": "'u-00000001'",
+      "suggestion": "字段类型已变更，需要外部映射表或迁移脚本，不能就地简单转换"
+    }
+  ],
+  "informational": []
+}

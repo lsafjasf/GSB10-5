@@ -1,0 +1,15 @@
+{
+  "scenario": "full_compat",
+  "total": 100000,
+  "read_ok": 100000,
+  "read_failed": 0,
+  "verify_elapsed_sec": 0.224,
+  "conclusion": "可回滚",
+  "handling_steps": [
+    "按常规发布流程重新部署旧版本；",
+    "回滚后抽查读取日志，确认无解析错误；",
+    "后续若恢复新版本，注意新写入数据仍需保持向后兼容。"
+  ],
+  "incompatibilities": [],
+  "informational": []
+}

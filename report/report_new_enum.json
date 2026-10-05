@@ -1,0 +1,27 @@
+{
+  "scenario": "new_enum",
+  "total": 100000,
+  "read_ok": 90000,
+  "read_failed": 10000,
+  "verify_elapsed_sec": 0.238,
+  "conclusion": "需先转换",
+  "handling_steps": [
+    "冻结新版本写入或开启双写，避免转换期间继续产生不兼容数据；",
+    "按不兼容清单逐条转换：新枚举值映射回 v1 取值；用 v1 工具链重建索引；",
+    "转换后重新运行本验证，确认结论变为“可回滚”；",
+    "再部署旧版本，并保留转换前数据快照。"
+  ],
+  "incompatibilities": [
+    {
+      "kind": "unknown_enum",
+      "path": "status",
+      "severity": "error",
+      "count": 10000,
+      "first_line": 10,
+      "detail": "取值 'pending' 不在 v1 枚举集合 ['active', 'inactive', 'banned'] 内",
+      "sample": "pending",
+      "suggestion": "回滚前将新枚举值映射为 v1 已知取值（如 pending->inactive），或隔离相关记录"
+    }
+  ],
+  "informational": []
+}

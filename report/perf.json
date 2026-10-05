@@ -1,0 +1,16 @@
+{
+  "scenario": "additive_fields",
+  "count": 1000000,
+  "data_file_mb": 130.0,
+  "generate_elapsed_sec": 2.461,
+  "verify_elapsed_sec": 3.205,
+  "records_per_sec": 312035,
+  "peak_rss_mb": 36.8,
+  "verify_rss_before_mb": 17.3,
+  "verify_rss_after_mb": 17.3,
+  "verify_rss_delta_mb": 0.0,
+  "streaming": true,
+  "conclusion": "可回滚",
+  "read_ok": 1000000,
+  "read_failed": 0
+}
