@@ -1,0 +1,68 @@
+
+== 显示宽度规则 ==
+1. 先切分为终端原子簇：组合附加符、emoji 修饰符和 variation selector 贴住前一字符。
+2. ZWJ(U+200D) 把相邻代码点连成一个原子簇；国家/地区旗帜按两个 regional indicator 成簇。
+3. East_Asian_Width 为 W 或 F 的字符占 2 列，其他普通可打印字符占 1 列。
+4. Mn/Me/Cf、ZWJ/ZWNJ、零宽空格和 BOM 占 0 列；Mc 占位组合符占 1 列并留在同簇。
+5. ZWJ emoji 序列、旗帜和键帽序列整体占 2 列；截断时放不下整个簇就不放入。
+6. Tab 固定占 4 列，其他 C0/C1 控制符占 0 列。
+
+== 数字本体统一前/后 ==
+before                 after
+1234.5                 1,234.50
+1,234.500              1,234.50
+−987.6                 -987.60
+１２３４．５                 1,234.50
+1.234567e9             1.23E+09
+0.00001234             1.23E-05
+2.5E-4                 2.50E-04
+-0.00                  0.00
+
+== 对齐结果 ==
+名称        数量          金额          状态
+alpha       1,234.50      1,234.50      OK
+汉字１２３  1,234.50       -987.60      全角
+éclair          1.23E+09  1,234.50      组合序列
+🧑‍🚀              1.23E-05      2.50E-04  ZWJ emoji
+🇨🇳          1,234.50          1.23E+12  旗帜
+零宽a​b          0.00          8.00      不可见字符
+
+== 逐行逐列起始位置断言 ==
+ASSERT OK row=0 col=0 start=0
+ASSERT OK row=0 col=1 start=12
+ASSERT OK row=0 col=2 start=26
+ASSERT OK row=0 col=3 start=40
+ASSERT OK row=1 col=0 start=0
+ASSERT OK row=1 col=1 start=12
+ASSERT OK row=1 col=2 start=26
+ASSERT OK row=1 col=3 start=40
+ASSERT OK row=2 col=0 start=0
+ASSERT OK row=2 col=1 start=12
+ASSERT OK row=2 col=2 start=26
+ASSERT OK row=2 col=3 start=40
+ASSERT OK row=3 col=0 start=0
+ASSERT OK row=3 col=1 start=12
+ASSERT OK row=3 col=2 start=26
+ASSERT OK row=3 col=3 start=40
+ASSERT OK row=4 col=0 start=0
+ASSERT OK row=4 col=1 start=12
+ASSERT OK row=4 col=2 start=26
+ASSERT OK row=4 col=3 start=40
+ASSERT OK row=5 col=0 start=0
+ASSERT OK row=5 col=1 start=12
+ASSERT OK row=5 col=2 start=26
+ASSERT OK row=5 col=3 start=40
+ASSERT OK row=6 col=0 start=0
+ASSERT OK row=6 col=1 start=12
+ASSERT OK row=6 col=2 start=26
+ASSERT OK row=6 col=3 start=40
+TOTAL ASSERTIONS=28
+
+== 100,000 行基准 ==
+rows=100000
+columns=4
+elapsed_seconds=1.118587
+tracemalloc_elapsed_seconds=7.892646
+tracemalloc_current_mib=47.24
+tracemalloc_peak_mib=74.71
+process_max_rss_mib=236.75
