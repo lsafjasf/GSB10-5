@@ -1,0 +1,94 @@
+[
+  {
+    "item_id": "doc-001",
+    "kind": "LABEL_CONFLICT",
+    "char_start": 11,
+    "char_end": 15,
+    "annotators": [
+      {
+        "item_id": "doc-001",
+        "annotator": "ann_a",
+        "start": 11,
+        "end": 15,
+        "label": "LOC"
+      },
+      {
+        "item_id": "doc-001",
+        "annotator": "ann_b",
+        "start": 11,
+        "end": 15,
+        "label": "GPE"
+      }
+    ],
+    "snippet": "伟于2021年加入北京阿里巴巴科技有限公司担任工"
+  },
+  {
+    "item_id": "doc-001",
+    "kind": "OVERLAP_SAME_LABEL",
+    "char_start": 17,
+    "char_end": 25,
+    "annotators": [
+      {
+        "item_id": "doc-001",
+        "annotator": "ann_a",
+        "start": 15,
+        "end": 25,
+        "label": "ORG"
+      },
+      {
+        "item_id": "doc-001",
+        "annotator": "ann_b",
+        "start": 17,
+        "end": 27,
+        "label": "ORG"
+      }
+    ],
+    "snippet": "年加入北京阿里巴巴科技有限公司担任工程师。"
+  },
+  {
+    "item_id": "doc-002",
+    "kind": "OVERLAP_DIFF_LABEL",
+    "char_start": 7,
+    "char_end": 9,
+    "annotators": [
+      {
+        "item_id": "doc-002",
+        "annotator": "ann_a",
+        "start": 3,
+        "end": 9,
+        "label": "ORG"
+      },
+      {
+        "item_id": "doc-002",
+        "annotator": "ann_b",
+        "start": 7,
+        "end": 12,
+        "label": "LOC"
+      }
+    ],
+    "snippet": "李娜在上海交通大学攻读计算机科学硕士学"
+  },
+  {
+    "item_id": "doc-003",
+    "kind": "LABEL_CONFLICT",
+    "char_start": 9,
+    "char_end": 9,
+    "annotators": [
+      {
+        "item_id": "doc-003",
+        "annotator": "ann_a",
+        "start": 9,
+        "end": 9,
+        "label": "LOC"
+      },
+      {
+        "item_id": "doc-003",
+        "annotator": "ann_b",
+        "start": 9,
+        "end": 9,
+        "label": "GPE"
+      }
+    ],
+    "snippet": "腾讯总部位于深圳市南山区。"
+  }
+]

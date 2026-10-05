@@ -1,0 +1,114 @@
+{
+  "items": {
+    "doc-001": "张伟于2021年加入北京阿里巴巴科技有限公司担任工程师。",
+    "doc-002": "李娜在上海交通大学攻读计算机科学硕士学位。",
+    "doc-003": "腾讯总部位于深圳市南山区。"
+  },
+  "annotations": [
+    {
+      "item_id": "doc-001",
+      "annotator": "ann_a",
+      "start": 0,
+      "end": 2,
+      "label": "PER"
+    },
+    {
+      "item_id": "doc-001",
+      "annotator": "ann_b",
+      "start": 0,
+      "end": 2,
+      "label": "PER"
+    },
+    {
+      "item_id": "doc-001",
+      "annotator": "ann_a",
+      "start": 11,
+      "end": 15,
+      "label": "LOC"
+    },
+    {
+      "item_id": "doc-001",
+      "annotator": "ann_b",
+      "start": 11,
+      "end": 15,
+      "label": "GPE"
+    },
+    {
+      "item_id": "doc-001",
+      "annotator": "ann_a",
+      "start": 15,
+      "end": 25,
+      "label": "ORG"
+    },
+    {
+      "item_id": "doc-001",
+      "annotator": "ann_b",
+      "start": 17,
+      "end": 27,
+      "label": "ORG"
+    },
+    {
+      "item_id": "doc-002",
+      "annotator": "ann_a",
+      "start": 3,
+      "end": 9,
+      "label": "ORG"
+    },
+    {
+      "item_id": "doc-002",
+      "annotator": "ann_b",
+      "start": 7,
+      "end": 12,
+      "label": "LOC"
+    },
+    {
+      "item_id": "doc-002",
+      "annotator": "ann_a",
+      "start": 13,
+      "end": 17,
+      "label": "MISC"
+    },
+    {
+      "item_id": "doc-002",
+      "annotator": "ann_b",
+      "start": 17,
+      "end": 21,
+      "label": "MISC"
+    },
+    {
+      "item_id": "doc-003",
+      "annotator": "ann_a",
+      "start": 5,
+      "end": 5,
+      "label": "PER"
+    },
+    {
+      "item_id": "doc-003",
+      "annotator": "ann_a",
+      "start": 9,
+      "end": 9,
+      "label": "LOC"
+    },
+    {
+      "item_id": "doc-003",
+      "annotator": "ann_b",
+      "start": 9,
+      "end": 9,
+      "label": "GPE"
+    },
+    {
+      "item_id": "doc-003",
+      "annotator": "ann_a",
+      "start": 0,
+      "end": 2,
+      "label": "ORG"
+    },
+    {
+      "item_id": "doc-003",
+      "annotator": "ann_b",
+      "start": 0,
+      "end": 2,
+      "label": "ORG"
+    }
+  ]
+}
