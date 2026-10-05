@@ -1,0 +1,61 @@
+{
+  "scenarios": [
+    {
+      "name": "single_case",
+      "prepare_and_reclaim_ms": 2.554,
+      "namespace_unique": true,
+      "cwd_isolated": true,
+      "port": 45613,
+      "dir_reclaimed": true,
+      "env_var_reclaimed": true
+    },
+    {
+      "name": "parallel_100",
+      "cases": 100,
+      "prepare_ms": 1033.936,
+      "reclaim_ms": 11.671,
+      "unique_namespaces": true,
+      "unique_ports": true,
+      "cross_visibility_leaks": 0,
+      "degraded": 0,
+      "dirs_left_after_reclaim": 0
+    },
+    {
+      "name": "residue_after_crash",
+      "child_exit_code": 9,
+      "orphan_namespace": "env-74702-1-6de1b0e8",
+      "orphan_path": "/tmp/testenv_scenario_residue_hrkcpc8p/run-74702-588e017a/env-74702-1-6de1b0e8",
+      "residue_present_before_sweep": true,
+      "scanned": 1,
+      "removed_count": 1,
+      "removed": [
+        "/tmp/testenv_scenario_residue_hrkcpc8p/run-74702-588e017a/env-74702-1-6de1b0e8"
+      ],
+      "sweep_elapsed_ms": 0.268,
+      "residue_gone": true,
+      "second_sweep_scanned": 0,
+      "second_sweep_removed": 0
+    },
+    {
+      "name": "reclaim_failure_midway",
+      "destroy_raised": false,
+      "injected_failures": 1,
+      "victim_degraded": true,
+      "recorded_errors": [
+        {
+          "resource": "dir",
+          "error": "注入的中途回收失败"
+        }
+      ],
+      "victim_preserved_for_retry": true,
+      "later_case_reclaimed": true,
+      "later_case_degraded": false,
+      "failure_handled_ms": 0.679,
+      "retry_sweep_removed": [
+        "/tmp/testenv_scenario_reclaim_failure_5lv8dxlo/run-74669-ad649f8d/env-74669-103-ba6ab8bc"
+      ],
+      "retry_sweep_failed": [],
+      "final_clean": true
+    }
+  ]
+}

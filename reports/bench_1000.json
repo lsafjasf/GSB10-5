@@ -1,0 +1,21 @@
+{
+  "cases": 1000,
+  "workers": 64,
+  "prepare_s": 10.2735,
+  "prepare_per_case_ms": 10.2735,
+  "reclaim_s": 0.1838,
+  "reclaim_per_case_ms": 0.1838,
+  "unique_namespaces": true,
+  "unique_dirs": true,
+  "degraded": 0,
+  "reclaim_errors": 0,
+  "dirs_left_after_reclaim": 0,
+  "residue_sweep_removed": 0,
+  "residue_sweep_failed": 0,
+  "mem": {
+    "rss_peak_mb": 25.69,
+    "rss_delta_during_prepare_mb": 10.06,
+    "python_heap_peak_prepare_mb": 2.12,
+    "python_heap_peak_total_mb": 2.12
+  }
+}
