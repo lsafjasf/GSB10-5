@@ -1,0 +1,19 @@
+{
+  "manifest_id": "actual-2026-10",
+  "resources": [
+    {"checksum": "ab12cd34ef56", "path": "/usr/sbin/nginx", "size": "102400",
+     "tags": ["core", "web"], "description": "web server", "version": "v1.24.0",
+     "type": "rpm", "name": "nginx"},
+    {"name": "openssl", "type": "rpm", "version": "3.0.9", "checksum": "aa00bb11cc22",
+     "size": 204800, "path": "/usr/lib64/libssl.so", "description": "tls library", "tags": ["security"]},
+    {"name": "myapp", "type": "container", "version": "2.1.0", "checksum": "ffee0011",
+     "size": 52428800, "path": "/opt/myapp/", "description": "business application",
+     "tags": ["app"], "custom_label": "team-b"},
+    {"name": "agentd", "type": "rpm", "version": "0.9.1",
+     "size": 51200, "path": "/usr/bin/agentd", "description": "monitor agent", "tags": ["ops"]},
+    {"name": "logrotate", "type": "rpm", "version": "3.21.0", "checksum": "55aa66bb",
+     "size": 40960, "path": "/usr/sbin/logrotate", "description": "log rotation", "tags": ["ops"]},
+    {"name": "telnetd", "type": "rpm", "version": "1.9", "checksum": "deadbeef",
+     "size": 10240, "path": "/usr/sbin/telnetd", "description": "legacy telnet", "tags": ["legacy"]}
+  ]
+}

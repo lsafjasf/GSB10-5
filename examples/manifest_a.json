@@ -1,0 +1,18 @@
+{
+  "manifest_id": "baseline-2026-10",
+  "resources": [
+    {"name": "nginx", "type": "rpm", "version": "1.24.0", "checksum": "AB12:CD34:EF56",
+     "size": 102400, "path": "/usr/sbin/nginx/", "description": "web server", "tags": ["web", "core"]},
+    {"name": "openssl", "type": "rpm", "version": "3.0.8", "checksum": "aa00bb11cc22",
+     "size": 204800, "path": "/usr/lib64/libssl.so", "description": "tls library", "tags": ["security"]},
+    {"name": "myapp", "type": "container", "version": "v2.1.0", "checksum": "ffee0011",
+     "size": "52428800", "path": "/opt/myapp", "description": "business app", "tags": ["app"],
+     "custom_label": "team-a"},
+    {"name": "agentd", "type": "rpm", "version": "0.9.1", "checksum": "1234abcd",
+     "size": 51200, "path": "/usr/bin/agentd", "description": "monitor agent", "tags": ["ops"]},
+    {"name": "logrotate", "type": "rpm", "version": "3.21.0",
+     "size": 40960, "path": "/usr/sbin/logrotate", "description": "log rotation", "tags": ["ops"]},
+    {"name": "redis", "type": "rpm", "version": "7.0.5", "checksum": "99887766",
+     "size": 307200, "path": "/usr/bin/redis-server", "description": "cache", "tags": ["db"]}
+  ]
+}

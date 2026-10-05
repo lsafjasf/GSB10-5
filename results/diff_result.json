@@ -1,0 +1,130 @@
+{
+  "summary": {
+    "entries_a": 6,
+    "entries_b": 6,
+    "matched_entries": 5,
+    "violation_count": 3,
+    "compliant_diff_count": 1,
+    "pending_count": 1,
+    "missing_critical_field_count": 2,
+    "verdict": "不合规"
+  },
+  "violations": [
+    {
+      "category": "field_mismatch",
+      "verdict": "违规差异",
+      "resource": {
+        "name": "openssl",
+        "type": "rpm"
+      },
+      "field": "version",
+      "value_a": "3.0.8",
+      "value_b": "3.0.9",
+      "reason": "关键字段 version 不一致，实际部署物与基准不是同一构建"
+    },
+    {
+      "category": "entry_missing",
+      "verdict": "违规差异",
+      "resource": {
+        "name": "redis",
+        "type": "rpm"
+      },
+      "field": null,
+      "entry_a": {
+        "name": "redis",
+        "type": "rpm",
+        "version": "7.0.5",
+        "checksum": "99887766",
+        "size": 307200,
+        "path": "/usr/bin/redis-server",
+        "description": "cache",
+        "tags": [
+          "db"
+        ]
+      },
+      "entry_b": null,
+      "reason": "基准清单存在而对方清单缺失（应部署未部署）"
+    },
+    {
+      "category": "entry_extra",
+      "verdict": "违规差异",
+      "resource": {
+        "name": "telnetd",
+        "type": "rpm"
+      },
+      "field": null,
+      "entry_a": null,
+      "entry_b": {
+        "name": "telnetd",
+        "type": "rpm",
+        "version": "1.9",
+        "checksum": "deadbeef",
+        "size": 10240,
+        "path": "/usr/sbin/telnetd",
+        "description": "legacy telnet",
+        "tags": [
+          "legacy"
+        ]
+      },
+      "reason": "对方清单存在而基准清单没有（未申报/多余资源）"
+    }
+  ],
+  "compliant_diffs": [
+    {
+      "category": "field_mismatch",
+      "verdict": "合规差异",
+      "resource": {
+        "name": "myapp",
+        "type": "container"
+      },
+      "field": "description",
+      "value_a": "business app",
+      "value_b": "business application",
+      "reason": "信息字段 description 不一致，属允许不同的描述性元数据"
+    }
+  ],
+  "pending_confirmations": [
+    {
+      "category": "field_mismatch",
+      "verdict": "待确认",
+      "resource": {
+        "name": "myapp",
+        "type": "container"
+      },
+      "field": "custom_label",
+      "value_a": "team-a",
+      "value_b": "team-b",
+      "reason": "字段 custom_label 不在比对口径内，需人工确认"
+    }
+  ],
+  "missing_critical_fields": [
+    {
+      "category": "missing_critical_field",
+      "verdict": "违规差异",
+      "side": "b",
+      "entry_index": null,
+      "resource": {
+        "name": "agentd",
+        "type": "rpm"
+      },
+      "missing_fields": [
+        "checksum"
+      ],
+      "reason": "关键字段 checksum 在 b 侧缺失"
+    },
+    {
+      "category": "missing_critical_field",
+      "verdict": "违规差异",
+      "side": "a",
+      "entry_index": null,
+      "resource": {
+        "name": "logrotate",
+        "type": "rpm"
+      },
+      "missing_fields": [
+        "checksum"
+      ],
+      "reason": "关键字段 checksum 在 a 侧缺失"
+    }
+  ]
+}
