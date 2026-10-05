@@ -1,0 +1,7 @@
+events:                100,000
+generation time:       1.923s
+classification time:   5.163s  (19,370 events/s, 51.63 us/event)
+sla report time:       0.047s
+peak memory (tracemalloc): 201.5 MiB
+level distribution:    P1=48,014, P2=13,512, P3=13,370, P4=12,340, P5=12,764
+sla breaches:          P1=0, P2=0, P3=0, P4=0, P5=0
