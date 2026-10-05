@@ -1,0 +1,27 @@
+input,style,normalized_case_sensitive,normalized_case_insensitive,verdict
+../a/b,windows,..\a\b,..\a\b,identical
+..\a\.\b,windows,..\a\b,..\a\b,identical
+//srv/share/dir/f,windows,\\srv\share\dir\f,\\srv\share\dir\f,identical
+/A/B/../b/c,posix,/A/b/c,/a/b/c,DIFFERS by case
+/A/b/c,posix,/A/b/c,/a/b/c,DIFFERS by case
+/Users/Alice/Report.TXT,posix,/Users/Alice/Report.TXT,/users/alice/report.txt,DIFFERS by case
+/etc/../etc/passwd,posix,/etc/passwd,/etc/passwd,identical
+/etc/passwd,posix,/etc/passwd,/etc/passwd,identical
+/users/alice/report.txt,posix,/users/alice/report.txt,/users/alice/report.txt,identical
+C:/Projects/app/config.yaml,windows,C:\Projects\app\config.yaml,c:\projects\app\config.yaml,DIFFERS by case
+C:\A\B.TXT,windows,C:\A\B.TXT,c:\a\b.txt,DIFFERS by case
+C:\Projects\app/config.yaml,windows,C:\Projects\app\config.yaml,c:\projects\app\config.yaml,DIFFERS by case
+C:\a//b\.\c,windows,C:\a\b\c,c:\a\b\c,DIFFERS by case
+C:\x\z,windows,C:\x\z,c:\x\z,DIFFERS by case
+\\?\C:\x\y\..\z,windows,\\?\C:\x\z,\\?\c:\x\z,DIFFERS by case
+\\srv\share\dir\f,windows,\\srv\share\dir\f,\\srv\share\dir\f,identical
+a/./b/,posix,a/b,a/b,identical
+a//b///c,posix,a/b/c,a/b/c,identical
+a/b,posix,a/b,a/b,identical
+a/b/c,posix,a/b/c,a/b/c,identical
+a/b\c,posix,a/b\c,a/b\c,identical
+a/b\c,windows,a\b\c,a\b\c,identical
+a\b\c,posix,a\b\c,a\b\c,identical
+a\b\c,windows,a\b\c,a\b\c,identical
+c:/a/b/c,windows,C:\a\b\c,c:\a\b\c,DIFFERS by case
+c:\a\b.txt,windows,C:\a\b.txt,c:\a\b.txt,DIFFERS by case

@@ -1,0 +1,6 @@
+corpus: 100000 paths, python 3.12.3, host linux
+normalize style=windows case_sensitive=False    2475.0 ms  ( 24.75 us/path)  tracemalloc peak  10.54 MiB  maxRSS   44.3 MiB
+normalize style=windows case_sensitive=True     1654.6 ms  ( 16.55 us/path)  tracemalloc peak  10.28 MiB  maxRSS   44.3 MiB
+normalize style=posix   case_sensitive=True      700.5 ms  (  7.00 us/path)  tracemalloc peak   8.41 MiB  maxRSS   44.3 MiB
+normalize style=posix   case_sensitive=False    1348.7 ms  ( 13.49 us/path)  tracemalloc peak  10.59 MiB  maxRSS   44.3 MiB
+equivalent x100000 pairs (windows, ci): 517.9 ms, 100000 pairs equal (100% expected: separator swap is a no-op)

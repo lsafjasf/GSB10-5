@@ -1,0 +1,14 @@
+path_a,path_b,style,note,equal_case_sensitive,equal_case_insensitive,norm_a_cs,norm_b_cs,norm_a_ci,norm_b_ci
+/etc/../etc/passwd,/etc/passwd,posix,dot-segment resolution,True,True,/etc/passwd,/etc/passwd,/etc/passwd,/etc/passwd
+a//b///c,a/b/c,posix,duplicate separators,True,True,a/b/c,a/b/c,a/b/c,a/b/c
+a/./b/,a/b,posix,trailing slash + dot,True,True,a/b,a/b,a/b,a/b
+/A/B/../b/c,/A/b/c,posix,dot-segment cancels component,True,True,/A/b/c,/A/b/c,/a/b/c,/a/b/c
+/Users/Alice/Report.TXT,/users/alice/report.txt,posix,case difference,False,True,/Users/Alice/Report.TXT,/users/alice/report.txt,/users/alice/report.txt,/users/alice/report.txt
+C:\Projects\app/config.yaml,C:/Projects/app/config.yaml,windows,pure separator difference,True,True,C:\Projects\app\config.yaml,C:\Projects\app\config.yaml,c:\projects\app\config.yaml,c:\projects\app\config.yaml
+C:\a//b\.\c,c:/a/b/c,windows,mixed + duplicate separators,True,True,C:\a\b\c,C:\a\b\c,c:\a\b\c,c:\a\b\c
+\\srv\share\dir\f,//srv/share/dir/f,windows,UNC slash style,True,True,\\srv\share\dir\f,\\srv\share\dir\f,\\srv\share\dir\f,\\srv\share\dir\f
+C:\A\B.TXT,c:\a\b.txt,windows,drive + case difference,False,True,C:\A\B.TXT,C:\a\b.txt,c:\a\b.txt,c:\a\b.txt
+\\?\C:\x\y\..\z,C:\x\z,windows,extended prefix cannot equal,False,False,\\?\C:\x\z,C:\x\z,\\?\c:\x\z,c:\x\z
+..\a\.\b,../a/b,windows,relative with mixed separators,True,True,..\a\b,..\a\b,..\a\b,..\a\b
+a/b\c,a\b\c,windows,backslash accepted as separator,True,True,a\b\c,a\b\c,a\b\c,a\b\c
+a/b\c,a\b\c,posix,backslash is a literal char on POSIX,False,False,a/b\c,a\b\c,a/b\c,a\b\c
