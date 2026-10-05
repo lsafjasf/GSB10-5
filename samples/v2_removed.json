@@ -1,0 +1,18 @@
+{
+  "name": "image-plugin",
+  "version": "2.0.0",
+  "functions": {
+    "resize": {
+      "params": {
+        "image":     {"type": "bytes", "required": true},
+        "width":     {"type": "int",   "required": true},
+        "algorithm": {"type": "str",   "required": false, "default": "nearest"}
+      },
+      "returns": {"type": "bytes"},
+      "raises": {
+        "ValueError": "width <= 0",
+        "IOError":    "image 无法解码"
+      }
+    }
+  }
+}
