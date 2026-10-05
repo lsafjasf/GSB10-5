@@ -1,0 +1,196 @@
+{
+  "summary": {
+    "overall_verdict": "violation",
+    "resources_baseline": 4,
+    "resources_candidate": 4,
+    "matched_resources": 3,
+    "diff_counts": {
+      "violation": 2,
+      "compliant": 2,
+      "needs_review": 2
+    },
+    "key_field_missing_count": 1,
+    "equivalent_notation_count": 8
+  },
+  "key_field_missing": [
+    {
+      "kind": "missing_key_field",
+      "verdict": "needs_review",
+      "reason": "关键字段 region 缺失或为空，无法判定一致性，需人工确认",
+      "resource_id": "cache-001",
+      "field": "region",
+      "side": "candidate",
+      "baseline": "cn-east-1",
+      "candidate": null
+    }
+  ],
+  "diffs": [
+    {
+      "kind": "resource_missing",
+      "verdict": "violation",
+      "reason": "基线存在但候选清单缺失该资源",
+      "resource_id": "vm-legacy",
+      "baseline": {
+        "id": "vm-legacy",
+        "type": "compute.vm",
+        "region": "cn-north-1",
+        "cpu": 2,
+        "memory_gb": 4,
+        "image": "centos-7",
+        "encrypted": false,
+        "ports": [
+          22
+        ],
+        "tags": {
+          "env": "staging"
+        },
+        "description": "待下线",
+        "owner": "ops@example.com"
+      },
+      "candidate": null
+    },
+    {
+      "kind": "resource_added",
+      "verdict": "needs_review",
+      "reason": "候选清单新增基线中没有的资源，需确认是否审批通过",
+      "resource_id": "vm-new",
+      "baseline": null,
+      "candidate": {
+        "id": "vm-new",
+        "type": "compute.vm",
+        "region": "cn-east-1",
+        "cpu": 4,
+        "memory_gb": 16,
+        "image": "ubuntu-22.04",
+        "encrypted": true,
+        "ports": [
+          443
+        ],
+        "tags": {
+          "env": "prod"
+        },
+        "description": "新申请资源",
+        "owner": "dev@example.com"
+      }
+    },
+    {
+      "kind": "key_field_mismatch",
+      "verdict": "violation",
+      "reason": "关键字段 memory_gb 规范化后不一致",
+      "resource_id": "db-001",
+      "field": "memory_gb",
+      "baseline": 32,
+      "candidate": 64
+    },
+    {
+      "kind": "unknown_field",
+      "verdict": "needs_review",
+      "reason": "cost_center 不在比对口径内，需确认该字段的合规要求",
+      "resource_id": "db-001",
+      "field": "cost_center",
+      "baseline": null,
+      "candidate": "CC-100"
+    },
+    {
+      "kind": "allowed_field_mismatch",
+      "verdict": "compliant",
+      "reason": "description 属于允许不同的描述性字段，差异合规",
+      "resource_id": "vm-001",
+      "field": "description",
+      "baseline": "订单服务主机",
+      "candidate": "订单服务主机（已扩容说明更新）"
+    },
+    {
+      "kind": "allowed_field_mismatch",
+      "verdict": "compliant",
+      "reason": "owner 属于允许不同的描述性字段，差异合规",
+      "resource_id": "vm-001",
+      "field": "owner",
+      "baseline": "ops@example.com",
+      "candidate": "ops-lead@example.com"
+    }
+  ],
+  "equivalent_notations": [
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "type 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "type",
+      "baseline": "compute.vm",
+      "candidate": "Compute.VM"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "region 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "region",
+      "baseline": "cn-east-1",
+      "candidate": "CN-EAST-1"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "cpu 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "cpu",
+      "baseline": 4,
+      "candidate": "4"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "memory_gb 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "memory_gb",
+      "baseline": 16,
+      "candidate": "16GB"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "image 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "image",
+      "baseline": "ubuntu-22.04",
+      "candidate": "Ubuntu-22.04"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "encrypted 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "encrypted",
+      "baseline": true,
+      "candidate": "TRUE"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "ports 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "ports",
+      "baseline": [
+        80,
+        443
+      ],
+      "candidate": "443,80"
+    },
+    {
+      "kind": "equivalent_notation",
+      "verdict": "compliant",
+      "reason": "tags 仅为等价写法/顺序差异，规范化后一致，不算差异",
+      "resource_id": "vm-001",
+      "field": "tags",
+      "baseline": {
+        "env": "prod",
+        "team": "core"
+      },
+      "candidate": [
+        "team=core",
+        "env=prod"
+      ]
+    }
+  ]
+}

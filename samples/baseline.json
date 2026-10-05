@@ -1,0 +1,57 @@
+{
+  "manifest_id": "baseline-2026Q3",
+  "resources": [
+    {
+      "id": "vm-001",
+      "type": "compute.vm",
+      "region": "cn-east-1",
+      "cpu": 4,
+      "memory_gb": 16,
+      "image": "ubuntu-22.04",
+      "encrypted": true,
+      "ports": [80, 443],
+      "tags": {"env": "prod", "team": "core"},
+      "description": "订单服务主机",
+      "owner": "ops@example.com"
+    },
+    {
+      "id": "db-001",
+      "type": "db.mysql",
+      "region": "cn-east-1",
+      "cpu": 8,
+      "memory_gb": 32,
+      "image": "mysql-8.0",
+      "encrypted": true,
+      "ports": [3306],
+      "tags": {"env": "prod"},
+      "description": "订单库",
+      "owner": "dba@example.com"
+    },
+    {
+      "id": "cache-001",
+      "type": "cache.redis",
+      "region": "cn-east-1",
+      "cpu": 2,
+      "memory_gb": 8,
+      "image": "redis-7",
+      "encrypted": true,
+      "ports": [6379],
+      "tags": {"env": "prod"},
+      "description": "会话缓存",
+      "owner": "ops@example.com"
+    },
+    {
+      "id": "vm-legacy",
+      "type": "compute.vm",
+      "region": "cn-north-1",
+      "cpu": 2,
+      "memory_gb": 4,
+      "image": "centos-7",
+      "encrypted": false,
+      "ports": [22],
+      "tags": {"env": "staging"},
+      "description": "待下线",
+      "owner": "ops@example.com"
+    }
+  ]
+}

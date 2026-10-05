@@ -1,0 +1,57 @@
+{
+  "manifest_id": "candidate-2026Q4",
+  "resources": [
+    {
+      "description": "订单服务主机（已扩容说明更新）",
+      "owner": "ops-lead@example.com",
+      "tags": ["team=core", "env=prod"],
+      "ports": "443,80",
+      "encrypted": "TRUE",
+      "image": "Ubuntu-22.04",
+      "memory_gb": "16GB",
+      "cpu": "4",
+      "region": "CN-EAST-1",
+      "type": "Compute.VM",
+      "id": "vm-001"
+    },
+    {
+      "id": "db-001",
+      "type": "db.mysql",
+      "region": "cn-east-1",
+      "cpu": 8,
+      "memory_gb": 64,
+      "image": "mysql-8.0",
+      "encrypted": true,
+      "ports": [3306],
+      "tags": {"env": "prod"},
+      "description": "订单库",
+      "owner": "dba@example.com",
+      "cost_center": "CC-100"
+    },
+    {
+      "id": "cache-001",
+      "type": "cache.redis",
+      "cpu": 2,
+      "memory_gb": 8,
+      "image": "redis-7",
+      "encrypted": true,
+      "ports": [6379],
+      "tags": {"env": "prod"},
+      "description": "会话缓存",
+      "owner": "ops@example.com"
+    },
+    {
+      "id": "vm-new",
+      "type": "compute.vm",
+      "region": "cn-east-1",
+      "cpu": 4,
+      "memory_gb": 16,
+      "image": "ubuntu-22.04",
+      "encrypted": true,
+      "ports": [443],
+      "tags": {"env": "prod"},
+      "description": "新申请资源",
+      "owner": "dev@example.com"
+    }
+  ]
+}

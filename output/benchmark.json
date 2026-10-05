@@ -1,0 +1,19 @@
+{
+  "manifest_pairs": 10000,
+  "resources_per_manifest": 20,
+  "total_resources_compared": 200000,
+  "elapsed_seconds": 5.495,
+  "avg_seconds_per_pair": 0.000549,
+  "throughput_pairs_per_second": 1819.9,
+  "elapsed_seconds_with_tracemalloc": 26.768,
+  "peak_python_mib_tracemalloc": 0.08,
+  "rss_peak_mib_getrusage": 22.49,
+  "aggregated_diffs": {
+    "violation": 8886,
+    "compliant": 5880,
+    "needs_review": 8878
+  },
+  "key_field_missing_total": 5862,
+  "equivalent_notation_total": 122103,
+  "matched_resources_total": 196935
+}
