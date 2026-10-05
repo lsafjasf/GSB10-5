@@ -1,0 +1,8 @@
+doc_id,conflict_type,severity,char_range,annotator_a,span_a,label_a,annotator_b,span_b,label_b,overlap_range
+doc-002,label_conflict,high,"[2,9)",alice,"[2,9)",PER,bob,"[2,9)",ORG,"[2,9)"
+doc-002,label_conflict,high,"[2,9)",bob,"[2,9)",ORG,carol,"[2,9)",PER,"[2,9)"
+doc-003,span_overlap,medium,"[0,18)",alice,"[0,12)",LOC,bob,"[8,18)",LOC,"[8,12)"
+doc-003,span_overlap,medium,"[0,18)",bob,"[8,18)",LOC,carol,"[0,12)",LOC,"[8,12)"
+doc-004,span_label_conflict,high,"[30,50)",alice,"[30,42)",PER,bob,"[40,50)",ORG,"[40,42)"
+doc-006,label_conflict,high,"[20,20)",alice,"[20,20)",S,bob,"[20,20)",E,"[20,20)"
+doc-007,span_overlap,medium,"[0,100)",alice,"[0,100)",EVT,bob,"[20,30)",EVT,"[20,30)"

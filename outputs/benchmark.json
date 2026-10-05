@@ -1,0 +1,33 @@
+{
+  "annotation_count": 100000,
+  "doc_count": 1903,
+  "annotators": [
+    "alice",
+    "bob",
+    "carol"
+  ],
+  "conflict_count": 14894,
+  "pair_record_count": 94917,
+  "timing_runs": [
+    {
+      "check_seconds": 0.9151,
+      "metrics_seconds": 2.5589,
+      "total_seconds": 3.4739
+    },
+    {
+      "check_seconds": 0.8471,
+      "metrics_seconds": 2.5121,
+      "total_seconds": 3.3592
+    },
+    {
+      "check_seconds": 0.8986,
+      "metrics_seconds": 2.5019,
+      "total_seconds": 3.4006
+    }
+  ],
+  "best_total_seconds": 3.3592,
+  "throughput_annotations_per_second": 29769,
+  "python_peak_bytes": 26094400,
+  "process_peak_rss_bytes": 90198016,
+  "mean_strict_pairwise_f1": 0.8002
+}

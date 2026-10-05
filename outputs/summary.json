@@ -1,0 +1,59 @@
+{
+  "annotation_count": 28,
+  "doc_count": 7,
+  "annotators": [
+    "alice",
+    "bob",
+    "carol"
+  ],
+  "conflict_count": 7,
+  "conflict_counts_by_type": {
+    "label_conflict": 3,
+    "span_overlap": 3,
+    "span_label_conflict": 1
+  },
+  "pairwise_metrics": [
+    {
+      "pair": [
+        "alice",
+        "bob"
+      ],
+      "exact_span_label_f1": 0.25,
+      "exact_span_label_precision": 0.25,
+      "exact_span_label_recall": 0.25,
+      "exact_span_only_f1": 0.4167,
+      "lenient_overlap_f1": 0.3333,
+      "label_accuracy_on_exact_spans": 0.6,
+      "cohens_kappa_chars": 0.1501,
+      "char_positions": 560
+    },
+    {
+      "pair": [
+        "alice",
+        "carol"
+      ],
+      "exact_span_label_f1": 0.5,
+      "exact_span_label_precision": 0.3333,
+      "exact_span_label_recall": 1.0,
+      "exact_span_only_f1": 0.5,
+      "lenient_overlap_f1": 0.5,
+      "label_accuracy_on_exact_spans": 1.0,
+      "cohens_kappa_chars": 0.2754,
+      "char_positions": 560
+    },
+    {
+      "pair": [
+        "bob",
+        "carol"
+      ],
+      "exact_span_label_f1": 0.25,
+      "exact_span_label_precision": 0.1667,
+      "exact_span_label_recall": 0.5,
+      "exact_span_only_f1": 0.375,
+      "lenient_overlap_f1": 0.375,
+      "label_accuracy_on_exact_spans": 0.6667,
+      "cohens_kappa_chars": 0.3088,
+      "char_positions": 560
+    }
+  ]
+}
