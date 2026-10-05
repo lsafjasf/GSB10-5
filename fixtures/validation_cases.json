@@ -1,0 +1,456 @@
+{
+  "version": 1,
+  "description": "校验对拍数据：expect 中 missing/extra/count_mismatch 的值为 [原文次数, 译文次数]；invalid 为 {where, reason_contains} 列表；format_drift 为占位符身份列表。",
+  "cases": [
+    {
+      "id": "reorder_named_ok",
+      "note": "命名占位符重排：集合一致，判通过",
+      "source": "你好 %(user)s，你有 %(count)d 条消息",
+      "translation": "%(count)d messages for %(user)s",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "reorder_positional_ok",
+      "note": "位置参数重排：集合一致，判通过",
+      "source": "%1$s 买了 %2$d 本书",
+      "translation": "%2$d books for %1$s",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "bare_same_order_ok",
+      "note": "裸占位符同序：判通过",
+      "source": "%s 有 %d 条",
+      "translation": "%s has %d",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "bare_reorder_same_type_ok",
+      "note": "同类型裸占位符重排：判通过",
+      "source": "%s 和 %s",
+      "translation": "%s & %s",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "bare_reorder_mixed_type_ok",
+      "note": "不同类型裸占位符重排：集合一致判通过，但绑值有错位风险（见 RULES.md 风险说明）",
+      "source": "%s 等于 %d",
+      "translation": "%d = %s",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "missing_named",
+      "note": "译文缺失占位符",
+      "source": "你好 %(user)s，共 %(count)d 条",
+      "translation": "你好 %(user)s",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {
+          "%(count)d": [
+            1,
+            0
+          ]
+        },
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "extra_named",
+      "note": "译文多出占位符",
+      "source": "你好 %(user)s",
+      "translation": "你好 %(user)s，共 %(count)d 条",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {
+          "%(count)d": [
+            0,
+            1
+          ]
+        },
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "count_mismatch_less",
+      "note": "重复占位符次数变少：2 -> 1",
+      "source": "%(user)s 与 %(user)s",
+      "translation": "%(user)s",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {
+          "%(user)s": [
+            2,
+            1
+          ]
+        },
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "count_mismatch_more",
+      "note": "重复占位符次数变多：1 -> 2",
+      "source": "%(user)s",
+      "translation": "%(user)s %(user)s",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {
+          "%(user)s": [
+            1,
+            2
+          ]
+        },
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "conversion_changed",
+      "note": "转换字符被改：同时报缺失与多余",
+      "source": "共 %(count)d 条",
+      "translation": "共 %(count)s 条",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {
+          "%(count)d": [
+            1,
+            0
+          ]
+        },
+        "extra": {
+          "%(count)s": [
+            0,
+            1
+          ]
+        },
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "positional_missing",
+      "note": "位置参数缺失",
+      "source": "%1$s 有 %2$d 条",
+      "translation": "%1$s",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {
+          "%2$d": [
+            1,
+            0
+          ]
+        },
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "literal_percent_ok",
+      "note": "%% 是字面量，不算占位符",
+      "source": "进度 100%%",
+      "translation": "100%% done",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_conversion",
+      "note": "译文含不支持的转换字符，同时原来的 %d 缺失",
+      "source": "进度 %d",
+      "translation": "进度 %z",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {
+          "%d": [
+            1,
+            0
+          ]
+        },
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "translation",
+            "reason_contains": "转换字符"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_dangling",
+      "note": "译文末尾悬空 %",
+      "source": "完成",
+      "translation": "完成 100%",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "translation",
+            "reason_contains": "悬空"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_mix_styles",
+      "note": "同一字符串混用命名与位置参数",
+      "source": "%(user)s",
+      "translation": "%(user)s 即 %1$s",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "translation",
+            "reason_contains": "混用"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_star_width",
+      "note": "动态宽度 * 不支持（原文侧非法）",
+      "source": "%*d 条",
+      "translation": "%d 条",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {
+          "%d": [
+            0,
+            1
+          ]
+        },
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "source",
+            "reason_contains": "动态"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_empty_key",
+      "note": "空命名键",
+      "source": "%()s",
+      "translation": "x",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "source",
+            "reason_contains": "空命名键"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_zero_index",
+      "note": "位置参数编号从 1 开始",
+      "source": "%0$s",
+      "translation": "x",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "source",
+            "reason_contains": "从 1 开始"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "invalid_percent_modified",
+      "note": "%% 不允许带修饰，两侧都报",
+      "source": "折扣 %5%",
+      "translation": "折扣 %5%",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "source",
+            "reason_contains": "字面量"
+          },
+          {
+            "where": "translation",
+            "reason_contains": "字面量"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "format_drift_default",
+      "note": "宽度变化默认不判错（身份不含宽度/精度）",
+      "source": "%(count)05d 条",
+      "translation": "%(count)5d",
+      "strict_format": false,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "format_drift_strict",
+      "note": "strict_format=True 时报告格式漂移",
+      "source": "%(count)05d 条",
+      "translation": "%(count)5d",
+      "strict_format": true,
+      "expect": {
+        "ok": true,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [],
+        "format_drift": [
+          "%(count)d"
+        ]
+      }
+    },
+    {
+      "id": "invalid_mix_in_source",
+      "note": "原文自身混用寻址方式",
+      "source": "%(user)s %1$s",
+      "translation": "x",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {
+          "%(user)s": [
+            1,
+            0
+          ]
+        },
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "source",
+            "reason_contains": "混用"
+          }
+        ],
+        "format_drift": []
+      }
+    },
+    {
+      "id": "multi_invalid_accumulate",
+      "note": "多个非法占位符逐条上报",
+      "source": "ok",
+      "translation": "%z 然后 %q",
+      "strict_format": false,
+      "expect": {
+        "ok": false,
+        "missing": {},
+        "extra": {},
+        "count_mismatch": {},
+        "invalid": [
+          {
+            "where": "translation",
+            "reason_contains": "转换字符"
+          },
+          {
+            "where": "translation",
+            "reason_contains": "转换字符"
+          }
+        ],
+        "format_drift": []
+      }
+    }
+  ]
+}

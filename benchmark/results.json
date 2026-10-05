@@ -1,0 +1,31 @@
+{
+  "n": 100000,
+  "runs": 3,
+  "seed": 42,
+  "python": "3.12.3",
+  "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu_count": 16,
+  "agreement": {
+    "total": 100000,
+    "mismatches": 0,
+    "mismatch_samples": [],
+    "drift_rows": 4900,
+    "drift_detected": 4900
+  },
+  "perf": {
+    "validate_runs_seconds": [
+      2.892,
+      2.855,
+      2.9564
+    ],
+    "validate_best_seconds": 2.855,
+    "validate_per_second": 35027,
+    "restore_rows": 30356,
+    "restore_seconds": 1.8074,
+    "restore_per_second": 16796,
+    "tracemalloc_peak_mb": 0.007,
+    "maxrss_before_mb": 51.5,
+    "maxrss_after_mb": 51.5,
+    "maxrss_delta_mb": 0.0
+  }
+}

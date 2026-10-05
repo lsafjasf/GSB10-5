@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "description": "还原对拍数据：source 为原文、translation 为译文、values 为取值映射/序列、expect 为期望输出。命名与位置参数乱序后取值必须仍与原文对照正确。",
+  "cases": [
+    {
+      "id": "named_reorder",
+      "note": "命名参数乱序 + 宽度",
+      "source": "用户 %(user)s 有 %(count)03d 条消息",
+      "translation": "%(count)03d messages for %(user)s",
+      "values": {"user": "alice", "count": 7},
+      "expect": "007 messages for alice"
+    },
+    {
+      "id": "positional_reorder",
+      "note": "位置参数乱序 + 精度",
+      "source": "%1$s 余 %2$.2f 元",
+      "translation": "%2$.2f yuan left for %1$s",
+      "values": ["bob", 3.5],
+      "expect": "3.50 yuan left for bob"
+    },
+    {
+      "id": "bare_same_order",
+      "note": "裸占位符同序 + 宽度/精度/字面量%%",
+      "source": "%s 有 %03d 条（%.1f%%）",
+      "translation": "%s has %03d (%.1f%%)",
+      "values": ["carol", 7, 98.25],
+      "expect": "carol has 007 (98.2%)"
+    },
+    {
+      "id": "named_flags_width_precision",
+      "note": "标志 + 宽度 + 精度",
+      "source": "%(name)s 得分 %(score)+08.2f",
+      "translation": "score %(score)+08.2f for %(name)s",
+      "values": {"name": "ada", "score": 3.14159},
+      "expect": "score +0003.14 for ada"
+    },
+    {
+      "id": "positional_flags_align",
+      "note": "左对齐 / 右对齐 / 字符串截断",
+      "source": "%1$-8s|%2$5d|%3$.3s",
+      "translation": "%3$.3s|%2$5d|%1$-8s",
+      "values": ["ab", 42, "abcdef"],
+      "expect": "abc|   42|ab      "
+    },
+    {
+      "id": "literal_percent",
+      "note": "%% 字面量还原为单个 %",
+      "source": "完成度 %d%%",
+      "translation": "%d%% done",
+      "values": [95],
+      "expect": "95% done"
+    },
+    {
+      "id": "hex_oct_flag",
+      "note": "进制转换与 # 标志",
+      "source": "%1$x %2$o %3$#x",
+      "translation": "%3$#x %2$o %1$x",
+      "values": [255, 8, 255],
+      "expect": "0xff 10 ff"
+    },
+    {
+      "id": "named_duplicate",
+      "note": "重复命名占位符取同一个值",
+      "source": "%(user)s 提醒 %(user)s",
+      "translation": "%(user)s, remind %(user)s again",
+      "values": {"user": "dave"},
+      "expect": "dave, remind dave again"
+    }
+  ]
+}
