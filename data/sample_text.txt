@@ -1,0 +1,4 @@
+中文分词，必须统一口径。
+Hello, HELLO! A well-known state-of-the-art solution.
+我爱NLP，自然语言处理with AI。
+标点……很多！！！（测试）【边界】——done?

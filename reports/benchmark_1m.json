@@ -1,0 +1,12 @@
+{
+  "profile": "unicode-v1",
+  "input_characters": 1000000,
+  "input_sha256": "358a55b1171ed9b34f5abae316047717d0bfb64538dc6fab27847dfb42a19ba2",
+  "total_tokens": 396339,
+  "unique_tokens": 56,
+  "elapsed_seconds": 2.296628,
+  "tracemalloc_peak_bytes": 16394325,
+  "tracemalloc_peak_mib": 15.635,
+  "python_version": "3.12.3",
+  "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+}
