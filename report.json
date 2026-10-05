@@ -1,0 +1,314 @@
+{
+  "scenarios": [
+    {
+      "name": "完全相同",
+      "base": "base",
+      "candidate": "identical",
+      "total_layers": 7,
+      "reused_layers": 7,
+      "rebuilt_layers": 0,
+      "layer_reuse_rate": 1.0,
+      "total_bytes": 101,
+      "reused_bytes": 101,
+      "byte_reuse_rate": 1.0,
+      "first_divergence_index": null,
+      "instruction_overlap": 1.0,
+      "verified": true,
+      "verification": {
+        "final_image_match": true,
+        "layers_checked": 7,
+        "all_layers_match": true
+      },
+      "verdicts": [
+        {
+          "index": 0,
+          "instruction": "FROM ubuntu:22.04",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:fd00d0b51453015553b5e2052b9eb1978c035bff5aaa318772a879a43e2c3164"
+        },
+        {
+          "index": 1,
+          "instruction": "RUN mkdir -p app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:dc4a744a73e10e4ce61da567bc1c3090bcc2838bf572d02d060326af1f752086"
+        },
+        {
+          "index": 2,
+          "instruction": "COPY /src/app.py /app/app.py",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:5c3198a0f4188d26fe8828b2779b1a142b400b7ef1193017362859329bc5a7bb"
+        },
+        {
+          "index": 3,
+          "instruction": "COPY /conf/settings.ini /app/settings.ini",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:ae81a111a77bdff0c520618c7cb8292f9295b49fdcfa7cd908351cf8d7585237"
+        },
+        {
+          "index": 4,
+          "instruction": "RUN mkdir -p data && write data/version.txt v1",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:65453ab3dec03b1f535853bfbcf87f78a85f59f89c0e8c4208976df182a61518"
+        },
+        {
+          "index": 5,
+          "instruction": "ENV APP_HOME=/app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:2b4ca293549f26f1cf87a4bea68d1b2fedc68a1a63f0be12ee31100c9c058eef"
+        },
+        {
+          "index": 6,
+          "instruction": "WORKDIR /app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:e1fc88513120910e933a85c009d9eb5fc87b38781a35902afaad0e5f73f5a70d"
+        }
+      ]
+    },
+    {
+      "name": "仅顺序调整",
+      "base": "base",
+      "candidate": "reordered",
+      "total_layers": 7,
+      "reused_layers": 2,
+      "rebuilt_layers": 5,
+      "layer_reuse_rate": 0.285714,
+      "total_bytes": 101,
+      "reused_bytes": 64,
+      "byte_reuse_rate": 0.633663,
+      "first_divergence_index": 2,
+      "instruction_overlap": 1.0,
+      "verified": true,
+      "verification": {
+        "final_image_match": true,
+        "layers_checked": 7,
+        "all_layers_match": true
+      },
+      "verdicts": [
+        {
+          "index": 0,
+          "instruction": "FROM ubuntu:22.04",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:fd00d0b51453015553b5e2052b9eb1978c035bff5aaa318772a879a43e2c3164"
+        },
+        {
+          "index": 1,
+          "instruction": "RUN mkdir -p app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:dc4a744a73e10e4ce61da567bc1c3090bcc2838bf572d02d060326af1f752086"
+        },
+        {
+          "index": 2,
+          "instruction": "COPY /conf/settings.ini /app/settings.ini",
+          "verdict": "rebuild",
+          "reason": "首个分叉层：指令或其输入（内容/权限/父链）发生变化",
+          "cache_key": "layercache:81b801924a508a8ae7674263370598411897a74ce198e16a4ce52b3d82037188"
+        },
+        {
+          "index": 3,
+          "instruction": "COPY /src/app.py /app/app.py",
+          "verdict": "rebuild",
+          "reason": "父层已变化，链式缓存键随之失效",
+          "cache_key": "layercache:c96d3a443ede16649d4fef6d77eed7b56e927946bda2984604cea8b892343885"
+        },
+        {
+          "index": 4,
+          "instruction": "RUN mkdir -p data && write data/version.txt v1",
+          "verdict": "rebuild",
+          "reason": "父层已变化，链式缓存键随之失效",
+          "cache_key": "layercache:bb91c8779b36ddfe4693ac54e4d8c60a2879896dc32afc4f0123f6188e4bd84a"
+        },
+        {
+          "index": 5,
+          "instruction": "ENV APP_HOME=/app",
+          "verdict": "rebuild",
+          "reason": "父层已变化，链式缓存键随之失效",
+          "cache_key": "layercache:b2cbc1697c546c9a516511a00dcd2c99557b8bae9d7eed729c4109517fd8100b"
+        },
+        {
+          "index": 6,
+          "instruction": "WORKDIR /app",
+          "verdict": "rebuild",
+          "reason": "父层已变化，链式缓存键随之失效",
+          "cache_key": "layercache:82b9519752df0285677aa59b88041ff3d44042daf05dc7bee1c13deaa45bba54"
+        }
+      ]
+    },
+    {
+      "name": "中间一层变化",
+      "base": "base",
+      "candidate": "mid_change",
+      "total_layers": 7,
+      "reused_layers": 4,
+      "rebuilt_layers": 3,
+      "layer_reuse_rate": 0.571429,
+      "total_bytes": 101,
+      "reused_bytes": 98,
+      "byte_reuse_rate": 0.970297,
+      "first_divergence_index": 4,
+      "instruction_overlap": 0.75,
+      "verified": true,
+      "verification": {
+        "final_image_match": true,
+        "layers_checked": 7,
+        "all_layers_match": true
+      },
+      "verdicts": [
+        {
+          "index": 0,
+          "instruction": "FROM ubuntu:22.04",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:fd00d0b51453015553b5e2052b9eb1978c035bff5aaa318772a879a43e2c3164"
+        },
+        {
+          "index": 1,
+          "instruction": "RUN mkdir -p app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:dc4a744a73e10e4ce61da567bc1c3090bcc2838bf572d02d060326af1f752086"
+        },
+        {
+          "index": 2,
+          "instruction": "COPY /src/app.py /app/app.py",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:5c3198a0f4188d26fe8828b2779b1a142b400b7ef1193017362859329bc5a7bb"
+        },
+        {
+          "index": 3,
+          "instruction": "COPY /conf/settings.ini /app/settings.ini",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:ae81a111a77bdff0c520618c7cb8292f9295b49fdcfa7cd908351cf8d7585237"
+        },
+        {
+          "index": 4,
+          "instruction": "RUN mkdir -p data && write data/version.txt v2",
+          "verdict": "rebuild",
+          "reason": "首个分叉层：指令或其输入（内容/权限/父链）发生变化",
+          "cache_key": "layercache:1ec1c18baf3730e3cb70c0c696c74107b0e7e63def3bda68cbb998e0dae57a7f"
+        },
+        {
+          "index": 5,
+          "instruction": "ENV APP_HOME=/app",
+          "verdict": "rebuild",
+          "reason": "父层已变化，链式缓存键随之失效",
+          "cache_key": "layercache:27bce39c4f3a24db528ca9891213e987d419130f8cf70d4d0d8af95d53cd5e74"
+        },
+        {
+          "index": 6,
+          "instruction": "WORKDIR /app",
+          "verdict": "rebuild",
+          "reason": "父层已变化，链式缓存键随之失效",
+          "cache_key": "layercache:9e31427b145a555efa545c87eb62aae4bbc83b082ca09a97bf901b888843ad4d"
+        }
+      ]
+    },
+    {
+      "name": "仅时间戳与属主变化",
+      "base": "base",
+      "candidate": "metadata",
+      "total_layers": 7,
+      "reused_layers": 7,
+      "rebuilt_layers": 0,
+      "layer_reuse_rate": 1.0,
+      "total_bytes": 101,
+      "reused_bytes": 101,
+      "byte_reuse_rate": 1.0,
+      "first_divergence_index": null,
+      "instruction_overlap": 1.0,
+      "verified": true,
+      "verification": {
+        "final_image_match": true,
+        "layers_checked": 7,
+        "all_layers_match": true
+      },
+      "verdicts": [
+        {
+          "index": 0,
+          "instruction": "FROM ubuntu:22.04",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:fd00d0b51453015553b5e2052b9eb1978c035bff5aaa318772a879a43e2c3164"
+        },
+        {
+          "index": 1,
+          "instruction": "RUN mkdir -p app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:dc4a744a73e10e4ce61da567bc1c3090bcc2838bf572d02d060326af1f752086"
+        },
+        {
+          "index": 2,
+          "instruction": "COPY /src/app.py /app/app.py",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:5c3198a0f4188d26fe8828b2779b1a142b400b7ef1193017362859329bc5a7bb"
+        },
+        {
+          "index": 3,
+          "instruction": "COPY /conf/settings.ini /app/settings.ini",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:ae81a111a77bdff0c520618c7cb8292f9295b49fdcfa7cd908351cf8d7585237"
+        },
+        {
+          "index": 4,
+          "instruction": "RUN mkdir -p data && write data/version.txt v1",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:65453ab3dec03b1f535853bfbcf87f78a85f59f89c0e8c4208976df182a61518"
+        },
+        {
+          "index": 5,
+          "instruction": "ENV APP_HOME=/app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:2b4ca293549f26f1cf87a4bea68d1b2fedc68a1a63f0be12ee31100c9c058eef"
+        },
+        {
+          "index": 6,
+          "instruction": "WORKDIR /app",
+          "verdict": "reuse",
+          "reason": "缓存键命中，层内容经校验与重建一致",
+          "cache_key": "layercache:e1fc88513120910e933a85c009d9eb5fc87b38781a35902afaad0e5f73f5a70d"
+        }
+      ]
+    }
+  ],
+  "benchmark": {
+    "script_count": 1000,
+    "layer_count": 6000,
+    "wall_seconds": 0.758366,
+    "per_script_ms": 0.758366,
+    "peak_traced_bytes": 1059242,
+    "peak_traced_mib": 1.01,
+    "peak_rss_kb": 20348,
+    "peak_rss_mib": 19.871,
+    "cache_entries": 1006,
+    "hits": 5000,
+    "misses": 1006,
+    "hit_rate": 0.832501
+  },
+  "negative_scenarios": [
+    {
+      "name": "文件内容变化（必须失效）",
+      "layer_reuse_rate": 0.285714,
+      "verified": true
+    },
+    {
+      "name": "权限位变化（必须失效）",
+      "layer_reuse_rate": 0.285714,
+      "verified": true
+    }
+  ]
+}
