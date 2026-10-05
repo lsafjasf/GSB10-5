@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "billing",
+  "REGION": "CN-NORTH  ",
+  "THREADS": "8.0",
+  "FEATURE_FAST_PATH": "true",
+  "ALLOWED_IPS": "10.0.0.3;10.0.0.1;10.0.0.2",
+  "HEAP_SIZE": "0.5GB",
+  "STARTUP_TIMEOUT": "30000ms",
+  "LOG_LEVEL": "DEBUG",
+  "CACHE_TTL": "600",
+  "DB_HOST": "db-staging.internal",
+  "DB_MAX_CONN": "100",
+  "API_SECRET_KEY": "ak-9f31c0d7e5b2",
+  "TLS_CERT": "-----BEGIN CERTIFICATE-----\nBBBBstagingBBBB\n-----END CERTIFICATE-----",
+  "EXTRA_DEBUG": "1"
+}

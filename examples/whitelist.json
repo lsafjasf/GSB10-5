@@ -1,0 +1,4 @@
+[
+  {"key": "CACHE_TTL", "env_a": "300", "env_b": "600", "reason": "预发环境压测专用缓存策略"},
+  {"pattern": "^EXPERIMENTAL_"}
+]

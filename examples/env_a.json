@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "billing",
+  "REGION": "cn-north",
+  "THREADS": "8",
+  "FEATURE_FAST_PATH": "on",
+  "ALLOWED_IPS": "10.0.0.1, 10.0.0.2,10.0.0.3",
+  "HEAP_SIZE": "512MB",
+  "STARTUP_TIMEOUT": "30s",
+  "LOG_LEVEL": "INFO",
+  "CACHE_TTL": "300",
+  "DB_HOST": "db-prod.internal",
+  "DB_MAX_CONN": "200",
+  "API_SECRET_KEY": "ak-9f31c0d7e5b2",
+  "TLS_CERT": "-----BEGIN CERTIFICATE-----\nAAAAprodAAAA\n-----END CERTIFICATE-----",
+  "EXPERIMENTAL_FLAG": "off"
+}

@@ -1,0 +1,7 @@
+{
+  "LOG_LEVEL": {"env_a": "INFO", "env_b": "DEBUG"},
+  "DB_HOST": {"env_a": "db-prod.internal", "env_b": "db-staging.internal"},
+  "DB_MAX_CONN": {"default": "100"},
+  "EXPERIMENTAL_FLAG": {"default": "off"},
+  "NEW_RELIC_ENABLED": {}
+}
