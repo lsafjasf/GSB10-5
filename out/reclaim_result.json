@@ -1,0 +1,46 @@
+{
+  "kept": [
+    "vol-mixed",
+    "vol-shared",
+    "vol-single"
+  ],
+  "pruned_dangling": [
+    [
+      "dead-1",
+      "vol-dangling",
+      "/data",
+      false
+    ],
+    [
+      "dead-2",
+      "vol-dangling",
+      "/data",
+      false
+    ],
+    [
+      "ghost-1",
+      "vol-mixed",
+      "/old",
+      false
+    ]
+  ],
+  "pruned_temporary": [
+    [
+      "cron-1",
+      "vol-mixed",
+      "/scratch",
+      true
+    ],
+    [
+      "cron-1",
+      "vol-temp-only",
+      "/scratch",
+      true
+    ]
+  ],
+  "reclaimed": [
+    "vol-dangling",
+    "vol-orphan",
+    "vol-temp-only"
+  ]
+}

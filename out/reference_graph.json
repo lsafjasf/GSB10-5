@@ -1,0 +1,16 @@
+{
+  "vol-dangling": [],
+  "vol-mixed": [
+    "web-2"
+  ],
+  "vol-orphan": [],
+  "vol-shared": [
+    "web-1",
+    "web-2",
+    "worker-1"
+  ],
+  "vol-single": [
+    "web-1"
+  ],
+  "vol-temp-only": []
+}

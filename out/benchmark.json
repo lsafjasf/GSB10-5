@@ -1,0 +1,39 @@
+{
+  "scale": {
+    "volumes": 100000,
+    "containers": 60000,
+    "refs": 500000,
+    "seed": 42,
+    "temporary_refs": 25014,
+    "destroyed_containers": 6000
+  },
+  "timing_seconds": {
+    "build_topology": 0.3392,
+    "mount_500k_refs": 8.6632,
+    "destroy_containers": 0.0216,
+    "decide_graph_and_reclaimable": 1.7932,
+    "reclaim": 1.5973,
+    "validate": 1.3163,
+    "total_decide_plus_reclaim_plus_validate": 4.7069
+  },
+  "decision": {
+    "referenced_volumes": 98612,
+    "reclaimable_volumes": 1388,
+    "dangling_refs_seen": 50063
+  },
+  "reclaim_result": {
+    "reclaimed": 1388,
+    "kept": 98612,
+    "pruned_dangling": 50063,
+    "pruned_temporary": 22560
+  },
+  "validation_passed": true,
+  "memory_peak": {
+    "tracemalloc_python_bytes": 331794328,
+    "tracemalloc_python_mib": 316.42,
+    "ru_maxrss_kib": 863924,
+    "ru_maxrss_mib": 843.68
+  },
+  "python_version": "3.12.3",
+  "platform": "Linux x86_64"
+}

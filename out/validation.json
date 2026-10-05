@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "exists": false,
+      "expectation": "reclaimed",
+      "live_referrer_count": 0,
+      "passed": true,
+      "residual_edge_count": 0,
+      "volume": "vol-dangling"
+    },
+    {
+      "exists": false,
+      "expectation": "reclaimed",
+      "live_referrer_count": 0,
+      "passed": true,
+      "residual_edge_count": 0,
+      "volume": "vol-orphan"
+    },
+    {
+      "exists": false,
+      "expectation": "reclaimed",
+      "live_referrer_count": 0,
+      "passed": true,
+      "residual_edge_count": 0,
+      "volume": "vol-temp-only"
+    },
+    {
+      "exists": true,
+      "expectation": "kept",
+      "live_referrer_count": 1,
+      "live_referrers": [
+        "web-2"
+      ],
+      "passed": true,
+      "residual_edge_count": 1,
+      "volume": "vol-mixed"
+    },
+    {
+      "exists": true,
+      "expectation": "kept",
+      "live_referrer_count": 3,
+      "live_referrers": [
+        "web-1",
+        "web-2",
+        "worker-1"
+      ],
+      "passed": true,
+      "residual_edge_count": 3,
+      "volume": "vol-shared"
+    },
+    {
+      "exists": true,
+      "expectation": "kept",
+      "live_referrer_count": 1,
+      "live_referrers": [
+        "web-1"
+      ],
+      "passed": true,
+      "residual_edge_count": 1,
+      "volume": "vol-single"
+    }
+  ],
+  "kept_count": 3,
+  "passed": true,
+  "reclaimed_count": 3
+}

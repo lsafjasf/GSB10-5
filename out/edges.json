@@ -1,0 +1,72 @@
+[
+  {
+    "container": "dead-1",
+    "mount_path": "/data",
+    "status": "dangling",
+    "temporary": false,
+    "volume": "vol-dangling"
+  },
+  {
+    "container": "dead-2",
+    "mount_path": "/data",
+    "status": "dangling",
+    "temporary": false,
+    "volume": "vol-dangling"
+  },
+  {
+    "container": "cron-1",
+    "mount_path": "/scratch",
+    "status": "temporary",
+    "temporary": true,
+    "volume": "vol-mixed"
+  },
+  {
+    "container": "ghost-1",
+    "mount_path": "/old",
+    "status": "dangling",
+    "temporary": false,
+    "volume": "vol-mixed"
+  },
+  {
+    "container": "web-2",
+    "mount_path": "/data",
+    "status": "live",
+    "temporary": false,
+    "volume": "vol-mixed"
+  },
+  {
+    "container": "web-1",
+    "mount_path": "/shared",
+    "status": "live",
+    "temporary": false,
+    "volume": "vol-shared"
+  },
+  {
+    "container": "web-2",
+    "mount_path": "/shared",
+    "status": "live",
+    "temporary": false,
+    "volume": "vol-shared"
+  },
+  {
+    "container": "worker-1",
+    "mount_path": "/mnt/shared",
+    "status": "live",
+    "temporary": false,
+    "volume": "vol-shared"
+  },
+  {
+    "container": "web-1",
+    "mount_path": "/var/lib/app",
+    "status": "live",
+    "temporary": false,
+    "volume": "vol-single"
+  },
+  {
+    "container": "cron-1",
+    "mount_path": "/scratch",
+    "status": "temporary",
+    "temporary": true,
+    "volume": "vol-temp-only"
+  }
+]
