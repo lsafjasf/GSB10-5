@@ -1,0 +1,136 @@
+
+========================================================================
+场景 1: 线性链 a -> b -> c（无环，后序构造）
+========================================================================
+结果: A(B(C))
+#001      0.001 ms  RESOLVE-BEGIN  a  开始解析
+#002      0.021 ms  VISIT          a
+#003      0.024 ms    DEP-WAIT       a  等待即时依赖 b
+#004      0.026 ms    VISIT          b
+#005      0.028 ms      DEP-WAIT       b  等待即时依赖 c
+#006      0.029 ms      VISIT          c
+#007      0.032 ms      BEGIN          c  factory()
+#008      0.033 ms      END            c  构造完成
+#009      0.035 ms    BEGIN          b  factory(c)
+#010      0.036 ms    END            b  构造完成
+#011      0.038 ms  BEGIN          a  factory(b)
+#012      0.039 ms  END            a  构造完成
+#013      0.039 ms  RESOLVE-END    a  解析完成
+
+========================================================================
+场景 2: 菱形依赖 top -> {l, r} -> b（共享依赖只构造一次）
+========================================================================
+#001      0.000 ms  RESOLVE-BEGIN  top  开始解析
+#002      0.009 ms  VISIT          top
+#003      0.011 ms    DEP-WAIT       top  等待即时依赖 l
+#004      0.012 ms    VISIT          l
+#005      0.013 ms      DEP-WAIT       l  等待即时依赖 b
+#006      0.013 ms      VISIT          b
+#007      0.014 ms      BEGIN          b  factory()
+#008      0.015 ms      END            b  构造完成
+#009      0.016 ms    BEGIN          l  factory(b)
+#010      0.017 ms    END            l  构造完成
+#011      0.018 ms    DEP-WAIT       top  等待即时依赖 r
+#012      0.019 ms    VISIT          r
+#013      0.020 ms      CACHED         b  供 r 使用
+#014      0.021 ms    BEGIN          r  factory(b)
+#015      0.021 ms    END            r  构造完成
+#016      0.023 ms  BEGIN          top  factory(l, r)
+#017      0.023 ms  END            top  构造完成
+#018      0.024 ms  RESOLVE-END    top  解析完成
+
+========================================================================
+场景 3: 循环依赖（两个环 + 自环，报告全部环成员，构造前失败）
+========================================================================
+环报告:
+共 3 个环，涉及 6 个组件: a, b, c, d, e, s
+  环 #1: 成员[a, b, c]  路径: a -> b -> c -> a
+  环 #2: 成员[d, e]  路径: d -> e -> d
+  环 #3: 成员[s]  路径: s -> s
+
+轨迹:
+#001      0.000 ms  RESOLVE-BEGIN  root  开始解析
+#002      0.022 ms  CYCLE          root  3 个环: ['a', 'b', 'c', 'd', 'e', 's']
+
+========================================================================
+场景 4: 延迟注入解开循环 a -(lazy)-> b -> a，并展示取值时机
+========================================================================
+resolve('a') 完成，此时 b 尚未构造（上面轨迹中没有 b 的构造步骤）
+#001      0.000 ms  RESOLVE-BEGIN  a  开始解析
+#002      0.003 ms  VISIT          a
+#003      0.005 ms  LAZY-INJECT    a  注入 b 的延迟句柄（不取值）
+#004      0.008 ms  BEGIN          a  factory()
+#005      0.009 ms  END            a  构造完成
+#006      0.009 ms  RESOLVE-END    a  解析完成
+
+--- 现在第一次访问 b_ref.get()，才真正构造 b ---
+b = B | b 持有的 a 是同一实例: True
+#001      0.000 ms  RESOLVE-BEGIN  a  开始解析
+#002      0.003 ms  VISIT          a
+#003      0.005 ms  LAZY-INJECT    a  注入 b 的延迟句柄（不取值）
+#004      0.008 ms  BEGIN          a  factory()
+#005      0.009 ms  END            a  构造完成
+#006      0.009 ms  RESOLVE-END    a  解析完成
+#007      0.017 ms  LAZY-ACCESS    b  延迟句柄第一次取值
+#008      0.018 ms  VISIT          b
+#009      0.019 ms    CACHED         a  供 b 使用
+#010      0.020 ms  BEGIN          b  factory(a)
+#011      0.021 ms  END            b  构造完成
+
+========================================================================
+场景 4b: 延迟依赖在构造期被取值 -> 动态环报错
+========================================================================
+动态环: 延迟依赖在构造期被取值，撞上正在构造的组件，形成动态环: a -> b -> a
+#001      0.000 ms  RESOLVE-BEGIN  a  开始解析
+#002      0.002 ms  VISIT          a
+#003      0.004 ms  LAZY-INJECT    a  注入 b 的延迟句柄（不取值）
+#004      0.005 ms  BEGIN          a  factory()
+#005      0.007 ms    LAZY-ACCESS    b  延迟句柄第一次取值
+#006      0.007 ms    VISIT          b
+#007      0.010 ms  FAIL           a  延迟依赖取值形成动态环
+
+========================================================================
+场景 5: 构造中途失败 -> 已构造实例按逆序安全回收
+========================================================================
+失败: 构造组件 'service' 失败: RuntimeError('磁盘已满')
+清理结果(disposer 调用顺序): ['close REPO', 'close CACHE', 'close DB']
+容器内残留实例: {} (应为空)
+#001      0.000 ms  RESOLVE-BEGIN  service  开始解析
+#002      0.007 ms  VISIT          service
+#003      0.008 ms    DEP-WAIT       service  等待即时依赖 repo
+#004      0.008 ms    VISIT          repo
+#005      0.009 ms      DEP-WAIT       repo  等待即时依赖 db
+#006      0.010 ms      VISIT          db
+#007      0.011 ms      BEGIN          db  factory()
+#008      0.012 ms      END            db  构造完成
+#009      0.014 ms      DEP-WAIT       repo  等待即时依赖 cache
+#010      0.015 ms      VISIT          cache
+#011      0.016 ms      BEGIN          cache  factory()
+#012      0.016 ms      END            cache  构造完成
+#013      0.017 ms    BEGIN          repo  factory(db, cache)
+#014      0.018 ms    END            repo  构造完成
+#015      0.019 ms  BEGIN          service  factory(repo)
+#016      0.023 ms  FAIL           service  工厂抛错: RuntimeError('磁盘已满')
+#017      0.027 ms  DISPOSE        repo  disposer 执行成功
+#018      0.029 ms  DISPOSE        cache  disposer 执行成功
+#019      0.029 ms  DISPOSE        db  disposer 执行成功
+
+========================================================================
+场景 5b: disposer 自身抛错不中断其余回收
+========================================================================
+失败: 构造组件 'z' 失败: RuntimeError('z 构造失败')
+清理结果: ['y cleaned'] | 残留实例: {}
+#001      0.000 ms  RESOLVE-BEGIN  z  开始解析
+#002      0.005 ms  VISIT          z
+#003      0.006 ms    DEP-WAIT       z  等待即时依赖 x
+#004      0.006 ms    VISIT          x
+#005      0.008 ms    BEGIN          x  factory()
+#006      0.008 ms    END            x  构造完成
+#007      0.009 ms    DEP-WAIT       z  等待即时依赖 y
+#008      0.010 ms    VISIT          y
+#009      0.011 ms    BEGIN          y  factory()
+#010      0.011 ms    END            y  构造完成
+#011      0.012 ms  BEGIN          z  factory(x, y)
+#012      0.016 ms  FAIL           z  工厂抛错: RuntimeError('z 构造失败')
+#013      0.019 ms  DISPOSE        y  disposer 执行成功
+#014      0.021 ms  DISPOSE        x  disposer 抛错（已忽略，继续回收）: ValueError('dispose 失败')
