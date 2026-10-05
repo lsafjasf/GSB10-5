@@ -1,0 +1,82 @@
+[
+  {
+    "record_count": 0,
+    "group_counts": {},
+    "summary_to_detail_ok": true,
+    "detail_to_summary_ok": true,
+    "stub_projection_ok": true,
+    "detail_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "summary_sha256": "aa00086a7e6c4921f3f074f6d1437fdc5aa4f48267b901c98232fc5e0762f46c",
+    "scenario": "identical",
+    "desc": "完全相同"
+  },
+  {
+    "record_count": 1,
+    "group_counts": {
+      "renamed": 1
+    },
+    "summary_to_detail_ok": true,
+    "detail_to_summary_ok": true,
+    "stub_projection_ok": true,
+    "detail_sha256": "8f62ea610bedb5f904bbd9bc74dca1a4b668431bf5aa1e262b28c5c7053cd96d",
+    "summary_sha256": "aa724f405f98a53aa006a6b291208ef5793dbf6a6260b84f28a88a302e6b3185",
+    "scenario": "rename_only",
+    "desc": "仅改名（标题变、正文不变）"
+  },
+  {
+    "record_count": 3,
+    "group_counts": {
+      "moved": 1,
+      "carried": 2
+    },
+    "summary_to_detail_ok": true,
+    "detail_to_summary_ok": true,
+    "stub_projection_ok": true,
+    "detail_sha256": "7a32516db3322e04f873233f3d852b87d340a268a7aa71b15d2a2e1f66601ef3",
+    "summary_sha256": "1d3d6c18eea3eb6a46fe4fcba3a10f0547fcdbd595f4f0c167814183f4a90973",
+    "scenario": "chapter_move",
+    "desc": "整章移动（第二章整章搬到第三章之后）"
+  },
+  {
+    "record_count": 2,
+    "group_counts": {
+      "releveled": 2
+    },
+    "summary_to_detail_ok": true,
+    "detail_to_summary_ok": true,
+    "stub_projection_ok": true,
+    "detail_sha256": "ef15916cc11b6c2d21ea9a4e2e9b749493a7004901931272ba263ac9bc375706",
+    "summary_sha256": "06542790aadf99bf362aa457f077816d8c66b7663014121fbdc1a07f7510a721",
+    "scenario": "relevel",
+    "desc": "层级调整（小节乙并入小节甲降级；小节丙同父降级）"
+  },
+  {
+    "record_count": 2,
+    "group_counts": {
+      "added": 1,
+      "deleted": 1
+    },
+    "summary_to_detail_ok": true,
+    "detail_to_summary_ok": true,
+    "stub_projection_ok": true,
+    "detail_sha256": "3e540369cd6646c1b1b81d8e90b3f4159be947b9e0f79cbaeb43c188ef141f30",
+    "summary_sha256": "2069e6c60d1e6946959a1fd972d78ef24ce9b3dbccaf8960b757211266849994",
+    "scenario": "add_delete",
+    "desc": "整章删除 + 整章新增"
+  },
+  {
+    "record_count": 3,
+    "group_counts": {
+      "moved": 1,
+      "modified": 1,
+      "carried": 1
+    },
+    "summary_to_detail_ok": true,
+    "detail_to_summary_ok": true,
+    "stub_projection_ok": true,
+    "detail_sha256": "2ceed96a67eac915399eb850f5433793147c77476dde0a57e51340bb4e27c831",
+    "summary_sha256": "7bdd5579d7a2c6fc6fbdfe4ce027e32f447a2c0972713fc260864339ea24a3d7",
+    "scenario": "combined",
+    "desc": "组合：改名+移动+内容修改"
+  }
+]
