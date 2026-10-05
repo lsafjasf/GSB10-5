@@ -1,0 +1,7 @@
+{"type": "header", "epsilon_total": 1.0, "delta_total": 0.0}
+{"seq": 1, "timestamp": 1791206014.764351, "epsilon": 0.1, "delta": 0.0, "epsilon_spent_total": 0.1, "epsilon_remaining": 0.9, "note": "count fp=e7f72dd9e6a806b0"}
+{"seq": 2, "timestamp": 1791206014.7656062, "epsilon": 0.2, "delta": 0.0, "epsilon_spent_total": 0.30000000000000004, "epsilon_remaining": 0.7, "note": "sum fp=d208cdbbd3123e68（与切片 e7f72dd9e6a806b0 相似，重叠系数=1.00，仍全额扣费）"}
+{"seq": 3, "timestamp": 1791206014.7673137, "epsilon": 0.3, "delta": 0.0, "epsilon_spent_total": 0.6000000000000001, "epsilon_remaining": 0.3999999999999999, "note": "mean fp=b18be17734bb5350"}
+{"seq": 4, "timestamp": 1791206014.7705398, "epsilon": 0.2, "delta": 0.0, "epsilon_spent_total": 0.8, "epsilon_remaining": 0.19999999999999996, "note": "histogram fp=a5926c4033344473"}
+{"seq": 5, "timestamp": 1791206014.771912, "epsilon": 0.0, "delta": 0.0, "epsilon_spent_total": 0.8, "epsilon_remaining": 0.19999999999999996, "note": "重复切片命中缓存 fp=e7f72dd9e6a806b0，0 消耗"}
+{"seq": 6, "timestamp": 1791206014.7719336, "epsilon": 0.1, "delta": 0.0, "epsilon_spent_total": 0.9, "epsilon_remaining": 0.09999999999999998, "note": "count fp=d81fb3411585ed0b（与切片 b18be17734bb5350 相似，重叠系数=1.00，仍全额扣费）"}
