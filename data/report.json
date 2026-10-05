@@ -1,0 +1,109 @@
+{
+  "summary": {
+    "equal": 2,
+    "equivalent": 3,
+    "intentional": 2,
+    "needs_confirm": 1,
+    "suspected_miss": 4
+  },
+  "items": [
+    {
+      "key": "api.token",
+      "category": "suspected_miss",
+      "category_label": "疑似遗漏",
+      "reason": "无声明/白名单/基线记录的新增差异，疑似遗漏",
+      "sensitive": true,
+      "value_a": "cf9035e9aef1",
+      "value_b": "0b48bd337fc5"
+    },
+    {
+      "key": "app.enabled",
+      "category": "equivalent",
+      "category_label": "写法不同但等价",
+      "reason": "值等价但写法不同（大小写/空格/单位/列表顺序），不计为差异",
+      "value_a": "True",
+      "value_b": "true"
+    },
+    {
+      "key": "app.name",
+      "category": "equal",
+      "category_label": "完全一致",
+      "reason": "完全一致",
+      "value_a": "OrderService",
+      "value_b": "OrderService"
+    },
+    {
+      "key": "cache.size",
+      "category": "intentional",
+      "category_label": "有意差异",
+      "reason": "命中允许差异白名单: 缓存容量按机型配置，生产机器内存更大",
+      "value_a": "4GB",
+      "value_b": "8GB"
+    },
+    {
+      "key": "db.password",
+      "category": "equal",
+      "category_label": "完全一致",
+      "reason": "完全一致",
+      "sensitive": true,
+      "value_a": "2c9a1ed461b5",
+      "value_b": "2c9a1ed461b5"
+    },
+    {
+      "key": "feature.flags",
+      "category": "equivalent",
+      "category_label": "写法不同但等价",
+      "reason": "值等价但写法不同（大小写/空格/单位/列表顺序），不计为差异",
+      "value_a": "audit,retry,circuit",
+      "value_b": "circuit, audit ,retry"
+    },
+    {
+      "key": "jvm.heap.size",
+      "category": "equivalent",
+      "category_label": "写法不同但等价",
+      "reason": "值等价但写法不同（大小写/空格/单位/列表顺序），不计为差异",
+      "value_a": "2GB",
+      "value_b": "2048mb"
+    },
+    {
+      "key": "log.retention",
+      "category": "suspected_miss",
+      "category_label": "疑似遗漏",
+      "reason": "历史基线中两边一致，当前出现未声明差异，疑似遗漏",
+      "value_a": "7",
+      "value_b": "30"
+    },
+    {
+      "key": "monitor.endpoint",
+      "category": "suspected_miss",
+      "category_label": "疑似遗漏",
+      "reason": "参数在 env_b 中缺失，且不在白名单，疑似遗漏",
+      "value_a": "http://prometheus:9090",
+      "value_b": null
+    },
+    {
+      "key": "region",
+      "category": "intentional",
+      "category_label": "有意差异",
+      "reason": "符合声明的期望值: 预发在国内地域，生产在海外地域，按部署架构有意区分",
+      "value_a": "cn",
+      "value_b": "us"
+    },
+    {
+      "key": "rpc.timeout",
+      "category": "suspected_miss",
+      "category_label": "疑似遗漏",
+      "reason": "历史基线中两边一致，当前出现未声明差异，疑似遗漏",
+      "value_a": "3000",
+      "value_b": "6000"
+    },
+    {
+      "key": "thread.pool",
+      "category": "needs_confirm",
+      "category_label": "待确认",
+      "reason": "历史基线中已存在该差异，但无声明/白名单依据，待确认",
+      "value_a": "8",
+      "value_b": "16"
+    }
+  ]
+}

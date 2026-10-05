@@ -1,0 +1,8 @@
+{
+  "thread.pool": {"env_a": "8", "env_b": "16"},
+  "rpc.timeout": {"env_a": "3000", "env_b": "3000"},
+  "log.retention": {"env_a": "7", "env_b": "7"},
+  "feature.flags": {"env_a": "audit,retry,circuit", "env_b": "audit,retry,circuit"},
+  "jvm.heap.size": {"env_a": "2048mb", "env_b": "2048mb"},
+  "app.enabled": {"env_a": "true", "env_b": "true"}
+}
