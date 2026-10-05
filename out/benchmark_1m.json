@@ -1,0 +1,18 @@
+{
+  "records": 1000000,
+  "evaluate_seconds": 9.478,
+  "tracemalloc_peak_mb": 219.9,
+  "maxrss_mb": 694.9,
+  "maxrss_delta_mb": 496.3,
+  "summary": {
+    "now": 1000000000.0,
+    "total_records": 1000000,
+    "delete": 510358,
+    "kept": 489642,
+    "spared_by_hold": 49885,
+    "spared_by_reference": 85560,
+    "not_expired": 344176,
+    "clock_anomalies": 10021,
+    "dangling_references": 0
+  }
+}

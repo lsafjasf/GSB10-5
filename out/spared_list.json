@@ -1,0 +1,48 @@
+[
+  {
+    "id": "r4",
+    "decision": "keep_referenced",
+    "reason": "still referenced by at least one existing record",
+    "referrers": [
+      "r6"
+    ]
+  },
+  {
+    "id": "r6",
+    "decision": "keep_not_expired",
+    "reason": "idle for 86400s < retention 2592000s",
+    "referrers": []
+  },
+  {
+    "id": "r7",
+    "decision": "keep_hold",
+    "reason": "retention hold (pause) flag is set",
+    "referrers": []
+  },
+  {
+    "id": "r8",
+    "decision": "keep_not_expired",
+    "reason": "idle for 0s < retention 2592000s",
+    "referrers": []
+  },
+  {
+    "id": "r9",
+    "decision": "keep_clock_anomaly",
+    "reason": "timestamp lies in the future beyond the clock-skew tolerance (now=1000000000.0, tolerance=300.0s)",
+    "referrers": []
+  },
+  {
+    "id": "r10",
+    "decision": "keep_clock_anomaly",
+    "reason": "last_accessed_at is earlier than created_at; timestamps inconsistent",
+    "referrers": []
+  },
+  {
+    "id": "r11",
+    "decision": "keep_referenced",
+    "reason": "still referenced by at least one existing record",
+    "referrers": [
+      "r7"
+    ]
+  }
+]

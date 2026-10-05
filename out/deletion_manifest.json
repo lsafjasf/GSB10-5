@@ -1,0 +1,34 @@
+[
+  {
+    "id": "r1",
+    "reason": "idle for 8640000s >= retention 2592000s and unprotected",
+    "created_at": 991360000.0,
+    "last_accessed_at": 991360000.0,
+    "idle_seconds": 8640000.0,
+    "evaluated_at": 1000000000.0
+  },
+  {
+    "id": "r2",
+    "reason": "idle for 8640000s >= retention 2592000s and unprotected",
+    "created_at": 991360000.0,
+    "last_accessed_at": 991360000.0,
+    "idle_seconds": 8640000.0,
+    "evaluated_at": 1000000000.0
+  },
+  {
+    "id": "r3",
+    "reason": "idle for 2678400s >= retention 2592000s and unprotected",
+    "created_at": 991360000.0,
+    "last_accessed_at": 997321600.0,
+    "idle_seconds": 2678400.0,
+    "evaluated_at": 1000000000.0
+  },
+  {
+    "id": "r5",
+    "reason": "idle for 8640000s >= retention 2592000s and unprotected",
+    "created_at": 991360000.0,
+    "last_accessed_at": 991360000.0,
+    "idle_seconds": 8640000.0,
+    "evaluated_at": 1000000000.0
+  }
+]

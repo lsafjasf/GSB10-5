@@ -1,0 +1,17 @@
+{
+  "now": 1000000000.0,
+  "total_records": 11,
+  "delete": 4,
+  "kept": 7,
+  "spared_by_hold": 1,
+  "spared_by_reference": 2,
+  "not_expired": 2,
+  "clock_anomalies": 2,
+  "dangling_references": 1,
+  "dangling_references_detail": [
+    {
+      "source_id": "r5",
+      "target_id": "ghost"
+    }
+  ]
+}
