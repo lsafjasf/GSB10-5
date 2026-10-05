@@ -1,0 +1,103 @@
+{
+  "numbering_rules": {
+    "cited_entries": "按正文中首次出现的顺序从 1 连续编号",
+    "repeated_citations": "同一条目无论被引用多少次都使用同一个新编号",
+    "orphan_entries": "未被正文引用的条目排在已引用条目之后，按原列表顺序继续连续编号",
+    "missing_entries": "正文引用但文末不存在的编号不参与重排；默认阻止回写"
+  },
+  "diagnostics": {
+    "citation_points": 4,
+    "unique_cited_entries": 3,
+    "bibliography_entries": 4,
+    "missing_entries": [],
+    "orphan_entries": [
+      9
+    ],
+    "numbering_gaps": [
+      2,
+      4,
+      5,
+      6,
+      8
+    ],
+    "duplicate_entry_numbers": []
+  },
+  "mapping_table": [
+    {
+      "old": 3,
+      "new": 1,
+      "status": "cited",
+      "first_citation_index": 0
+    },
+    {
+      "old": 1,
+      "new": 2,
+      "status": "cited",
+      "first_citation_index": 1
+    },
+    {
+      "old": 7,
+      "new": 3,
+      "status": "cited",
+      "first_citation_index": 3
+    },
+    {
+      "old": 9,
+      "new": 4,
+      "status": "orphan",
+      "first_citation_index": null
+    }
+  ],
+  "consistency": {
+    "body_content_byte_comparison": {
+      "method": "正文中每个 [n] 引用标记先替换为固定占位符，再对 UTF-8 字节逐字节比较",
+      "equal": true,
+      "compared_bytes": 112,
+      "first_difference_byte": null,
+      "original_sha256": "5773b4d705864bf5f94642655a57bdcccf761e3fefd3ae47e52c1e5ec409d435",
+      "rewritten_sha256": "5773b4d705864bf5f94642655a57bdcccf761e3fefd3ae47e52c1e5ec409d435"
+    },
+    "raw_body_bytes": {
+      "equal": false,
+      "original_sha256": "75497bf81ed7d0bd6205f339455071e5a7fde6d9230e1465e0195bfe02e828fd",
+      "rewritten_sha256": "cf68d763d4297e80f2643765a4c468f8f2a2ca0415ad98b7e4aa28f1a9cefcf7",
+      "note": "原始字节可因引用编号位数变化而不同；正文非引用内容以 normalized 比较为准"
+    },
+    "citation_sequence": {
+      "equal": true,
+      "citation_points": 4,
+      "expected_first_20": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "actual_first_20": [
+        1,
+        2,
+        1,
+        3
+      ]
+    },
+    "reference_list": {
+      "numbers_are_contiguous": true,
+      "numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cited_numbers_in_first_appearance_order": [
+        1,
+        2,
+        3
+      ],
+      "entry_suffixes_preserved": true,
+      "mapping_round_trip": true,
+      "all_body_citations_resolve": true,
+      "orphan_entries": [
+        4
+      ]
+    }
+  }
+}

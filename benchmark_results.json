@@ -1,0 +1,12 @@
+{
+  "citation_points": 100000,
+  "bibliography_entries": 1000,
+  "seed": 20261005,
+  "elapsed_seconds": 1.625247201001912,
+  "tracemalloc_current_bytes": 18743749,
+  "tracemalloc_peak_bytes": 43116095,
+  "process_rss_peak_kib": 158800,
+  "input_chars": 508229,
+  "output_chars": 508408,
+  "memory_measurement_note": "tracemalloc_peak_bytes 为重排调用期间的 Python 分配峰值；process_rss_peak_kib 为整个基准进程的 RSS 高水位"
+}
