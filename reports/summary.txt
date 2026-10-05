@@ -1,0 +1,98 @@
+### 完全兼容
+========================================================================
+场景: fully_compatible   (旧版本 v1 <- 新版本 v2-compat)
+校验记录数: 2000   旧版本可读: 2000   不可读: 0
+结论: ROLLBACK_OK (可回滚)
+处理步骤:
+  新旧版本读写完全兼容，可直接回滚，无需数据转换
+不兼容清单: 无
+旧版本可正确读取的数据样例:
+  {"balance": 1113.2, "created_at": "2026-10-01T08:00:00Z", "id": 1000, "name": "user-0", "status": "CLOSED"}
+  {"balance": 2750.02, "created_at": "2026-10-02T08:00:00Z", "id": 1001, "name": "user-1", "status": "CLOSED"}
+  {"balance": 1395.24, "created_at": "2026-10-03T08:00:00Z", "id": 1002, "name": "user-2", "status": "ACTIVE"}
+
+### 仅新增字段
+========================================================================
+场景: additive_fields   (旧版本 v1 <- 新版本 v2-additive-field)
+校验记录数: 2000   旧版本可读: 2000   不可读: 0
+结论: ROLLBACK_OK (可回滚)
+处理步骤:
+  新旧版本读写完全兼容，可直接回滚，无需数据转换
+不兼容清单: 无
+旧版本可正确读取的数据样例:
+  {"balance": 1113.2, "created_at": "2026-10-01T08:00:00Z", "email": "u0@example.com", "id": 1000, "name": "user-0", "remark": "created by v2", "status": "CLOSED"}
+  {"balance": 2750.02, "created_at": "2026-10-02T08:00:00Z", "email": "u1@example.com", "id": 1001, "name": "user-1", "remark": "created by v2", "status": "CLOSED"}
+  {"balance": 1395.24, "created_at": "2026-10-03T08:00:00Z", "email": "u2@example.com", "id": 1002, "name": "user-2", "remark": "created by v2", "status": "ACTIVE"}
+
+### 新增枚举值
+========================================================================
+场景: new_enum_value   (旧版本 v1 <- 新版本 v2-new-enum)
+校验记录数: 2000   旧版本可读: 1800   不可读: 200
+结论: NEEDS_CONVERSION (需先转换)
+处理步骤:
+  回滚前必须完成以下转换，否则旧版本启动/读取会失败：
+  - 回滚前将 status=PENDING_DELETE 批量改写为 SUSPENDED
+  转换完成后用本工具复跑验证，全部通过方可回滚
+不兼容清单:
+  - [enum] 字段 status | unknown_enum_value | 出现 200 次 | 可转换: 是
+      期望: one of ['ACTIVE', 'SUSPENDED', 'CLOSED']  实际样例: ["'PENDING_DELETE'"]  记录样例: ['1000', '1010', '1020']
+      处理: 回滚前将 status=PENDING_DELETE 批量改写为 SUSPENDED
+旧版本可正确读取的数据样例:
+  {"balance": 2750.02, "created_at": "2026-10-02T08:00:00Z", "id": 1001, "name": "user-1", "status": "CLOSED"}
+  {"balance": 1395.24, "created_at": "2026-10-03T08:00:00Z", "id": 1002, "name": "user-2", "status": "ACTIVE"}
+  {"balance": 6766.32, "created_at": "2026-10-04T08:00:00Z", "id": 1003, "name": "user-3", "status": "ACTIVE"}
+旧版本无法读取的数据样例:
+  {"balance": 1113.2, "created_at": "2026-10-01T08:00:00Z", "id": 1000, "name": "user-0", "status": "PENDING_DELETE"}
+  {"balance": 2204.19, "created_at": "2026-10-11T08:00:00Z", "id": 1010, "name": "user-10", "status": "PENDING_DELETE"}
+  {"balance": 1248.14, "created_at": "2026-10-21T08:00:00Z", "id": 1020, "name": "user-20", "status": "PENDING_DELETE"}
+
+### 索引结构变化
+========================================================================
+场景: index_change   (旧版本 v1 <- 新版本 v2-index-change)
+校验记录数: 2000   旧版本可读: 1800   不可读: 200
+结论: NEEDS_CONVERSION (需先转换)
+处理步骤:
+  回滚前必须完成以下转换，否则旧版本启动/读取会失败：
+  - 删除新版索引文件并用旧版本重建（该索引可由数据重建）
+  - 丢弃新版索引文件，按旧版键序重建索引
+  - 回滚前将 status=PENDING_DELETE 批量改写为 SUSPENDED
+  转换完成后用本工具复跑验证，全部通过方可回滚
+不兼容清单:
+  - [enum] 字段 status | unknown_enum_value | 出现 200 次 | 可转换: 是
+      期望: one of ['ACTIVE', 'SUSPENDED', 'CLOSED']  实际样例: ["'PENDING_DELETE'"]  记录样例: ['1000', '1010', '1020']
+      处理: 回滚前将 status=PENDING_DELETE 批量改写为 SUSPENDED
+  - [index] 字段 indexes.idx_status.format_version | index_format_version_unsupported | 出现 1 次 | 可转换: 是
+      期望: one of [1]  实际样例: ['2']  记录样例: ['']
+      处理: 删除新版索引文件并用旧版本重建（该索引可由数据重建）
+  - [index] 字段 indexes.idx_status.keys | index_key_layout_changed | 出现 1 次 | 可转换: 是
+      期望: ['status']  实际样例: ['["status", "created_at"]']  记录样例: ['']
+      处理: 丢弃新版索引文件，按旧版键序重建索引
+旧版本可正确读取的数据样例:
+  {"balance": 2750.02, "created_at": "2026-10-02T08:00:00Z", "id": 1001, "name": "user-1", "status": "CLOSED"}
+  {"balance": 1395.24, "created_at": "2026-10-03T08:00:00Z", "id": 1002, "name": "user-2", "status": "ACTIVE"}
+  {"balance": 6766.32, "created_at": "2026-10-04T08:00:00Z", "id": 1003, "name": "user-3", "status": "ACTIVE"}
+旧版本无法读取的数据样例:
+  {"balance": 1113.2, "created_at": "2026-10-01T08:00:00Z", "id": 1000, "name": "user-0", "status": "PENDING_DELETE"}
+  {"balance": 2204.19, "created_at": "2026-10-11T08:00:00Z", "id": 1010, "name": "user-10", "status": "PENDING_DELETE"}
+  {"balance": 1248.14, "created_at": "2026-10-21T08:00:00Z", "id": 1020, "name": "user-20", "status": "PENDING_DELETE"}
+
+### 破坏性变更(删必填字段/删接口)
+========================================================================
+场景: destructive_change   (旧版本 v1 <- 新版本 v2-destructive)
+校验记录数: 2000   旧版本可读: 0   不可读: 2000
+结论: NOT_ROLLBACKABLE (不可回滚)
+处理步骤:
+  禁止直接回滚：存在旧版本无法读取且无法转换的数据
+  阻断项 contract_operation_removed 涉及字段: contract.get_user
+  阻断项 missing_required_field 涉及字段: name
+  处理步骤: 1) 从回滚前备份恢复受影响数据 2) 或让新版本继续双写旧格式直至旧字段数据补齐 3) 确认无阻断项后再执行回滚
+不兼容清单:
+  - [contract] 字段 contract.get_user | contract_operation_removed | 出现 1 次 | 可转换: 否
+      期望: operation exists  实际样例: ['<removed>']  记录样例: ['']
+  - [data_format] 字段 name | missing_required_field | 出现 2000 次 | 可转换: 否
+      期望: str  实际样例: ['<absent>']  记录样例: ['1000', '1001', '1002']
+      处理: 新版本已删除该字段，写入的数据永久缺失，无法从现有数据恢复
+旧版本无法读取的数据样例:
+  {"balance": 1113.2, "id": 1000, "status": "CLOSED"}
+  {"balance": 2750.02, "id": 1001, "status": "CLOSED"}
+  {"balance": 1395.24, "id": 1002, "status": "ACTIVE"}

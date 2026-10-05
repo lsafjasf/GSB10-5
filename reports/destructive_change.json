@@ -1,0 +1,69 @@
+{
+  "scenario": "destructive_change",
+  "old_version": "v1",
+  "new_version": "v2-destructive",
+  "records_checked": 2000,
+  "records_readable_by_old": 0,
+  "records_unreadable_by_old": 2000,
+  "verdict": "NOT_ROLLBACKABLE",
+  "verdict_label": "不可回滚",
+  "steps": [
+    "禁止直接回滚：存在旧版本无法读取且无法转换的数据",
+    "阻断项 contract_operation_removed 涉及字段: contract.get_user",
+    "阻断项 missing_required_field 涉及字段: name",
+    "处理步骤: 1) 从回滚前备份恢复受影响数据 2) 或让新版本继续双写旧格式直至旧字段数据补齐 3) 确认无阻断项后再执行回滚"
+  ],
+  "incompatibility_list": [
+    {
+      "surface": "contract",
+      "kind": "contract_operation_removed",
+      "field": "contract.get_user",
+      "count": 1,
+      "convertible": false,
+      "expected": "operation exists",
+      "actual_examples": [
+        "<removed>"
+      ],
+      "sample_record_ids": [
+        ""
+      ],
+      "conversion": ""
+    },
+    {
+      "surface": "data_format",
+      "kind": "missing_required_field",
+      "field": "name",
+      "count": 2000,
+      "convertible": false,
+      "expected": "str",
+      "actual_examples": [
+        "<absent>"
+      ],
+      "sample_record_ids": [
+        "1000",
+        "1001",
+        "1002"
+      ],
+      "conversion": "新版本已删除该字段，写入的数据永久缺失，无法从现有数据恢复"
+    }
+  ],
+  "sample_records_old_can_read": [],
+  "sample_records_old_cannot_read": [
+    {
+      "balance": 1113.2,
+      "id": 1000,
+      "status": "CLOSED"
+    },
+    {
+      "balance": 2750.02,
+      "id": 1001,
+      "status": "CLOSED"
+    },
+    {
+      "balance": 1395.24,
+      "id": 1002,
+      "status": "ACTIVE"
+    }
+  ],
+  "benchmark": null
+}

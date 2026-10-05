@@ -1,0 +1,12 @@
+{
+  "records": 1000000,
+  "scenario": "new_enum_value (10% 记录带新枚举 PENDING_DELETE)",
+  "elapsed_sec": 9.543,
+  "records_per_sec": 104788.0,
+  "peak_python_heap_bytes": 8281,
+  "peak_python_heap_mb": 0.01,
+  "peak_process_rss_mb": 31.79,
+  "readable_records": 900000,
+  "unreadable_records": 100000,
+  "note": "流式逐条生成+校验，不持有全量数据；heap 峰值为 tracemalloc 统计的 Python 堆，rss 峰值为 getrusage 统计的进程常驻内存"
+}
