@@ -1,0 +1,130 @@
+{
+  "case1_large_overlap": {
+    "dx": 20,
+    "overlap_width": 80,
+    "brightness_diff_before": 0.0,
+    "brightness_diff_after": 0.0,
+    "gain": 1.0,
+    "seam_stats": {
+      "total_cost": 876.0,
+      "subject_crossings": 0,
+      "straight_crossings": 0,
+      "overlap_width": 80,
+      "height": 100
+    },
+    "status": "seam",
+    "seam_path_head": [
+      77,
+      78,
+      78,
+      78,
+      77,
+      77,
+      76,
+      77,
+      78,
+      79
+    ]
+  },
+  "case2_small_overlap_fallback": {
+    "dx": 95,
+    "overlap_width": 5,
+    "brightness_diff_before": 0.0,
+    "brightness_diff_after": 0.0,
+    "gain": 1.0,
+    "seam_stats": null,
+    "status": "fallback_blend",
+    "reason": "重叠区宽 5 < 最小要求 8，退化为简单线性融合"
+  },
+  "case2b_no_overlap_rejected": {
+    "dx": 100,
+    "overlap_width": 0,
+    "brightness_diff_before": null,
+    "brightness_diff_after": null,
+    "gain": null,
+    "seam_stats": null,
+    "status": "rejected",
+    "reason": "无重叠区，拒绝拼接"
+  },
+  "case3_exposure_diff": {
+    "dx": 40,
+    "overlap_width": 60,
+    "brightness_diff_before": 43.58,
+    "brightness_diff_after": 0.0,
+    "gain": 0.6,
+    "seam_stats": {
+      "total_cost": 468.0,
+      "subject_crossings": 0,
+      "straight_crossings": 0,
+      "overlap_width": 60,
+      "height": 100
+    },
+    "status": "seam",
+    "seam_path_head": [
+      53,
+      54,
+      54,
+      53,
+      54,
+      53,
+      52,
+      52,
+      51,
+      51
+    ]
+  },
+  "case4_forced_crossing": {
+    "dx": 60,
+    "overlap_width": 40,
+    "brightness_diff_before": 0.0,
+    "brightness_diff_after": 0.0,
+    "gain": 1.0,
+    "seam_stats": {
+      "total_cost": 23724.0,
+      "subject_crossings": 29,
+      "straight_crossings": 29,
+      "overlap_width": 40,
+      "height": 100
+    },
+    "status": "seam",
+    "seam_path_head": [
+      61,
+      61,
+      62,
+      61,
+      60,
+      61,
+      62,
+      62,
+      62,
+      62
+    ]
+  },
+  "case5_avoid_subject": {
+    "dx": 50,
+    "overlap_width": 50,
+    "brightness_diff_before": 0.0,
+    "brightness_diff_after": 0.0,
+    "gain": 1.0,
+    "seam_stats": {
+      "total_cost": 876.0,
+      "subject_crossings": 0,
+      "straight_crossings": 92,
+      "overlap_width": 50,
+      "height": 100
+    },
+    "status": "seam",
+    "seam_path_head": [
+      58,
+      58,
+      58,
+      57,
+      58,
+      59,
+      60,
+      60,
+      59,
+      58
+    ]
+  }
+}
