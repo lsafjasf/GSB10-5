@@ -1,0 +1,17 @@
+== 原始媒体 ==
+  [original]
+    audio tb=1/48000s n=47 first(pts=0,dts=0,dur=1024,kf=False,data=8813820cc1cc6601..) last(pts=47104,dts=47104,dur=1024) sha256(all)=77a830caa0aa60b5
+    video tb=1/90000s n=30 first(pts=0,dts=0,dur=3003,kf=True,data=4602f8c7a3d254d7..) last(pts=87087,dts=87087,dur=3003) sha256(all)=1a2831e15af966f6
+
+== 封装 #1 ==  文件大小 5663 字节
+  [warning] duration_mismatch: track duration mismatch: audio=1002666us vs video=1001000us (diff=-1666us); not auto-padded
+
+== 解封装 ==
+  [demuxed]
+    audio tb=1/48000s n=47 first(pts=0,dts=0,dur=1024,kf=False,data=8813820cc1cc6601..) last(pts=47104,dts=47104,dur=1024) sha256(all)=77a830caa0aa60b5
+    video tb=1/90000s n=30 first(pts=0,dts=0,dur=3003,kf=True,data=4602f8c7a3d254d7..) last(pts=87087,dts=87087,dur=3003) sha256(all)=1a2831e15af966f6
+
+== 再封装 #2 ==  文件大小 5663 字节
+
+两次封装字节级一致: True
+逐样本对拍（pts/dts/duration/keyframe/payload）: 全部一致
