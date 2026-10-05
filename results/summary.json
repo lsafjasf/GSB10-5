@@ -1,0 +1,113 @@
+{
+  "config": {
+    "n": 100000,
+    "m": 500000,
+    "landmarks": 16,
+    "seed": 20261005,
+    "python": "3.12.3",
+    "machine": "16 cores, 15 GB RAM"
+  },
+  "grid": {
+    "case": "grid-100k-500k",
+    "n": 100000,
+    "m": 500000,
+    "graph_mem_mb": 17.6,
+    "landmarks": 16,
+    "preprocess_s": 5.433,
+    "preprocess_rss_delta_mb": 0.0,
+    "tracemalloc_peak_mb": 37.2,
+    "index_mem_est_mb": 25.6,
+    "process_rss_peak_mb": 138.9,
+    "naive_queries": 200,
+    "naive_total_s": 12.17,
+    "naive_per_query_ms": 60.851,
+    "alt_queries": 2000,
+    "alt_total_s": 29.779,
+    "alt_per_query_ms": 14.8894,
+    "speedup": 4.1,
+    "crosscheck": {
+      "pairs": 200,
+      "mismatches": 0
+    },
+    "cost_model": {
+      "T_naive(q)": "q * 0.060851",
+      "T_alt(q)": "5.433 + q * 0.014889",
+      "break_even_queries": 119
+    }
+  },
+  "cost_curve_ascii": "total cost, log scale (N=naive P=preprocessed B=tie)\nq=1     |N                     P                        | naive=     0.06s alt=     5.45s\nq=5     |        N             P                        | naive=     0.30s alt=     5.51s\nq=10    |           N          P                        | naive=     0.61s alt=     5.58s\nq=20    |              N       P                        | naive=     1.22s alt=     5.73s\nq=50    |                   N   P                       | naive=     3.04s alt=     6.18s\nq=100   |                       B                       | naive=     6.09s alt=     6.92s\nq=200   |                        P N                    | naive=    12.17s alt=     8.41s\nq=500   |                          P    N               | naive=    30.43s alt=    12.88s\nq=1000  |                             P    N            | naive=    60.85s alt=    20.32s\nq=2000  |                               P     N         | naive=   121.70s alt=    35.21s\nq=5000  |                                   P      N    | naive=   304.25s alt=    79.88s\nq=10000 |                                       P      N| naive=   608.51s alt=   154.33s",
+  "query_totals": {
+    "10": {
+      "naive_s": 0.61,
+      "alt_s": 5.58
+    },
+    "100": {
+      "naive_s": 6.09,
+      "alt_s": 6.92
+    },
+    "1000": {
+      "naive_s": 60.85,
+      "alt_s": 20.32
+    },
+    "10000": {
+      "naive_s": 608.51,
+      "alt_s": 154.33
+    },
+    "100000": {
+      "naive_s": 6085.1,
+      "alt_s": 1494.37
+    }
+  },
+  "chain": {
+    "case": "chain-like-100k",
+    "n": 100000,
+    "m": 200398,
+    "graph_mem_mb": 8.0,
+    "landmarks": 16,
+    "preprocess_s": 1.821,
+    "preprocess_rss_delta_mb": 0.0,
+    "tracemalloc_peak_mb": 35.1,
+    "index_mem_est_mb": 25.6,
+    "process_rss_peak_mb": 141.1,
+    "naive_queries": 200,
+    "naive_total_s": 4.627,
+    "naive_per_query_ms": 23.135,
+    "alt_queries": 2000,
+    "alt_total_s": 11.702,
+    "alt_per_query_ms": 5.851,
+    "speedup": 4.0,
+    "crosscheck": {
+      "pairs": 200,
+      "mismatches": 0
+    },
+    "cost_model": {
+      "T_naive(q)": "q * 0.023135",
+      "T_alt(q)": "1.821 + q * 0.005851",
+      "break_even_queries": 106
+    }
+  },
+  "memory_guard_big": {
+    "tight-40MB": {
+      "budget_mb": 40,
+      "landmarks_afforded": 11,
+      "degraded": false,
+      "build_s": 3.395,
+      "crosscheck_pairs": 30,
+      "mismatches": 0,
+      "process_alive": true
+    },
+    "tiny-20MB": {
+      "budget_mb": 20,
+      "landmarks_afforded": 0,
+      "degraded": true,
+      "build_s": 0.0,
+      "crosscheck_pairs": 30,
+      "mismatches": 0,
+      "process_alive": true
+    },
+    "raise-policy": {
+      "raised": true,
+      "message": "need ~47200016 bytes for 16 landmarks, budget is 40000000"
+    }
+  }
+}

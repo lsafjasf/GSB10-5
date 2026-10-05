@@ -1,0 +1,32 @@
+
+=== case: grid-100k-500k (n=100000, m=500000) ===
+preprocess: 5.43s, L=16, RSS +0.0MB, py-peak 37.2MB
+naive done: 12.2s
+naive: 200 q, 12.17s, 60.9 ms/q | alt: 2000 q, 29.78s, 14.889 ms/q (4.1x)
+crosscheck: 200 pairs, 0 mismatches
+break-even: q >= 119 queries
+
+total cost, log scale (N=naive P=preprocessed B=tie)
+q=1     |N                     P                        | naive=     0.06s alt=     5.45s
+q=5     |        N             P                        | naive=     0.30s alt=     5.51s
+q=10    |           N          P                        | naive=     0.61s alt=     5.58s
+q=20    |              N       P                        | naive=     1.22s alt=     5.73s
+q=50    |                   N   P                       | naive=     3.04s alt=     6.18s
+q=100   |                       B                       | naive=     6.09s alt=     6.92s
+q=200   |                        P N                    | naive=    12.17s alt=     8.41s
+q=500   |                          P    N               | naive=    30.43s alt=    12.88s
+q=1000  |                             P    N            | naive=    60.85s alt=    20.32s
+q=2000  |                               P     N         | naive=   121.70s alt=    35.21s
+q=5000  |                                   P      N    | naive=   304.25s alt=    79.88s
+q=10000 |                                       P      N| naive=   608.51s alt=   154.33s
+
+=== case: chain-like-100k (n=100000, m=200398) ===
+preprocess: 1.82s, L=16, RSS +0.0MB, py-peak 35.1MB
+naive done: 4.6s
+naive: 200 q, 4.63s, 23.1 ms/q | alt: 2000 q, 11.70s, 5.851 ms/q (4.0x)
+crosscheck: 200 pairs, 0 mismatches
+break-even: q >= 106 queries
+mem tight-64MB: L=16 degraded=False exact=True
+mem tiny-20MB: L=0 degraded=True exact=True
+
+wrote results/summary.json, results/cost_curve.csv, results/crosscheck.csv
