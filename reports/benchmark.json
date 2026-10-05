@@ -1,0 +1,27 @@
+{
+  "old_lines": 101003,
+  "new_lines": 101004,
+  "old_sections": 2601,
+  "new_sections": 2601,
+  "matched_pairs": 2470,
+  "elapsed_seconds": 3.401,
+  "tracemalloc_peak_mb": 301.5,
+  "max_rss_mb": 695.1,
+  "stats": {
+    "unchanged": 625,
+    "modified": 1756,
+    "reparent": 84,
+    "rename": 5,
+    "deleted": 131,
+    "added": 131
+  },
+  "roundtrip_ok": true,
+  "change_stats_applied": {
+    "deleted_chapters": 5,
+    "added_chapters": 5,
+    "renamed_chapters": 5,
+    "moved_chapters": 5,
+    "level_changed_headings": 80,
+    "modified_lines": 1933
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "说明": "摘要->明细->摘要 双向还原验证（examples/old.md vs new.md, 阈值0.6）",
+  "forward_ok(摘要manifest与明细一一对应)": true,
+  "backward_ok(展开记录骨架与原始明细逐条相等)": true,
+  "resummary_ok(展开后再摘要与首次摘要完全一致)": true,
+  "ok": true,
+  "change_count": 18,
+  "manifest_count": 18,
+  "expanded_count": 18,
+  "summary_stats": {
+    "unchanged": 9,
+    "rename": 1,
+    "reparent": 2,
+    "modified": 1,
+    "deleted": 1,
+    "level_change": 1,
+    "added": 3
+  },
+  "sample_manifest_entry": {
+    "category": "unchanged",
+    "old_id": 1,
+    "new_id": 1,
+    "old_path": "产品手册",
+    "new_path": "产品手册",
+    "old_title": "产品手册",
+    "new_title": "产品手册"
+  },
+  "sample_expanded_record": {
+    "category": "rename",
+    "old_path": "产品手册 > 快速开始",
+    "new_path": "产品手册 > 快速上手",
+    "old_title": "快速开始",
+    "new_title": "快速上手",
+    "old_level": null,
+    "new_level": null,
+    "old_parent_path": null,
+    "new_parent_path": null,
+    "content_jaccard": null,
+    "title_sim": null,
+    "score": null,
+    "flags": [],
+    "reason": "",
+    "old_ordinal": null,
+    "new_ordinal": null,
+    "old_id": 2,
+    "new_id": 2
+  },
+  "sample_original_change": {
+    "category": "rename",
+    "old_path": "产品手册 > 快速开始",
+    "new_path": "产品手册 > 快速上手",
+    "old_title": "快速开始",
+    "new_title": "快速上手",
+    "old_level": 2,
+    "new_level": 2,
+    "old_parent_path": "产品手册",
+    "new_parent_path": "产品手册",
+    "content_jaccard": 1.0,
+    "title_sim": 0.5,
+    "score": 0.9,
+    "flags": [
+      "renamed"
+    ],
+    "reason": "score=0.900=0.8*内容Jaccard(1.000)+0.2*标题相似度(0.500) >= 阈值, 判定为同一章节; 标题由「快速开始」改为「快速上手」",
+    "old_ordinal": 0,
+    "new_ordinal": 0,
+    "old_id": 2,
+    "new_id": 2
+  }
+}

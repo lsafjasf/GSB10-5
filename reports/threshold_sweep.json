@@ -1,0 +1,318 @@
+[
+  {
+    "threshold": 0.3,
+    "matched_pairs": 3,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "modified": 1,
+      "deleted": 1,
+      "added": 1
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": "运维指南 > 使用说明",
+        "category": "modified",
+        "score": 0.832258
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.5,
+    "matched_pairs": 3,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "modified": 1,
+      "deleted": 1,
+      "added": 1
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": "运维指南 > 使用说明",
+        "category": "modified",
+        "score": 0.832258
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.6,
+    "matched_pairs": 3,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "modified": 1,
+      "deleted": 1,
+      "added": 1
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": "运维指南 > 使用说明",
+        "category": "modified",
+        "score": 0.832258
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.7,
+    "matched_pairs": 3,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "modified": 1,
+      "deleted": 1,
+      "added": 1
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": "运维指南 > 使用说明",
+        "category": "modified",
+        "score": 0.832258
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.8,
+    "matched_pairs": 3,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "modified": 1,
+      "deleted": 1,
+      "added": 1
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": "运维指南 > 使用说明",
+        "category": "modified",
+        "score": 0.832258
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.85,
+    "matched_pairs": 2,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "deleted": 2,
+      "added": 2
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 使用说明",
+        "category": "added",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.9,
+    "matched_pairs": 2,
+    "stats": {
+      "unchanged": 1,
+      "rename": 1,
+      "deleted": 2,
+      "added": 2
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": "运维指南 > 安装流程",
+        "category": "rename",
+        "score": 0.9
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 使用说明",
+        "category": "added",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  },
+  {
+    "threshold": 0.95,
+    "matched_pairs": 1,
+    "stats": {
+      "unchanged": 1,
+      "deleted": 3,
+      "added": 3
+    },
+    "assignments": [
+      {
+        "old_path": "运维指南 > 安装步骤",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": "运维指南 > 使用说明",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": "运维指南 > 故障排查",
+        "new_path": null,
+        "category": "deleted",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 安装流程",
+        "category": "added",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 使用说明",
+        "category": "added",
+        "score": null
+      },
+      {
+        "old_path": null,
+        "new_path": "运维指南 > 常见问题",
+        "category": "added",
+        "score": null
+      }
+    ]
+  }
+]
