@@ -1,0 +1,16 @@
+points_n            1000000
+queries_q           100000
+point_gen_s         0.193
+build_s             1.738
+queries_total_s     40.408
+queries_per_s       2475
+query_avg_us        403.77
+query_p50_us        336.35
+query_p90_us        826.83
+query_p99_us        1359.82
+query_max_us        5549.77
+rss_peak_mb         265.4
+rss_before_build_mb 142.8
+rss_after_build_mb  265.4
+verify_sample       10 queries, mismatches=0
+total_count_check   14499173559

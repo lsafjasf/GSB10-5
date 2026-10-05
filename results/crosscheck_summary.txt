@@ -1,0 +1,10 @@
+对拍汇总：RangeCounter vs 逐点暴力扫描
+scenario	n_points	n_queries	mismatches
+uniform	10000	1200	0
+all_inside	10000	300	0
+all_outside	10000	300	0
+boundary_grid	10000	1200	0
+duplicates	10000	1200	0
+large	100000	300	0
+total_queries_compared	4500
+verdict	ALL MATCH
