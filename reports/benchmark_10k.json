@@ -1,0 +1,31 @@
+{
+  "n_images": 10000,
+  "image_size": [
+    256,
+    192
+  ],
+  "ratios": [
+    "1:1",
+    "4:3",
+    "16:9",
+    "9:16"
+  ],
+  "wall_time_s": 39.304,
+  "per_image_ms": {
+    "mean": 3.929,
+    "p50": 3.612,
+    "p95": 5.655,
+    "p99": 6.682,
+    "max": 17.235
+  },
+  "throughput_img_per_s": 254.4,
+  "memory": {
+    "peak_rss_mb": 32.3,
+    "python_peak_alloc_mb": 1.0
+  },
+  "subject_found": 6874,
+  "center_fallback": 3126,
+  "bounds_violations": 0,
+  "python": "3.12.3",
+  "platform": "linux"
+}
