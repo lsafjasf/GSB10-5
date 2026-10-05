@@ -1,0 +1,44 @@
+{
+ "normal": {
+  "mean_lum_left_before": 145.74,
+  "mean_lum_right": 145.74,
+  "gain_applied_to_left": 1.0,
+  "mean_abs_lum_diff_before": 0.0,
+  "mean_abs_lum_diff_after": 0.0
+ },
+ "large_overlap": {
+  "mean_lum_left_before": 154.71,
+  "mean_lum_right": 154.71,
+  "gain_applied_to_left": 1.0,
+  "mean_abs_lum_diff_before": 0.0,
+  "mean_abs_lum_diff_after": 0.0
+ },
+ "small_overlap_blend": {
+  "mean_lum_left_before": 165.05,
+  "mean_lum_right": 165.05,
+  "gain_applied_to_left": 1.0,
+  "mean_abs_lum_diff_before": 0.0,
+  "mean_abs_lum_diff_after": 0.0
+ },
+ "small_overlap_reject": {
+  "mean_lum_left_before": 0.0,
+  "mean_lum_right": 0.0,
+  "gain_applied_to_left": 1.0,
+  "mean_abs_lum_diff_before": 0.0,
+  "mean_abs_lum_diff_after": 0.0
+ },
+ "exposure_difference": {
+  "mean_lum_left_before": 146.06,
+  "mean_lum_right": 221.21,
+  "gain_applied_to_left": 1.5145,
+  "mean_abs_lum_diff_before": 75.15,
+  "mean_abs_lum_diff_after": 6.25
+ },
+ "forced_subject": {
+  "mean_lum_left_before": 118.6,
+  "mean_lum_right": 118.6,
+  "gain_applied_to_left": 1.0,
+  "mean_abs_lum_diff_before": 0.0,
+  "mean_abs_lum_diff_after": 0.0
+ }
+}
