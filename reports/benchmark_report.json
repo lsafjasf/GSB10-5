@@ -1,0 +1,58 @@
+{
+  "config": {
+    "nodes": 1000,
+    "invalidations": 100000,
+    "keys": 10000,
+    "cache_per_node": 512,
+    "duplicate_rate": 0.05,
+    "python": "3.12.3",
+    "machine": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_count": 16
+  },
+  "phases": {
+    "P0_build_log": {
+      "seconds": 0.045,
+      "records": 100000
+    },
+    "P1_fanout": {
+      "seconds": 58.347,
+      "handle_calls": 105000000,
+      "calls_per_sec": 1799578,
+      "invalidations_per_sec_per_node": 1713,
+      "duplicates_dropped": 5000000,
+      "all_applied_to_tail": true,
+      "peak_rss_mb": 286.4
+    },
+    "P2_loss_and_repair": {
+      "loss_tail_records": 10000,
+      "fanout_loss_rate": 0.3,
+      "lost_on_fanout": 3331594,
+      "lossy_fanout_seconds": 14.193,
+      "diverged_nodes_before_repair": 1000,
+      "anti_entropy_rounds_applied": [
+        2699549,
+        269470,
+        26833,
+        2744,
+        288,
+        27,
+        4
+      ],
+      "converge_seconds": 3.33,
+      "converged": true,
+      "peak_rss_mb": 742.8
+    },
+    "P3_consistency_check": {
+      "seconds": 9.283,
+      "digest_count": 1,
+      "digest": "a17055b8c16f6e274a701778e7b923ca",
+      "applied_seq_range": [
+        110000,
+        110000
+      ],
+      "stale_total": 0
+    }
+  },
+  "peak_rss_mb": 742.8,
+  "total_seconds": 85.198
+}

@@ -1,0 +1,203 @@
+{
+  "suite": "cache-broadcast selftest",
+  "generated_at": "2026-10-06T00:33:17+0800",
+  "python": "3.12.3",
+  "elapsed_sec": 0.411,
+  "scenarios": [
+    {
+      "scenario": "S1_full_delivery",
+      "desc": "全部送达：5 节点 x 1000 失效，无丢失无重复",
+      "params": {
+        "nodes": 5,
+        "invalidations": 1000,
+        "keys": 50
+      },
+      "data": {
+        "applied_seq_range": [
+          1000,
+          1000
+        ],
+        "digest_count": 1,
+        "digest": "d74016ef24d6311c22c1f3c4fd943641",
+        "stale_total": 0,
+        "dups_dropped_total": 0,
+        "delivered": 5000
+      },
+      "checks": {
+        "all_applied": true,
+        "exactly_once": true,
+        "no_duplicates": true,
+        "single_digest": true,
+        "stale_zero": true,
+        "cache_evicted": true
+      },
+      "passed": true,
+      "elapsed_sec": 0.003
+    },
+    {
+      "scenario": "S2_partial_loss",
+      "desc": "部分丢失：30% 广播丢失+乱序，反熵补齐（重放再丢 10%）",
+      "params": {
+        "nodes": 8,
+        "invalidations": 2000,
+        "fanout_loss": 0.3,
+        "replay_loss": 0.1,
+        "replay_duplicate": 0.05
+      },
+      "data": {
+        "lost_on_fanout": 5386,
+        "before_repair": {
+          "applied_seq_range": [
+            0,
+            10
+          ],
+          "digest_count": 8,
+          "stale_total": 0
+        },
+        "anti_entropy_rounds_applied": [
+          1862,
+          1839,
+          1016,
+          124,
+          6,
+          2
+        ],
+        "rounds_to_converge": 6,
+        "after_repair": {
+          "applied_seq_range": [
+            2000,
+            2000
+          ],
+          "digest_count": 1,
+          "digest": "c91d89e671ce1be9b151c27c9cd149c7",
+          "stale_total": 0
+        }
+      },
+      "checks": {
+        "loss_actually_happened": true,
+        "diverged_before_repair": true,
+        "converged": true,
+        "all_applied": true,
+        "stale_zero": true,
+        "exactly_once": true
+      },
+      "passed": true,
+      "elapsed_sec": 0.012
+    },
+    {
+      "scenario": "S3_duplicate_delivery",
+      "desc": "重复投递：50% 重复率+乱序，重复消息全部幂等丢弃",
+      "params": {
+        "nodes": 5,
+        "invalidations": 500,
+        "duplicate_rate": 0.5
+      },
+      "data": {
+        "duplicates_sent": 1275,
+        "dups_dropped_total": 1275,
+        "applied_count_per_node": [
+          500,
+          500,
+          500,
+          500,
+          500
+        ],
+        "digest_count": 1,
+        "stale_total": 0
+      },
+      "checks": {
+        "duplicates_were_sent": true,
+        "all_dups_dropped": true,
+        "exactly_once": true,
+        "converged": true,
+        "stale_zero": true
+      },
+      "passed": true,
+      "elapsed_sec": 0.002
+    },
+    {
+      "scenario": "S4_restart_during_broadcast",
+      "desc": "广播期间重启：120/300 处崩溃，恢复后从持久日志补齐 180 条",
+      "params": {
+        "nodes": 3,
+        "invalidations": 300,
+        "crash_at_seq": 120
+      },
+      "data": {
+        "applied_before_crash": 120,
+        "cache_entries_before_crash": 1,
+        "applied_after_restart": 120,
+        "fresh_entry_after_restart": [
+          "fresh-before-crash",
+          6
+        ],
+        "catchup_applied": 180,
+        "applied_final": 300,
+        "digest_count": 1,
+        "digest": "0ea7f024ef60b9a39948e5d3f8ff01ef",
+        "stale_total": 0,
+        "restarted_node": {
+          "node_id": "R",
+          "applied_seq": 300,
+          "applied_count": 180,
+          "dups_dropped": 0,
+          "digest": "0ea7f024ef60b9a39948e5d3f8ff01ef"
+        }
+      },
+      "checks": {
+        "checkpoint_preserved_seq": true,
+        "missed_while_down": true,
+        "caught_up_to_tail": true,
+        "digest_matches_peers": true,
+        "stale_zero": true,
+        "log_durable": true,
+        "fresh_cache_survives_restart": true
+      },
+      "passed": true,
+      "elapsed_sec": 0.393
+    },
+    {
+      "scenario": "S5_new_write_protection",
+      "desc": "新写保护：v2 失效广播后写入 v3，重复/重放的 v2 失效不得误伤 v3",
+      "params": {
+        "nodes": 3,
+        "key": "user:42",
+        "versions": {
+          "cached": 1,
+          "invalidated": 2,
+          "rewritten": 3
+        }
+      },
+      "data": {
+        "dups_dropped_per_node": {
+          "A": 4,
+          "B": 4,
+          "C": 0
+        },
+        "node_c_catchup_applied": 1,
+        "cache_value_after_storm": {
+          "A": "new",
+          "B": "new"
+        },
+        "cache_value_after_replay_C": "new",
+        "stale_fill_v1_rejected": true,
+        "cache_after_newer_invalidation_v4": {
+          "A": null,
+          "B": null,
+          "C": null
+        }
+      },
+      "checks": {
+        "initial_invalidation_evicted": true,
+        "new_write_survives_duplicates": true,
+        "new_write_survives_replay": true,
+        "stale_fill_rejected": true,
+        "newer_invalidation_still_works": true
+      },
+      "passed": true,
+      "elapsed_sec": 0.0
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}
