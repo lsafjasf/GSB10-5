@@ -1,0 +1,30 @@
+== 生效值总览（CLAMP 模式）==
+  /root                    cpu_cores=16.0, memory_mb=65536.0, pids=4096.0, disk_mb=∞, net_mbps=∞
+  /root/batch              cpu_cores=4.0, memory_mb=65536.0(收敛), pids=4096.0, disk_mb=∞, net_mbps=∞
+  /root/batch/etl          cpu_cores=2.0, memory_mb=65536.0, pids=4096.0, disk_mb=∞, net_mbps=∞
+  /root/web                cpu_cores=16.0, memory_mb=8192.0, pids=4096.0, disk_mb=∞, net_mbps=∞
+  /root/web/cache          cpu_cores=16.0, memory_mb=8192.0, pids=0.0, disk_mb=∞, net_mbps=∞
+  /root/web/worker         cpu_cores=16.0(收敛), memory_mb=8192.0, pids=4096.0, disk_mb=∞, net_mbps=∞
+
+== 来源链示例 ==
+[cpu_cores] 生效值 = 16.0  来源 = /root
+  L0 /root: 声明=16 动作=SET 经过后=16.0
+  L1 /root/web: 声明=缺失 动作=INHERIT 经过后=16.0
+  L2 /root/web/worker: 声明=64 动作=CLAMP 经过后=16.0
+
+[cpu_cores] 生效值 = 2.0  来源 = /root/batch/etl
+  L0 /root: 声明=16 动作=SET 经过后=16.0
+  L1 /root/batch: 声明=4 动作=SET 经过后=4.0
+  L2 /root/batch/etl: 声明=2 动作=SET 经过后=2.0
+
+[pids] 生效值 = 0.0  来源 = /root/web/cache
+  L0 /root: 声明=4096 动作=SET 经过后=4096.0
+  L1 /root/web: 声明=缺失 动作=INHERIT 经过后=4096.0
+  L2 /root/web/cache: 声明=0 动作=SET 经过后=0.0
+
+[memory_mb] 生效值 = 65536.0  来源 = /root
+  L0 /root: 声明=65536 动作=SET 经过后=65536.0
+  L1 /root/batch: 声明=131072 动作=CLAMP 经过后=65536.0
+
+== REJECT 模式 ==
+  拒绝: /root/batch: 维度 memory_mb 声明 131072 超过父级生效值 65536.0
