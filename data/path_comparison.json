@@ -1,0 +1,108 @@
+{
+  "path_identical": true,
+  "real_trace": [
+    "snapshot_source",
+    "verify_backup",
+    "freeze_writes",
+    "restore_backup",
+    "verify_restore",
+    "detect_new_writes",
+    "unfreeze_writes",
+    "cleanup"
+  ],
+  "drill_trace": [
+    "snapshot_source",
+    "verify_backup",
+    "freeze_writes",
+    "restore_backup",
+    "verify_restore",
+    "detect_new_writes",
+    "unfreeze_writes",
+    "cleanup"
+  ],
+  "real_outcome": "success",
+  "drill_outcome": "success",
+  "steps": [
+    {
+      "order": 1,
+      "step": "snapshot_source",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": []
+    },
+    {
+      "order": 2,
+      "step": "verify_backup",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": []
+    },
+    {
+      "order": 3,
+      "step": "freeze_writes",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": [
+        "real: 硬冻结线上写入",
+        "drill: 只记录写水位线"
+      ]
+    },
+    {
+      "order": 4,
+      "step": "restore_backup",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": [
+        "real: 恢复到线上库",
+        "drill: 恢复到线上数据副本(沙箱)"
+      ]
+    },
+    {
+      "order": 5,
+      "step": "verify_restore",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": []
+    },
+    {
+      "order": 6,
+      "step": "detect_new_writes",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": []
+    },
+    {
+      "order": 7,
+      "step": "unfreeze_writes",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": []
+    },
+    {
+      "order": 8,
+      "step": "cleanup",
+      "real_status": "ok",
+      "drill_status": "ok",
+      "same_order": true,
+      "same_code_path": true,
+      "param_differences": [
+        "real: 无沙箱清理",
+        "drill: 丢弃沙箱副本"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,549 @@
+[
+  {
+    "scenario": "all_success",
+    "verdict": "success",
+    "description": "无故障、无新写入、未超时",
+    "report": {
+      "mode": "drill",
+      "outcome": "success",
+      "abort_reason": null,
+      "tainted": false,
+      "started_at": 1000.0,
+      "ended_at": 1003.1000000000001,
+      "duration": 3.1,
+      "steps": [
+        {
+          "order": 1,
+          "name": "snapshot_source",
+          "status": "ok",
+          "started_at": 1000.0,
+          "ended_at": 1000.5,
+          "duration": 0.5,
+          "data": {
+            "records": 50,
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "write_seq": 0
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "verify_backup",
+          "status": "ok",
+          "started_at": 1000.5,
+          "ended_at": 1001.0,
+          "duration": 0.5,
+          "data": {
+            "backup_id": "bkp-latest",
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "match": true
+          },
+          "error": null
+        },
+        {
+          "order": 3,
+          "name": "freeze_writes",
+          "status": "ok",
+          "started_at": 1001.0,
+          "ended_at": 1001.2,
+          "duration": 0.2,
+          "data": {
+            "watermark": 0,
+            "hard_freeze": false,
+            "note": "drill 只记录水位线，不阻塞线上写入"
+          },
+          "error": null
+        },
+        {
+          "order": 4,
+          "name": "restore_backup",
+          "status": "ok",
+          "started_at": 1001.2,
+          "ended_at": 1002.2,
+          "duration": 1.0,
+          "data": {
+            "target": "drill-sandbox",
+            "restored_records": 50
+          },
+          "error": null
+        },
+        {
+          "order": 5,
+          "name": "verify_restore",
+          "status": "ok",
+          "started_at": 1002.2,
+          "ended_at": 1002.7,
+          "duration": 0.5,
+          "data": {
+            "expected": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "actual": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "match": true
+          },
+          "error": null
+        },
+        {
+          "order": 6,
+          "name": "detect_new_writes",
+          "status": "ok",
+          "started_at": 1002.7,
+          "ended_at": 1002.8000000000001,
+          "duration": 0.1,
+          "data": {
+            "watermark": 0,
+            "current_seq": 0,
+            "new_writes": 0
+          },
+          "error": null
+        },
+        {
+          "order": 7,
+          "name": "unfreeze_writes",
+          "status": "ok",
+          "started_at": 1002.8000000000001,
+          "ended_at": 1003.0000000000001,
+          "duration": 0.2,
+          "data": {
+            "released": false
+          },
+          "error": null
+        },
+        {
+          "order": 8,
+          "name": "cleanup",
+          "status": "ok",
+          "started_at": 1003.0000000000001,
+          "ended_at": 1003.1000000000001,
+          "duration": 0.1,
+          "data": {
+            "sandbox_discarded": true,
+            "discarded_records": 50
+          },
+          "error": null
+        }
+      ],
+      "compensations": []
+    }
+  },
+  {
+    "scenario": "single_step_failure",
+    "verdict": "aborted",
+    "description": "verify_restore 校验失败：中止 + 逆序补偿",
+    "report": {
+      "mode": "drill",
+      "outcome": "aborted",
+      "abort_reason": "step 'verify_restore' failed: checksum mismatch (injected)",
+      "tainted": false,
+      "started_at": 1000.0,
+      "ended_at": 1002.8,
+      "duration": 2.8,
+      "steps": [
+        {
+          "order": 1,
+          "name": "snapshot_source",
+          "status": "ok",
+          "started_at": 1000.0,
+          "ended_at": 1000.5,
+          "duration": 0.5,
+          "data": {
+            "records": 50,
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "write_seq": 0
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "verify_backup",
+          "status": "ok",
+          "started_at": 1000.5,
+          "ended_at": 1001.0,
+          "duration": 0.5,
+          "data": {
+            "backup_id": "bkp-latest",
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "match": true
+          },
+          "error": null
+        },
+        {
+          "order": 3,
+          "name": "freeze_writes",
+          "status": "ok",
+          "started_at": 1001.0,
+          "ended_at": 1001.2,
+          "duration": 0.2,
+          "data": {
+            "watermark": 0,
+            "hard_freeze": false,
+            "note": "drill 只记录水位线，不阻塞线上写入"
+          },
+          "error": null
+        },
+        {
+          "order": 4,
+          "name": "restore_backup",
+          "status": "ok",
+          "started_at": 1001.2,
+          "ended_at": 1002.2,
+          "duration": 1.0,
+          "data": {
+            "target": "drill-sandbox",
+            "restored_records": 50
+          },
+          "error": null
+        },
+        {
+          "order": 5,
+          "name": "verify_restore",
+          "status": "failed",
+          "started_at": 1002.2,
+          "ended_at": 1002.7,
+          "duration": 0.5,
+          "data": {},
+          "error": "checksum mismatch (injected)"
+        },
+        {
+          "order": 6,
+          "name": "detect_new_writes",
+          "status": "skipped",
+          "started_at": 1002.7,
+          "ended_at": 1002.7,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        },
+        {
+          "order": 7,
+          "name": "unfreeze_writes",
+          "status": "skipped",
+          "started_at": 1002.7,
+          "ended_at": 1002.7,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        },
+        {
+          "order": 8,
+          "name": "cleanup",
+          "status": "skipped",
+          "started_at": 1002.7,
+          "ended_at": 1002.7,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        }
+      ],
+      "compensations": [
+        {
+          "order": 1,
+          "name": "compensate:restore_backup",
+          "status": "ok",
+          "started_at": 1002.7,
+          "ended_at": 1002.75,
+          "duration": 0.05,
+          "data": {
+            "compensated": "restore_backup",
+            "sandbox_cleared": true
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "compensate:freeze_writes",
+          "status": "ok",
+          "started_at": 1002.75,
+          "ended_at": 1002.8,
+          "duration": 0.05,
+          "data": {
+            "compensated": "freeze_writes"
+          },
+          "error": null
+        }
+      ]
+    }
+  },
+  {
+    "scenario": "new_writes_mid_drill",
+    "verdict": "invalidated",
+    "description": "检测到演练期间的新写入：标记 tainted + 中止 + 补偿",
+    "report": {
+      "mode": "drill",
+      "outcome": "invalidated",
+      "abort_reason": "1 new write(s) during drill; result marked tainted",
+      "tainted": true,
+      "started_at": 1000.0,
+      "ended_at": 1002.9,
+      "duration": 2.9,
+      "steps": [
+        {
+          "order": 1,
+          "name": "snapshot_source",
+          "status": "ok",
+          "started_at": 1000.0,
+          "ended_at": 1000.5,
+          "duration": 0.5,
+          "data": {
+            "records": 50,
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "write_seq": 0
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "verify_backup",
+          "status": "ok",
+          "started_at": 1000.5,
+          "ended_at": 1001.0,
+          "duration": 0.5,
+          "data": {
+            "backup_id": "bkp-latest",
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "match": true
+          },
+          "error": null
+        },
+        {
+          "order": 3,
+          "name": "freeze_writes",
+          "status": "ok",
+          "started_at": 1001.0,
+          "ended_at": 1001.2,
+          "duration": 0.2,
+          "data": {
+            "watermark": 0,
+            "hard_freeze": false,
+            "note": "drill 只记录水位线，不阻塞线上写入"
+          },
+          "error": null
+        },
+        {
+          "order": 4,
+          "name": "restore_backup",
+          "status": "ok",
+          "started_at": 1001.2,
+          "ended_at": 1002.2,
+          "duration": 1.0,
+          "data": {
+            "target": "drill-sandbox",
+            "restored_records": 50
+          },
+          "error": null
+        },
+        {
+          "order": 5,
+          "name": "verify_restore",
+          "status": "ok",
+          "started_at": 1002.2,
+          "ended_at": 1002.7,
+          "duration": 0.5,
+          "data": {
+            "expected": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "actual": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "match": true
+          },
+          "error": null
+        },
+        {
+          "order": 6,
+          "name": "detect_new_writes",
+          "status": "ok",
+          "started_at": 1002.7,
+          "ended_at": 1002.8000000000001,
+          "duration": 0.1,
+          "data": {
+            "watermark": 0,
+            "current_seq": 1,
+            "new_writes": 1
+          },
+          "error": null
+        },
+        {
+          "order": 7,
+          "name": "unfreeze_writes",
+          "status": "skipped",
+          "started_at": 1002.8000000000001,
+          "ended_at": 1002.8000000000001,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        },
+        {
+          "order": 8,
+          "name": "cleanup",
+          "status": "skipped",
+          "started_at": 1002.8000000000001,
+          "ended_at": 1002.8000000000001,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        }
+      ],
+      "compensations": [
+        {
+          "order": 1,
+          "name": "compensate:restore_backup",
+          "status": "ok",
+          "started_at": 1002.8000000000001,
+          "ended_at": 1002.85,
+          "duration": 0.05,
+          "data": {
+            "compensated": "restore_backup",
+            "sandbox_cleared": true
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "compensate:freeze_writes",
+          "status": "ok",
+          "started_at": 1002.85,
+          "ended_at": 1002.9,
+          "duration": 0.05,
+          "data": {
+            "compensated": "freeze_writes"
+          },
+          "error": null
+        }
+      ]
+    }
+  },
+  {
+    "scenario": "timeout",
+    "verdict": "timeout",
+    "description": "超过注入截止时间：中止 + 逆序补偿",
+    "report": {
+      "mode": "drill",
+      "outcome": "timeout",
+      "abort_reason": "deadline 1002.0 exceeded before step 'verify_restore'",
+      "tainted": false,
+      "started_at": 1000.0,
+      "ended_at": 1102.3,
+      "duration": 102.3,
+      "steps": [
+        {
+          "order": 1,
+          "name": "snapshot_source",
+          "status": "ok",
+          "started_at": 1000.0,
+          "ended_at": 1000.5,
+          "duration": 0.5,
+          "data": {
+            "records": 50,
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "write_seq": 0
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "verify_backup",
+          "status": "ok",
+          "started_at": 1000.5,
+          "ended_at": 1001.0,
+          "duration": 0.5,
+          "data": {
+            "backup_id": "bkp-latest",
+            "checksum": "f5e2b56290f682faa4fe294e0bb5fc078d5ef0ae486c4b4ce7c69d45a6693306",
+            "match": true
+          },
+          "error": null
+        },
+        {
+          "order": 3,
+          "name": "freeze_writes",
+          "status": "ok",
+          "started_at": 1001.0,
+          "ended_at": 1001.2,
+          "duration": 0.2,
+          "data": {
+            "watermark": 0,
+            "hard_freeze": false,
+            "note": "drill 只记录水位线，不阻塞线上写入"
+          },
+          "error": null
+        },
+        {
+          "order": 4,
+          "name": "restore_backup",
+          "status": "ok",
+          "started_at": 1001.2,
+          "ended_at": 1102.2,
+          "duration": 101.0,
+          "data": {
+            "target": "drill-sandbox",
+            "restored_records": 50
+          },
+          "error": null
+        },
+        {
+          "order": 5,
+          "name": "verify_restore",
+          "status": "skipped",
+          "started_at": 1102.2,
+          "ended_at": 1102.2,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        },
+        {
+          "order": 6,
+          "name": "detect_new_writes",
+          "status": "skipped",
+          "started_at": 1102.2,
+          "ended_at": 1102.2,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        },
+        {
+          "order": 7,
+          "name": "unfreeze_writes",
+          "status": "skipped",
+          "started_at": 1102.2,
+          "ended_at": 1102.2,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        },
+        {
+          "order": 8,
+          "name": "cleanup",
+          "status": "skipped",
+          "started_at": 1102.2,
+          "ended_at": 1102.2,
+          "duration": 0.0,
+          "data": {},
+          "error": null
+        }
+      ],
+      "compensations": [
+        {
+          "order": 1,
+          "name": "compensate:restore_backup",
+          "status": "ok",
+          "started_at": 1102.2,
+          "ended_at": 1102.25,
+          "duration": 0.05,
+          "data": {
+            "compensated": "restore_backup",
+            "sandbox_cleared": true
+          },
+          "error": null
+        },
+        {
+          "order": 2,
+          "name": "compensate:freeze_writes",
+          "status": "ok",
+          "started_at": 1102.25,
+          "ended_at": 1102.3,
+          "duration": 0.05,
+          "data": {
+            "compensated": "freeze_writes"
+          },
+          "error": null
+        }
+      ]
+    }
+  }
+]
