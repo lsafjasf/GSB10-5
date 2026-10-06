@@ -1,0 +1,3 @@
+target_index,target_pts_exact,target_pts_s,source_index,source_pts_exact,source_pts_s,phase_error_exact,phase_error_ms,cum_error_exact,cum_error_ms,duplicated
+0,5,5.000000,0,5,5.000000,0,+0.0000,0,+0.0000,0
+1,301/60,5.016667,0,5,5.000000,-1/60,-16.6667,-1/60,-16.6667,1
