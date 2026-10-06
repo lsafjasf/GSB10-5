@@ -1,0 +1,83 @@
+{
+  "scenarios": {
+    "cascade": {
+      "affected_user_fraction_estimate": 0.8,
+      "affected_user_fraction_observed": 0.80072,
+      "absolute_error": 0.00072,
+      "relative_error_pct": 0.09,
+      "down_set_jaccard": 1.0,
+      "impacted_set_jaccard": 1.0,
+      "down_estimate_only": [],
+      "down_observed_only": [],
+      "service_loss_rmse": 0.000207,
+      "service_loss_mae": 0.000103
+    },
+    "mixed": {
+      "affected_user_fraction_estimate": 0.37,
+      "affected_user_fraction_observed": 0.48636,
+      "absolute_error": 0.11636,
+      "relative_error_pct": 23.92,
+      "down_set_jaccard": 1.0,
+      "impacted_set_jaccard": 1.0,
+      "down_estimate_only": [],
+      "down_observed_only": [],
+      "service_loss_rmse": 0.07322,
+      "service_loss_mae": 0.032745
+    },
+    "no_impact": {
+      "affected_user_fraction_estimate": 0.0,
+      "affected_user_fraction_observed": 0.0,
+      "absolute_error": 0.0,
+      "relative_error_pct": 0.0,
+      "down_set_jaccard": 1.0,
+      "impacted_set_jaccard": 1.0,
+      "down_estimate_only": [],
+      "down_observed_only": [],
+      "service_loss_rmse": 0.0,
+      "service_loss_mae": 0.0
+    },
+    "redundancy_defeated": {
+      "affected_user_fraction_estimate": 1.0,
+      "affected_user_fraction_observed": 1.0,
+      "absolute_error": 0.0,
+      "relative_error_pct": 0.0,
+      "down_set_jaccard": 1.0,
+      "impacted_set_jaccard": 1.0,
+      "down_estimate_only": [],
+      "down_observed_only": [],
+      "service_loss_rmse": 0.0,
+      "service_loss_mae": 0.0
+    },
+    "redundancy_holds": {
+      "affected_user_fraction_estimate": 0.0,
+      "affected_user_fraction_observed": 0.0,
+      "absolute_error": 0.0,
+      "relative_error_pct": 0.0,
+      "down_set_jaccard": 1.0,
+      "impacted_set_jaccard": 1.0,
+      "down_estimate_only": [],
+      "down_observed_only": [],
+      "service_loss_rmse": 0.0,
+      "service_loss_mae": 0.0
+    },
+    "single_point": {
+      "affected_user_fraction_estimate": 0.7,
+      "affected_user_fraction_observed": 0.69847,
+      "absolute_error": 0.00153,
+      "relative_error_pct": 0.22,
+      "down_set_jaccard": 1.0,
+      "impacted_set_jaccard": 1.0,
+      "down_estimate_only": [],
+      "down_observed_only": [],
+      "service_loss_rmse": 0.001082,
+      "service_loss_mae": 0.000765
+    }
+  },
+  "deviation_sources": [
+    "故障切换失败：评估假设流量可完全切到健康副本，实际受连接池/配置/会话粘连等影响，按 DependencyGroup.fail_over_fail 产生额外损失",
+    "采样噪声：模拟按有限次请求抽样，错误率是估计值（标准误差约 sqrt(p(1-p)/N)，N=10万时约 0.16% 以内）",
+    "观测阈值：演练只能从监控错误率判定异常，阈值 >=99% 才记为 down，轻微受损服务可能被漏报，拓扑推导则无此损失",
+    "重试/熔断/超时未建模：评估不包含重试放大、雪崩与自动熔断行为",
+    "流量比例为静态配置：实际入口权重与依赖流量占比随时间波动"
+  ]
+}

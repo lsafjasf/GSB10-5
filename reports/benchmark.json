@@ -1,0 +1,23 @@
+{
+  "n_services": 10000,
+  "n_dependency_edges": 99992,
+  "fault_domain": "fd758",
+  "generate_ms": 907.9,
+  "assess_ms": 852.0,
+  "total_ms": 1759.9,
+  "generate_peak_mib": 23.27,
+  "assess_peak_mib": 29.8,
+  "process_maxrss_mib": 110.5,
+  "result": {
+    "services_total": 10000,
+    "services_faulted_directly": 6,
+    "services_down": 6,
+    "services_impacted": 7539,
+    "affected_user_fraction": 0.029621,
+    "critical_path_count": 100000,
+    "critical_paths_truncated": true,
+    "redundancy_defeated_groups": 0,
+    "redundancy_protected_groups": 10,
+    "single_point_failure_groups": 33
+  }
+}

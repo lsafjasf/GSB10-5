@@ -1,0 +1,270 @@
+{
+  "cascade": {
+    "injected_domains": [
+      "host-c"
+    ],
+    "summary": {
+      "services_total": 5,
+      "services_faulted_directly": 1,
+      "services_down": 4,
+      "services_impacted": 5,
+      "affected_user_fraction": 0.8,
+      "critical_path_count": 2,
+      "critical_paths_truncated": false,
+      "redundancy_defeated_groups": 0,
+      "redundancy_protected_groups": 0,
+      "single_point_failure_groups": 4
+    },
+    "detail": {
+      "faulted_directly": [
+        "svc_c"
+      ],
+      "down": [
+        "gateway",
+        "svc_a",
+        "svc_b",
+        "svc_c"
+      ],
+      "impacted": [
+        "gateway",
+        "svc_a",
+        "svc_b",
+        "svc_c",
+        "web"
+      ],
+      "service_loss": {
+        "gateway": 1.0,
+        "svc_a": 1.0,
+        "svc_b": 1.0,
+        "svc_c": 1.0,
+        "web": 0.5
+      },
+      "defeated_redundancy": [],
+      "protected_redundancy": [],
+      "single_point_failures": [
+        "gateway->g0",
+        "web->g0",
+        "svc_a->g0",
+        "svc_b->g0"
+      ]
+    },
+    "critical_path_count": 2
+  },
+  "mixed": {
+    "injected_domains": [
+      "host-a1",
+      "host-b"
+    ],
+    "summary": {
+      "services_total": 8,
+      "services_faulted_directly": 2,
+      "services_down": 3,
+      "services_impacted": 4,
+      "affected_user_fraction": 0.37,
+      "critical_path_count": 2,
+      "critical_paths_truncated": false,
+      "redundancy_defeated_groups": 0,
+      "redundancy_protected_groups": 1,
+      "single_point_failure_groups": 2
+    },
+    "detail": {
+      "faulted_directly": [
+        "a1",
+        "b"
+      ],
+      "down": [
+        "a1",
+        "b",
+        "gw2"
+      ],
+      "impacted": [
+        "a1",
+        "b",
+        "gw1",
+        "gw2"
+      ],
+      "service_loss": {
+        "a1": 1.0,
+        "b": 1.0,
+        "gw1": 0.1,
+        "gw2": 1.0
+      },
+      "defeated_redundancy": [],
+      "protected_redundancy": [
+        "gw1->g0"
+      ],
+      "single_point_failures": [
+        "gw1->g1",
+        "gw2->g0"
+      ]
+    },
+    "critical_path_count": 2
+  },
+  "no_impact": {
+    "injected_domains": [
+      "offline"
+    ],
+    "summary": {
+      "services_total": 4,
+      "services_faulted_directly": 0,
+      "services_down": 0,
+      "services_impacted": 0,
+      "affected_user_fraction": 0.0,
+      "critical_path_count": 0,
+      "critical_paths_truncated": false,
+      "redundancy_defeated_groups": 0,
+      "redundancy_protected_groups": 0,
+      "single_point_failure_groups": 0
+    },
+    "detail": {
+      "faulted_directly": [],
+      "down": [],
+      "impacted": [],
+      "service_loss": {},
+      "defeated_redundancy": [],
+      "protected_redundancy": [],
+      "single_point_failures": []
+    },
+    "critical_path_count": 0
+  },
+  "redundancy_defeated": {
+    "injected_domains": [
+      "az-1"
+    ],
+    "summary": {
+      "services_total": 4,
+      "services_faulted_directly": 3,
+      "services_down": 4,
+      "services_impacted": 4,
+      "affected_user_fraction": 1.0,
+      "critical_path_count": 2,
+      "critical_paths_truncated": false,
+      "redundancy_defeated_groups": 1,
+      "redundancy_protected_groups": 0,
+      "single_point_failure_groups": 2
+    },
+    "detail": {
+      "faulted_directly": [
+        "backend",
+        "svc_primary",
+        "svc_replica"
+      ],
+      "down": [
+        "backend",
+        "gateway",
+        "svc_primary",
+        "svc_replica"
+      ],
+      "impacted": [
+        "backend",
+        "gateway",
+        "svc_primary",
+        "svc_replica"
+      ],
+      "service_loss": {
+        "backend": 1.0,
+        "gateway": 1.0,
+        "svc_primary": 1.0,
+        "svc_replica": 1.0
+      },
+      "defeated_redundancy": [
+        {
+          "gid": "gateway->g0",
+          "owner": "gateway",
+          "providers": [
+            "svc_primary",
+            "svc_replica"
+          ],
+          "down_providers": [
+            "svc_primary",
+            "svc_replica"
+          ],
+          "min_healthy": 1,
+          "cause": "冗余副本共属故障域 az-1，被同一刀同时打挂"
+        }
+      ],
+      "protected_redundancy": [],
+      "single_point_failures": [
+        "svc_primary->g0",
+        "svc_replica->g0"
+      ]
+    },
+    "critical_path_count": 2
+  },
+  "redundancy_holds": {
+    "injected_domains": [
+      "host-a"
+    ],
+    "summary": {
+      "services_total": 4,
+      "services_faulted_directly": 1,
+      "services_down": 1,
+      "services_impacted": 1,
+      "affected_user_fraction": 0.0,
+      "critical_path_count": 0,
+      "critical_paths_truncated": false,
+      "redundancy_defeated_groups": 0,
+      "redundancy_protected_groups": 1,
+      "single_point_failure_groups": 0
+    },
+    "detail": {
+      "faulted_directly": [
+        "svc_primary"
+      ],
+      "down": [
+        "svc_primary"
+      ],
+      "impacted": [
+        "svc_primary"
+      ],
+      "service_loss": {
+        "svc_primary": 1.0
+      },
+      "defeated_redundancy": [],
+      "protected_redundancy": [
+        "gateway->g0"
+      ],
+      "single_point_failures": []
+    },
+    "critical_path_count": 0
+  },
+  "single_point": {
+    "injected_domains": [
+      "host-a"
+    ],
+    "summary": {
+      "services_total": 3,
+      "services_faulted_directly": 1,
+      "services_down": 1,
+      "services_impacted": 2,
+      "affected_user_fraction": 0.7,
+      "critical_path_count": 1,
+      "critical_paths_truncated": false,
+      "redundancy_defeated_groups": 0,
+      "redundancy_protected_groups": 0,
+      "single_point_failure_groups": 1
+    },
+    "detail": {
+      "faulted_directly": [
+        "svc_a"
+      ],
+      "down": [
+        "svc_a"
+      ],
+      "impacted": [
+        "gateway",
+        "svc_a"
+      ],
+      "service_loss": {
+        "gateway": 0.7,
+        "svc_a": 1.0
+      },
+      "defeated_redundancy": [],
+      "protected_redundancy": [],
+      "single_point_failures": [
+        "gateway->g0"
+      ]
+    },
+    "critical_path_count": 1
+  }
+}
