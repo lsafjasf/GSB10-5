@@ -1,0 +1,32 @@
+images=10000 workers=14 box=160x160 pipeline=lanczos+unsharp(0.8,0.5)+png
+
+== timing (per-image pipeline, ms) ==
+total wall: 34.0 s   total CPU: 464.2 s   throughput: 294 img/s (wall)
+mean 46.42 | median 11.36 | p90 147.14 | p95 217.26 | p99 374.08 | min 0.01 | max 670.26
+
+== histogram (ms) ==
+      <1 ms :   3918 ( 39.2%) #######################
+     1-2 ms :     47 (  0.5%) 
+     2-5 ms :    202 (  2.0%) #
+    5-10 ms :    662 (  6.6%) ###
+   10-20 ms :   1090 ( 10.9%) ######
+   20-50 ms :   1438 ( 14.4%) ########
+  50-100 ms :   1030 ( 10.3%) ######
+ 100-200 ms :   1017 ( 10.2%) ######
+ 200-500 ms :    571 (  5.7%) ###
+   >=500 ms :     25 (  0.2%) 
+
+== by content ==
+gradient  n=2500 mean 48.09 ms  p95 232.55 ms
+noise     n=2500 mean 44.51 ms  p95 202.29 ms
+checker   n=2500 mean 45.88 ms  p95 219.65 ms
+blobs     n=2500 mean 47.18 ms  p95 221.46 ms
+
+== slowest 5 ==
+  670.26 ms  in=610x629 out=155x160 gradient
+  658.62 ms  in=621x622 out=160x160 checker
+  649.98 ms  in=601x613 out=157x160 gradient
+  634.59 ms  in=622x572 out=160x147 blobs
+  624.40 ms  in=619x588 out=160x152 gradient
+
+output PNG bytes: median 2717  p95 42906  max 74100
