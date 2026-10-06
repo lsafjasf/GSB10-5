@@ -1,0 +1,124 @@
+
+========================================================================
+Scenario 1: single build -> full reverse lookup chain
+========================================================================
+artifact_sha256 = 75c361ac0498d71da65058e6a19856ffc8d5b9fc72532500f2dd0b9e1a243fb3
+reverse lookup result:
+{
+  "artifact_sha256": "75c361ac0498d71da65058e6a19856ffc8d5b9fc72532500f2dd0b9e1a243fb3",
+  "build_id": "df1ace9ba100e4516f0c26b9268709dff8d0f929f89554a609088fb3b672e988",
+  "integrity_ok": true,
+  "integrity_problems": [],
+  "source_commit": "f67516d79366854fce666786c98ec2fee8662d2e",
+  "source_tree_sha256": "108cbbe8036f506265db90b6badb282e958839d9c9bddf1d39d68ddaf1316129",
+  "source_repo": "https://example.invalid/team/app.git",
+  "build": {
+    "builder": "administrator",
+    "command": "make",
+    "finished_at": "2026-10-06T04:23:57.168777+00:00",
+    "nonce": "7dc5e6432ad142d4a69e53019d028249",
+    "params": {
+      "OPT_LEVEL": "2"
+    }
+  },
+  "toolchain": {
+    "machine": "x86_64",
+    "os": "Linux",
+    "os_release": "6.18.33.1-microsoft-standard-WSL2",
+    "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "dependencies": {
+    "lockfile_sha256": "9f2c1a5e7b84d60f3a1c2e4d5b6a7f80912837465abcdef0123456789abcdef0",
+    "resolved": [
+      {
+        "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "name": "requests",
+        "version": "2.31.0"
+      },
+      {
+        "digest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "name": "urllib3",
+        "version": "2.2.1"
+      }
+    ]
+  }
+}
+
+========================================================================
+Scenario 2: same source rebuilt twice (distinguishable, same origin)
+========================================================================
+build #1 build_id = df1ace9ba100e4516f0c26b9268709dff8d0f929f89554a609088fb3b672e988
+build #1 finished_at = 2026-10-06T04:23:57.168777+00:00  nonce=7dc5e6432ad142d4a69e53019d028249
+build #2 build_id = 85c3088477fded63d943d51675a36f049e1f81d276b80a72873009b450d59f04
+build #2 finished_at = 2026-10-06T04:23:57.169117+00:00  nonce=41c2ac206722480c977320c2a9c75aed
+{
+  "same_artifact_sha256": true,
+  "different_build_ids": true,
+  "same_commit": true,
+  "same_source_tree_sha256": true,
+  "source_sections_identical": true,
+  "records_resolved_for_one_artifact_id": 2
+}
+
+========================================================================
+Scenario 3: same source, different build environment
+========================================================================
+{
+  "build_with_python312": {
+    "build_id": "85c3088477fded63d943d51675a36f049e1f81d276b80a72873009b450d59f04",
+    "toolchain": {
+      "python": "3.12.3",
+      "os": "Linux",
+      "os_release": "6.18.33.1-microsoft-standard-WSL2",
+      "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+      "machine": "x86_64"
+    }
+  },
+  "build_with_python310": {
+    "build_id": "0eaa2773736c82110bb3618fc46a5e9f15b6e3172e873b589e33a905e8d6e555",
+    "toolchain": {
+      "python": "3.10.13",
+      "os": "Linux",
+      "os_release": "5.15.0",
+      "platform": "Linux-5.15.0-x86_64",
+      "machine": "x86_64"
+    }
+  },
+  "same_commit": true,
+  "same_source_tree_sha256": true,
+  "different_build_ids": true
+}
+
+========================================================================
+Scenario 4: tampered record must be detected
+========================================================================
+{
+  "tamper_action": "rewrite source.commit -> deadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+  "stored_record_sha256": "df1ace9ba100e4516f0c26b9268709dff8d0f929f89554a609088fb3b672e988",
+  "recomputed_record_sha256": "1fecd92ce8c9984df2f9b5e2a579994476dd6a39487d3c56de57413d5cc93c39",
+  "digests_match": false,
+  "verify_record_problems": [
+    "record_sha256 mismatch: stored=df1ace9ba100e4516f0c26b9268709dff8d0f929f89554a609088fb3b672e988 recomputed=1fecd92ce8c9984df2f9b5e2a579994476dd6a39487d3c56de57413d5cc93c39"
+  ]
+}
+whole-ledger verification:
+{
+  "ok_records": 3,
+  "tampered_records": [
+    {
+      "line": 4,
+      "problems": [
+        "record_sha256 mismatch: stored=df1ace9ba100e4516f0c26b9268709dff8d0f929f89554a609088fb3b672e988 recomputed=1fecd92ce8c9984df2f9b5e2a579994476dd6a39487d3c56de57413d5cc93c39"
+      ]
+    }
+  ]
+}
+artifact-file tamper check:
+{
+  "problems": [
+    "artifact digest mismatch: recorded=962f85a27854336f3286ad54b49321f62525043b5f3508b2ecc887fdd6e7550e actual=06c9c46ca6d42f6ee7994823417b7955695508131e8f21ec46ad2e3351af148a"
+  ]
+}
+
+ledger file: /tmp/prov-demo-koo_yjmw/ledger.jsonl

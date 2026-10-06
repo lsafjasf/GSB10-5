@@ -1,0 +1,16 @@
+{
+  "records": 100000,
+  "ledger_size_mb": 108.69,
+  "ledger_write_s": 1.747,
+  "index_build_s": 0.579,
+  "index_memory_bytes": 46916760,
+  "index_memory_mb": 46.92,
+  "lookups": 100000,
+  "lookup_total_s": 1.078,
+  "lookup_avg_us": 10.78,
+  "lookup_p50_us": 9.41,
+  "lookup_p99_us": 36.61,
+  "trace_total_s": 1.851,
+  "trace_avg_us": 18.51,
+  "lookups_per_s": 92752.0
+}

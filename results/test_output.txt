@@ -1,0 +1,11 @@
+test_corrupt_ledger_line_detected (test_provenance.ProvenanceTests.test_corrupt_ledger_line_detected) ... ok
+test_environment_difference_recorded (test_provenance.ProvenanceTests.test_environment_difference_recorded) ... ok
+test_repeated_builds_distinguishable_same_origin (test_provenance.ProvenanceTests.test_repeated_builds_distinguishable_same_origin) ... ok
+test_single_build_full_chain (test_provenance.ProvenanceTests.test_single_build_full_chain) ... ok
+test_tampered_artifact_file_detected (test_provenance.ProvenanceTests.test_tampered_artifact_file_detected) ... ok
+test_tampered_record_detected (test_provenance.ProvenanceTests.test_tampered_record_detected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.011s
+
+OK
