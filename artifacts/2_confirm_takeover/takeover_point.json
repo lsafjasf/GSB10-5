@@ -1,0 +1,46 @@
+{
+  "run_id": "run-2365838ea6a5",
+  "book_id": "rb-confirm",
+  "book_name": "含人工确认手册：磁盘扩容",
+  "state_before": "waiting_human",
+  "state_after": "human_controlled",
+  "taken_over_by": "oncall-zhangsan",
+  "taken_over_at": "2026-10-06T15:52:57.696+00:00",
+  "next_index": 1,
+  "current_step": "s2",
+  "completed_steps": [
+    {
+      "step_id": "s1",
+      "status": "ok",
+      "output": {
+        "service": "disk",
+        "healthy": true
+      },
+      "decision_by": ""
+    }
+  ],
+  "pending_steps": [
+    {
+      "step_id": "s2",
+      "title": "确认可下线扩容",
+      "kind": "confirm"
+    },
+    {
+      "step_id": "s3",
+      "title": "执行扩容",
+      "kind": "auto"
+    },
+    {
+      "step_id": "s4",
+      "title": "确认扩容结果",
+      "kind": "confirm"
+    }
+  ],
+  "shared_data": {
+    "s1": {
+      "service": "disk",
+      "healthy": true
+    }
+  },
+  "checkpoint_path": "/home/administrator/gsb/uid437/B/artifacts/2_confirm_takeover/run-2365838ea6a5.checkpoint.json"
+}

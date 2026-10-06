@@ -1,0 +1,41 @@
+[
+  {
+    "scenario": "full_auto",
+    "final_state": "completed",
+    "run_id": "run-0c4fa7742e35",
+    "trace": "/home/administrator/gsb/uid437/B/artifacts/1_full_auto/trace.jsonl",
+    "checkpoint": "/home/administrator/gsb/uid437/B/artifacts/1_full_auto/run-0c4fa7742e35.checkpoint.json"
+  },
+  {
+    "scenario": "confirm_takeover",
+    "state_when_stopped": "waiting_human",
+    "state_after_takeover": "human_controlled",
+    "current_step_at_takeover": "s2",
+    "final_state": "completed",
+    "run_id": "run-2365838ea6a5",
+    "trace": "/home/administrator/gsb/uid437/B/artifacts/2_confirm_takeover/trace.jsonl",
+    "takeover_point": "/home/administrator/gsb/uid437/B/artifacts/2_confirm_takeover/takeover_point.json"
+  },
+  {
+    "scenario": "approval",
+    "final_state": "completed",
+    "run_id": "run-0cfe0482cdc9",
+    "trace": "/home/administrator/gsb/uid437/B/artifacts/3_approval/trace.jsonl"
+  },
+  {
+    "scenario": "interrupt",
+    "state_when_interrupted": "interrupted",
+    "interrupted_next_step": "s3",
+    "resume": {
+      "final_state": "completed"
+    },
+    "safe_abort": {
+      "final_state": "aborted",
+      "executed_steps": [
+        "s1",
+        "s2"
+      ]
+    },
+    "checkpoint": "/home/administrator/gsb/uid437/B/artifacts/4_interrupt/run-d49f2d15b1ba.checkpoint.json"
+  }
+]

@@ -1,0 +1,42 @@
+{
+ "run_id": "run-d49f2d15b1ba",
+ "book_id": "rb-interrupt",
+ "book_version": "1",
+ "state": "aborted",
+ "next_index": 2,
+ "records": {
+  "s1": {
+   "step_id": "s1",
+   "status": "ok",
+   "output": {
+    "service": "app-batch-1",
+    "restarted": true
+   },
+   "error": "",
+   "decision_by": "",
+   "started_at": "2026-10-06T15:52:57.698+00:00",
+   "finished_at": "2026-10-06T15:52:57.698+00:00"
+  },
+  "s2": {
+   "step_id": "s2",
+   "status": "ok",
+   "output": {
+    "interrupted_at": "s2"
+   },
+   "error": "",
+   "decision_by": "",
+   "started_at": "2026-10-06T15:52:57.698+00:00",
+   "finished_at": "2026-10-06T15:52:57.698+00:00"
+  }
+ },
+ "data": {
+  "s1": {
+   "service": "app-batch-1",
+   "restarted": true
+  },
+  "__interrupt__": true,
+  "s2": {
+   "interrupted_at": "s2"
+  }
+ }
+}

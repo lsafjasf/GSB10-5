@@ -1,0 +1,71 @@
+{
+ "run_id": "run-0cfe0482cdc9",
+ "book_id": "rb-approval",
+ "book_version": "1",
+ "state": "completed",
+ "next_index": 4,
+ "records": {
+  "s1": {
+   "step_id": "s1",
+   "status": "ok",
+   "output": {
+    "service": "db",
+    "healthy": true
+   },
+   "error": "",
+   "decision_by": "",
+   "started_at": "2026-10-06T15:52:57.697+00:00",
+   "finished_at": "2026-10-06T15:52:57.697+00:00"
+  },
+  "s2": {
+   "step_id": "s2",
+   "status": "ok",
+   "output": {
+    "note": "维护窗口内，批准重启"
+   },
+   "error": "",
+   "decision_by": "director-lisi",
+   "started_at": "2026-10-06T15:52:57.697+00:00",
+   "finished_at": "2026-10-06T15:52:57.697+00:00"
+  },
+  "s3": {
+   "step_id": "s3",
+   "status": "ok",
+   "output": {
+    "service": "db",
+    "restarted": true
+   },
+   "error": "",
+   "decision_by": "",
+   "started_at": "2026-10-06T15:52:57.697+00:00",
+   "finished_at": "2026-10-06T15:52:57.697+00:00"
+  },
+  "s4": {
+   "step_id": "s4",
+   "status": "manual_done",
+   "output": {
+    "note": "三表抽查一致"
+   },
+   "error": "",
+   "decision_by": "oncall-wangwu",
+   "started_at": "2026-10-06T15:52:57.697+00:00",
+   "finished_at": "2026-10-06T15:52:57.697+00:00"
+  }
+ },
+ "data": {
+  "s1": {
+   "service": "db",
+   "healthy": true
+  },
+  "s2": {
+   "note": "维护窗口内，批准重启"
+  },
+  "s3": {
+   "service": "db",
+   "restarted": true
+  },
+  "s4": {
+   "note": "三表抽查一致"
+  }
+ }
+}

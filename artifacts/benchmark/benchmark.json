@@ -1,0 +1,15 @@
+{
+  "runbooks": 1000,
+  "steps_per_runbook": 10,
+  "total_steps": 10000,
+  "final_states": {
+    "completed": 1000
+  },
+  "wall_time_sec": 1.412,
+  "steps_per_sec": 7080.6,
+  "avg_runbook_ms": 1.412,
+  "py_alloc_peak_mb": 0.16,
+  "process_maxrss_mb": 19.2,
+  "python": "3.12.3",
+  "platform": "linux"
+}
