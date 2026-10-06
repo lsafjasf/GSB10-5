@@ -1,0 +1,11 @@
+check@t=12.0s total=1000 ok=False mismatches=1000
+  mismatch: {'source': 'src-0000', 'expected': 'INFO', 'effective': 'INFO', 'change_seq': 3, 'applied_seq': 2}
+  mismatch: {'source': 'src-0001', 'expected': 'INFO', 'effective': 'INFO', 'change_seq': 3, 'applied_seq': 2}
+  mismatch: {'source': 'src-0002', 'expected': 'INFO', 'effective': 'INFO', 'change_seq': 3, 'applied_seq': 2}
+  mismatch: {'source': 'src-0003', 'expected': 'INFO', 'effective': 'INFO', 'change_seq': 3, 'applied_seq': 2}
+  mismatch: {'source': 'src-0004', 'expected': 'INFO', 'effective': 'INFO', 'change_seq': 3, 'applied_seq': 2}
+check@t=12.1s total=1000 ok=True mismatches=0
+check@t=12.5s total=1000 ok=True mismatches=0
+check@t=18.0s total=1000 ok=True mismatches=0
+guard overrides remaining: 0
+requested==effective on all 1000 sources: True

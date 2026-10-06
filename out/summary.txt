@@ -1,0 +1,5 @@
+INFO->DEBUG: nodes=1000 min=1.0ms p50=26.0ms p95=49.0ms p99=50.0ms max=50.0ms
+DEBUG->INFO: nodes=1000 min=1.0ms p50=26.0ms p95=49.0ms p99=50.0ms max=50.0ms
+audit_records=4000
+guard escalations=1000 relaxations=1000
+final consistency: total=1000 ok=True mismatches=0
