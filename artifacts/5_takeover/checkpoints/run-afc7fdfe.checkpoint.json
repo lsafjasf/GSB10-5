@@ -1,0 +1,53 @@
+{
+ "run_id": "run-afc7fdfe",
+ "runbook": {
+  "id": "rb-7701a2bb",
+  "title": "故障处置手册",
+  "steps": [
+   {
+    "id": "s1",
+    "name": "自动诊断",
+    "kind": "auto",
+    "action": "check_service",
+    "params": {
+     "name": "pay"
+    }
+   },
+   {
+    "id": "s2",
+    "name": "确认是否熔断",
+    "kind": "confirm",
+    "action": "",
+    "params": {}
+   },
+   {
+    "id": "s3",
+    "name": "执行熔断",
+    "kind": "auto",
+    "action": "restart_service",
+    "params": {
+     "name": "pay"
+    }
+   }
+  ],
+  "context": {
+   "env": "prod",
+   "incident": "INC-1024"
+  }
+ },
+ "step_index": 1,
+ "step_status": [
+  "succeeded",
+  "waiting",
+  "pending"
+ ],
+ "context": {
+  "env": "prod",
+  "incident": "INC-1024",
+  "service_healthy": true
+ },
+ "status": "manual",
+ "decisions": [],
+ "created_ts": 1791261779.9110353,
+ "updated_ts": 1791261779.9117556
+}

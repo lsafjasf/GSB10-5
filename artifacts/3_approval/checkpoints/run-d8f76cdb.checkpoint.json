@@ -1,0 +1,55 @@
+{
+ "run_id": "run-d8f76cdb",
+ "runbook": {
+  "id": "rb-de3cb485",
+  "title": "数据库变更手册",
+  "steps": [
+   {
+    "id": "s1",
+    "name": "备份检查",
+    "kind": "auto",
+    "action": "check_service",
+    "params": {
+     "name": "db"
+    }
+   },
+   {
+    "id": "s2",
+    "name": "DBA 审批",
+    "kind": "approval",
+    "action": "",
+    "params": {}
+   },
+   {
+    "id": "s3",
+    "name": "执行变更",
+    "kind": "auto",
+    "action": "restart_service",
+    "params": {
+     "name": "db"
+    }
+   }
+  ],
+  "context": {}
+ },
+ "step_index": 2,
+ "step_status": [
+  "succeeded",
+  "rejected",
+  "pending"
+ ],
+ "context": {
+  "service_healthy": true
+ },
+ "status": "rejected",
+ "decisions": [
+  {
+   "step_id": "s2",
+   "approved": false,
+   "decided_by": "dba-李四",
+   "note": "不在变更窗口"
+  }
+ ],
+ "created_ts": 1791261779.9052253,
+ "updated_ts": 1791261779.905765
+}

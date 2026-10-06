@@ -1,0 +1,46 @@
+{
+  "run_id": "run-afc7fdfe",
+  "operator": "资深值班-赵六",
+  "status_before": "paused",
+  "status_after": "manual",
+  "paused_at_step_index": 1,
+  "pending_step": {
+    "id": "s2",
+    "name": "确认是否熔断",
+    "kind": "confirm",
+    "action": "",
+    "params": {}
+  },
+  "remaining_steps": [
+    {
+      "id": "s2",
+      "name": "确认是否熔断",
+      "kind": "confirm",
+      "action": "",
+      "params": {}
+    },
+    {
+      "id": "s3",
+      "name": "执行熔断",
+      "kind": "auto",
+      "action": "restart_service",
+      "params": {
+        "name": "pay"
+      }
+    }
+  ],
+  "step_status": [
+    "succeeded",
+    "waiting",
+    "pending"
+  ],
+  "context": {
+    "env": "prod",
+    "incident": "INC-1024",
+    "service_healthy": true
+  },
+  "decisions": [],
+  "checkpoint_path": "/home/administrator/gsb/uid437/A/artifacts/5_takeover/checkpoints/run-afc7fdfe.checkpoint.json",
+  "trace_seq": 6,
+  "ts": 1791261779.9117298
+}

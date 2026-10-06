@@ -1,0 +1,7 @@
+{
+  "1_full_auto": "completed",
+  "2_manual_confirm": "completed",
+  "3_approval": "rejected -> completed",
+  "4_interrupted": "resume=completed, safe_exit=aborted",
+  "5_takeover": "manual"
+}

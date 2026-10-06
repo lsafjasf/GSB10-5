@@ -1,0 +1,55 @@
+{
+ "run_id": "run-4ed62a21",
+ "runbook": {
+  "id": "rb-37f904f2",
+  "title": "发布手册",
+  "steps": [
+   {
+    "id": "s1",
+    "name": "预检",
+    "kind": "auto",
+    "action": "check_service",
+    "params": {
+     "name": "web"
+    }
+   },
+   {
+    "id": "s2",
+    "name": "确认流量已切走",
+    "kind": "confirm",
+    "action": "",
+    "params": {}
+   },
+   {
+    "id": "s3",
+    "name": "重启服务",
+    "kind": "auto",
+    "action": "restart_service",
+    "params": {
+     "name": "web"
+    }
+   }
+  ],
+  "context": {}
+ },
+ "step_index": 3,
+ "step_status": [
+  "succeeded",
+  "succeeded",
+  "succeeded"
+ ],
+ "context": {
+  "service_healthy": true
+ },
+ "status": "completed",
+ "decisions": [
+  {
+   "step_id": "s2",
+   "approved": true,
+   "decided_by": "值班-张三",
+   "note": "流量已切"
+  }
+ ],
+ "created_ts": 1791261779.9023924,
+ "updated_ts": 1791261779.9040723
+}

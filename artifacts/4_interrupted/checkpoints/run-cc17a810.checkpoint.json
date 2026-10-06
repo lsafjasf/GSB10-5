@@ -1,0 +1,48 @@
+{
+ "run_id": "run-cc17a810",
+ "runbook": {
+  "id": "rb-37a2fcf2",
+  "title": "长任务手册",
+  "steps": [
+   {
+    "id": "s1",
+    "name": "步骤一",
+    "kind": "auto",
+    "action": "check_service",
+    "params": {
+     "name": "job"
+    }
+   },
+   {
+    "id": "s2",
+    "name": "步骤二(被打断)",
+    "kind": "auto",
+    "action": "wait_ctrl_c",
+    "params": {}
+   },
+   {
+    "id": "s3",
+    "name": "步骤三",
+    "kind": "auto",
+    "action": "notify",
+    "params": {
+     "channel": "oncall"
+    }
+   }
+  ],
+  "context": {}
+ },
+ "step_index": 1,
+ "step_status": [
+  "succeeded",
+  "running",
+  "pending"
+ ],
+ "context": {
+  "service_healthy": true
+ },
+ "status": "aborted",
+ "decisions": [],
+ "created_ts": 1791261779.9091892,
+ "updated_ts": 1791261779.9098666
+}

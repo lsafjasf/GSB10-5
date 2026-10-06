@@ -1,0 +1,11 @@
+{
+  "runbooks": 1000,
+  "steps_total": 10000,
+  "wall_time_sec": 7.303,
+  "steps_per_sec": 1369.3,
+  "avg_runbook_ms": 7.303,
+  "avg_step_ms": 0.7303,
+  "peak_python_alloc_mb": 0.37,
+  "peak_rss_mb": 34.32,
+  "python": "3.12.3"
+}
