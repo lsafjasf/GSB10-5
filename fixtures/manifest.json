@@ -1,0 +1,35 @@
+{
+  "comment": "手工标注的期望报警。positive/ 每条 (规则,行,结构) 必须精确命中；negative/ 与 crossfile/helper.py 期望为空；crossfile/main.py 只有两处 RV009。行号以 1 为基，列以 0 为基 (展示时 +1)。",
+  "expectations": {
+    "positive/p1_basics.py": [
+      {"rule": "RV003", "line": 3,  "structure": "module", "note": "sys 全程未使用；json 在末尾有真实引用"},
+      {"rule": "RV001", "line": 6,  "structure": "function:add_item"},
+      {"rule": "RV001", "line": 12, "structure": "function:configure"},
+      {"rule": "RV001", "line": 16, "structure": "function:parse", "note": "dict() 工厂调用同样可变"},
+      {"rule": "RV002", "line": 23, "structure": "function:divide"},
+      {"rule": "RV004", "line": 28, "structure": "function:shallow_equal"},
+      {"rule": "RV004", "line": 30, "structure": "function:shallow_equal"},
+      {"rule": "RV005", "line": 39, "structure": "function:cleanup"},
+      {"rule": "RV006", "line": 45, "structure": "function:early_return"},
+      {"rule": "RV007", "line": 48, "structure": "function:version_one", "note": "定位到被覆盖的较早定义"},
+      {"rule": "RV008", "line": 57, "structure": "function:run_user_code"}
+    ],
+    "positive/p2_nested.py": [
+      {"rule": "RV001", "line": 5,  "structure": "method:Service.__init__"},
+      {"rule": "RV001", "line": 9,  "structure": "nested:Service.rebuild.<locals>.inner"},
+      {"rule": "RV005", "line": 16, "structure": "method:Service.find"},
+      {"rule": "RV006", "line": 21, "structure": "method:Service.stop"}
+    ],
+    "positive/p3_usage_in_comment.py": [
+      {"rule": "RV003", "line": 1, "structure": "module", "note": "sys 只出现在注释里，仍算未使用"},
+      {"rule": "RV003", "line": 2, "structure": "module", "note": "tempfile 只出现在字符串里，仍算未使用"}
+    ],
+    "negative/n1_strings_and_comments.py": [],
+    "negative/n2_clean.py": [],
+    "crossfile/helper.py": [],
+    "crossfile/main.py": [
+      {"rule": "RV009", "line": 4,  "structure": "module", "note": "from helper import compute_totals 拼写不存在"},
+      {"rule": "RV009", "line": 12, "structure": "function:bad_call", "note": "helper.compute_totals 属性访问不存在"}
+    ]
+  }
+}
