@@ -1,0 +1,238 @@
+{
+  "order": [
+    {
+      "scene": "texture",
+      "pipeline": "sharpen -> resize",
+      "ssim": 0.9920239652642024,
+      "psnr_db": 28.811996178055356,
+      "mae": 7.4532638888888885,
+      "edge_energy": 34.85666316894019,
+      "truth_edge_energy": 41.620828961175235,
+      "png_bytes": 29795
+    },
+    {
+      "scene": "texture",
+      "pipeline": "resize -> sharpen",
+      "ssim": 0.9977306068547802,
+      "psnr_db": 27.744759962975483,
+      "mae": 8.557065972222222,
+      "edge_energy": 43.347743966421824,
+      "truth_edge_energy": 41.620828961175235,
+      "png_bytes": 30727
+    },
+    {
+      "scene": "texture",
+      "pipeline": "resize only (baseline)",
+      "ssim": 0.9902740340583266,
+      "psnr_db": 31.022299139401763,
+      "mae": 5.915208333333333,
+      "edge_energy": 33.77820041972718,
+      "truth_edge_energy": 41.620828961175235,
+      "png_bytes": 27656
+    },
+    {
+      "scene": "photo",
+      "pipeline": "sharpen -> resize",
+      "ssim": 0.994205524033779,
+      "psnr_db": 30.7920712749727,
+      "mae": 5.6642013888888885,
+      "edge_energy": 1.1290923399790136,
+      "truth_edge_energy": 1.064637985309549,
+      "png_bytes": 42621
+    },
+    {
+      "scene": "photo",
+      "pipeline": "resize -> sharpen",
+      "ssim": 0.9934319814557406,
+      "psnr_db": 30.768791081047805,
+      "mae": 5.67515625,
+      "edge_energy": 1.1546694648478488,
+      "truth_edge_energy": 1.064637985309549,
+      "png_bytes": 39280
+    },
+    {
+      "scene": "photo",
+      "pipeline": "resize only (baseline)",
+      "ssim": 0.9972370203628527,
+      "psnr_db": 51.656532408119816,
+      "mae": 0.4438020833333333,
+      "edge_energy": 1.068389296956978,
+      "truth_edge_energy": 1.064637985309549,
+      "png_bytes": 36768
+    },
+    {
+      "scene": "edges",
+      "pipeline": "sharpen -> resize",
+      "ssim": 0.901890473547369,
+      "psnr_db": 21.89885378627688,
+      "mae": 12.29765625,
+      "edge_energy": 3.731610703043022,
+      "truth_edge_energy": 4.137775445960126,
+      "png_bytes": 1171
+    },
+    {
+      "scene": "edges",
+      "pipeline": "resize -> sharpen",
+      "ssim": 0.9105401562059442,
+      "psnr_db": 21.807851262734957,
+      "mae": 12.585815972222223,
+      "edge_energy": 4.365083945435467,
+      "truth_edge_energy": 4.137775445960126,
+      "png_bytes": 1682
+    },
+    {
+      "scene": "edges",
+      "pipeline": "resize only (baseline)",
+      "ssim": 0.9072112280793282,
+      "psnr_db": 29.4350754665215,
+      "mae": 2.6619270833333335,
+      "edge_energy": 3.7875131164742917,
+      "truth_edge_energy": 4.137775445960126,
+      "png_bytes": 1126
+    }
+  ],
+  "kernels": [
+    {
+      "scene": "texture",
+      "kernel": "nearest",
+      "ssim": 0.9766725620868603,
+      "psnr_db": 25.933593387117373,
+      "mae": 10.4328125
+    },
+    {
+      "scene": "texture",
+      "kernel": "box",
+      "ssim": 0.9953451100265306,
+      "psnr_db": 32.83438835527884,
+      "mae": 4.439861111111111
+    },
+    {
+      "scene": "texture",
+      "kernel": "triangle",
+      "ssim": 0.9902740340583266,
+      "psnr_db": 31.022299139401763,
+      "mae": 5.915208333333333
+    },
+    {
+      "scene": "texture",
+      "kernel": "lanczos3",
+      "ssim": 0.9940156764319117,
+      "psnr_db": 31.943275437381672,
+      "mae": 5.252395833333333
+    },
+    {
+      "scene": "photo",
+      "kernel": "nearest",
+      "ssim": 0.9972688926043138,
+      "psnr_db": 52.066504747788585,
+      "mae": 0.3994270833333333
+    },
+    {
+      "scene": "photo",
+      "kernel": "box",
+      "ssim": 0.9972289106934317,
+      "psnr_db": 51.54721111183068,
+      "mae": 0.4534201388888889
+    },
+    {
+      "scene": "photo",
+      "kernel": "triangle",
+      "ssim": 0.9972370203628527,
+      "psnr_db": 51.656532408119816,
+      "mae": 0.4438020833333333
+    },
+    {
+      "scene": "photo",
+      "kernel": "lanczos3",
+      "ssim": 0.9972667119619995,
+      "psnr_db": 51.937985752666755,
+      "mae": 0.4159027777777778
+    },
+    {
+      "scene": "edges",
+      "kernel": "nearest",
+      "ssim": 0.7972918057941775,
+      "psnr_db": 24.138734888379055,
+      "mae": 3.05515625
+    },
+    {
+      "scene": "edges",
+      "kernel": "box",
+      "ssim": 0.9128675640564554,
+      "psnr_db": 29.84508512574176,
+      "mae": 1.884704861111111
+    },
+    {
+      "scene": "edges",
+      "kernel": "triangle",
+      "ssim": 0.9072112280793282,
+      "psnr_db": 29.4350754665215,
+      "mae": 2.6619270833333335
+    },
+    {
+      "scene": "edges",
+      "kernel": "lanczos3",
+      "ssim": 0.902034044764075,
+      "psnr_db": 29.81999487465286,
+      "mae": 2.8319444444444444
+    }
+  ],
+  "sizing": [
+    {
+      "case": "normal 4:3 -> 160x120 box",
+      "src": "512x384",
+      "box": "160x120",
+      "out": "160x120",
+      "aspect_delta_pct": 0.0
+    },
+    {
+      "case": "ultra-wide 20:1",
+      "src": "2000x100",
+      "box": "160x160",
+      "out": "160x8",
+      "aspect_delta_pct": 0.0
+    },
+    {
+      "case": "ultra-tall 1:20",
+      "src": "120x2400",
+      "box": "160x160",
+      "out": "8x160",
+      "aspect_delta_pct": 0.0
+    },
+    {
+      "case": "very long ribbon 500:1",
+      "src": "4000x8",
+      "box": "256x256",
+      "out": "4000x8",
+      "aspect_delta_pct": 0.0
+    },
+    {
+      "case": "vertical ribbon 1:500",
+      "src": "8x4000",
+      "box": "128x128",
+      "out": "8x4000",
+      "aspect_delta_pct": 0.0
+    },
+    {
+      "case": "explicit 1x1 target",
+      "src": "512x384",
+      "box": "1x1",
+      "out": "1x1",
+      "aspect_delta_pct": 24.999999999999996
+    },
+    {
+      "case": "explicit 3x2 target",
+      "src": "512x384",
+      "box": "3x2",
+      "out": "3x2",
+      "aspect_delta_pct": 12.500000000000007
+    },
+    {
+      "case": "explicit 8x8 target",
+      "src": "512x384",
+      "box": "8x8",
+      "out": "11x8",
+      "aspect_delta_pct": 3.1250000000000058
+    }
+  ]
+}

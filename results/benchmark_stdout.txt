@@ -1,0 +1,22 @@
+{
+  "images": 10000,
+  "total_wall_s": 180.992,
+  "per_image_ms": {
+    "mean": 14.221,
+    "std": 6.598,
+    "min": 1.293,
+    "p50": 13.413,
+    "p90": 23.382,
+    "p95": 26.152,
+    "p99": 30.29,
+    "max": 51.656
+  },
+  "quality_sample_n": 200,
+  "quality_vs_lanczos3_ref": {
+    "ssim_global_mean": 0.9913,
+    "ssim_global_p05": 0.9749,
+    "psnr_db_mean": 30.19,
+    "psnr_db_p05": 24.54
+  },
+  "png_encode_ms_mean": 0.278
+}
