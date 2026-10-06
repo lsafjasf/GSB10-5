@@ -1,0 +1,9 @@
+== 场景3 一致性校验（50 次来回调后调回 DEBUG）==
+节点数=6 源数=1 未生效/残留节点数=0 结果=CONSISTENT
+  node-0 applied: v49 DEBUG
+  node-1 applied: v49 DEBUG
+  node-2 applied: v49 DEBUG
+  node-3 applied: v49 DEBUG
+  node-4 applied: v49 DEBUG
+  node-5 applied: v49 DEBUG
+控制器当前: v49 DEBUG

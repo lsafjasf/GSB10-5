@@ -1,0 +1,8 @@
+# seq version t(s) source old->new actor reason
+0 v0 t=0.0 svc.order INFO->DEBUG by=lisi 排障：订单链路追踪
+1 v1 t=1.1 svc.order DEBUG->INFO by=system:auto-converge drop=62.0% in window 0.0-1.1
+2 v2 t=4.1 svc.order INFO->DEBUG by=system:auto-restore no drops for 3 windows
+3 v3 t=5.2 svc.order DEBUG->INFO by=system:auto-converge drop=63.7% in window 4.1-5.2
+4 v4 t=8.5 svc.order INFO->DEBUG by=system:auto-restore no drops for 3 windows
+5 v5 t=9.6 svc.order DEBUG->INFO by=system:auto-converge drop=63.7% in window 8.5-9.6
+6 v6 t=12.9 svc.order INFO->DEBUG by=system:auto-restore no drops for 3 windows

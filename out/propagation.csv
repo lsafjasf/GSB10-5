@@ -1,0 +1,9 @@
+node,channel_latency_s,effective_time_s,effective_delay_s
+node-0,0.0,0.0,0.0
+node-1,0.005,0.005,0.005
+node-2,0.01,0.01,0.01
+node-3,0.02,0.02,0.02
+node-4,0.05,0.05,0.05
+node-5,0.08,0.08,0.08
+node-6,0.12,0.12,0.12
+node-7,0.2,0.2,0.2
