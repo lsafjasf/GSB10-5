@@ -1,0 +1,9 @@
+[
+  {"id": "VULN-001", "dependency": "vulnpkg",  "symbols": ["vulnpkg.core.parse"],   "advisory": "parse 反序列化漏洞"},
+  {"id": "VULN-002", "dependency": "dynpkg",   "symbols": ["dynpkg.loader.serve"],  "advisory": "serve 未鉴权"},
+  {"id": "VULN-003", "dependency": "condpkg",  "symbols": ["condpkg.deep.run"],     "advisory": "run 命令注入"},
+  {"id": "VULN-004", "dependency": "unrefpkg", "symbols": ["unrefpkg.api.handle"],  "advisory": "handle SSRF"},
+  {"id": "VULN-005", "dependency": "unrefpkg", "symbols": ["unrefpkg.api.untouched"], "advisory": "untouched 路径遍历"},
+  {"id": "VULN-006", "dependency": "missingpkg", "symbols": ["missingpkg.core.leak"], "advisory": "leak 信息泄露"},
+  {"id": "VULN-007", "dependency": "reflpkg",  "symbols": ["reflpkg.reflect.target"], "advisory": "target 模板注入"}
+]

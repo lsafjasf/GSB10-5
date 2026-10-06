@@ -1,0 +1,22 @@
+{
+  "workload": {
+    "dependencies": 1000,
+    "app_modules": 500,
+    "functions": 24500,
+    "call_sites": 102501,
+    "vulnerabilities": 1000
+  },
+  "timings": {
+    "generate_seconds": 0.0115,
+    "build_graph_seconds": 8.0573,
+    "analyze_seconds": 0.1309
+  },
+  "memory": {
+    "tracemalloc_peak_mb": 282.6,
+    "process_max_rss_mb": 672.0
+  },
+  "verdicts": {
+    "reachable": 1,
+    "unreachable": 999
+  }
+}

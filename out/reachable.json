@@ -1,0 +1,70 @@
+[
+  {
+    "vuln_id": "VULN-001",
+    "dependency": "vulnpkg",
+    "symbol": "vulnpkg.core.parse",
+    "status": "reachable",
+    "reason": "path_from_entry_exists",
+    "detail": "存在从入口到 vulnpkg.core.parse 的完整调用链（2 跳，经过的边类型: static）。",
+    "path": [
+      {
+        "from": "main.main",
+        "to": "util.process",
+        "kind": "static",
+        "file": "examples/demo_app/app/main.py",
+        "line": 8
+      },
+      {
+        "from": "util.process",
+        "to": "vulnpkg.core.parse",
+        "kind": "static",
+        "file": "examples/demo_app/app/util.py",
+        "line": 8
+      }
+    ],
+    "evidence": {}
+  },
+  {
+    "vuln_id": "VULN-002",
+    "dependency": "dynpkg",
+    "symbol": "dynpkg.loader.serve",
+    "status": "reachable",
+    "reason": "path_from_entry_exists",
+    "detail": "存在从入口到 dynpkg.loader.serve 的完整调用链（2 跳，经过的边类型: dynamic_import, static）。",
+    "path": [
+      {
+        "from": "main.main",
+        "to": "dynpkg.loader.<module>",
+        "kind": "dynamic_import",
+        "file": "examples/demo_app/app/main.py",
+        "line": 10
+      },
+      {
+        "from": "dynpkg.loader.<module>",
+        "to": "dynpkg.loader.serve",
+        "kind": "static",
+        "file": "examples/demo_app/deps/dynpkg/loader.py",
+        "line": 5
+      }
+    ],
+    "evidence": {}
+  },
+  {
+    "vuln_id": "VULN-007",
+    "dependency": "reflpkg",
+    "symbol": "reflpkg.reflect.target",
+    "status": "reachable",
+    "reason": "path_from_entry_exists",
+    "detail": "存在从入口到 reflpkg.reflect.target 的完整调用链（1 跳，经过的边类型: config）。",
+    "path": [
+      {
+        "from": "<config>",
+        "to": "reflpkg.reflect.target",
+        "kind": "config",
+        "file": "examples/demo_app/config/plugins.json",
+        "line": 1
+      }
+    ],
+    "evidence": {}
+  }
+]

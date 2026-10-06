@@ -1,0 +1,160 @@
+{
+  "stats": {
+    "entries": [
+      "<config>",
+      "main.<module>",
+      "main.main"
+    ],
+    "missing_entries": [],
+    "functions": 18,
+    "call_sites": 9,
+    "reachable_functions": 8,
+    "dynamic_notes_unresolved": 0,
+    "analysis_seconds": 4.6e-05
+  },
+  "verdicts": [
+    {
+      "vuln_id": "VULN-001",
+      "dependency": "vulnpkg",
+      "symbol": "vulnpkg.core.parse",
+      "status": "reachable",
+      "reason": "path_from_entry_exists",
+      "detail": "存在从入口到 vulnpkg.core.parse 的完整调用链（2 跳，经过的边类型: static）。",
+      "path": [
+        {
+          "from": "main.main",
+          "to": "util.process",
+          "kind": "static",
+          "file": "examples/demo_app/app/main.py",
+          "line": 8
+        },
+        {
+          "from": "util.process",
+          "to": "vulnpkg.core.parse",
+          "kind": "static",
+          "file": "examples/demo_app/app/util.py",
+          "line": 8
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "vuln_id": "VULN-002",
+      "dependency": "dynpkg",
+      "symbol": "dynpkg.loader.serve",
+      "status": "reachable",
+      "reason": "path_from_entry_exists",
+      "detail": "存在从入口到 dynpkg.loader.serve 的完整调用链（2 跳，经过的边类型: dynamic_import, static）。",
+      "path": [
+        {
+          "from": "main.main",
+          "to": "dynpkg.loader.<module>",
+          "kind": "dynamic_import",
+          "file": "examples/demo_app/app/main.py",
+          "line": 10
+        },
+        {
+          "from": "dynpkg.loader.<module>",
+          "to": "dynpkg.loader.serve",
+          "kind": "static",
+          "file": "examples/demo_app/deps/dynpkg/loader.py",
+          "line": 5
+        }
+      ],
+      "evidence": {}
+    },
+    {
+      "vuln_id": "VULN-003",
+      "dependency": "condpkg",
+      "symbol": "condpkg.deep.run",
+      "status": "unreachable",
+      "reason": "blocked_by_condition",
+      "detail": "从入口到 condpkg.deep.run 的全部路径都经过可静态求值为假的条件分支，调用被条件挡死。",
+      "path": [],
+      "evidence": {
+        "blocked_path": [
+          {
+            "from": "main.main",
+            "to": "util.process",
+            "kind": "static",
+            "file": "examples/demo_app/app/main.py",
+            "line": 8
+          },
+          {
+            "from": "util.process",
+            "to": "condpkg.deep.run",
+            "kind": "static",
+            "file": "examples/demo_app/app/util.py",
+            "line": 10
+          }
+        ],
+        "blockers": [
+          {
+            "file": "examples/demo_app/app/util.py",
+            "line": 10,
+            "guard": "ENABLE_LEGACY",
+            "caller": "util.process"
+          }
+        ]
+      }
+    },
+    {
+      "vuln_id": "VULN-004",
+      "dependency": "unrefpkg",
+      "symbol": "unrefpkg.api.handle",
+      "status": "unreachable",
+      "reason": "no_path_from_entry",
+      "detail": "符号 unrefpkg.api.handle 被项目内代码引用，但引用点本身不在任何入口的可达闭包内。",
+      "path": [],
+      "evidence": {
+        "referenced_from": [
+          "plugins.never_called"
+        ]
+      }
+    },
+    {
+      "vuln_id": "VULN-005",
+      "dependency": "unrefpkg",
+      "symbol": "unrefpkg.api.untouched",
+      "status": "unreachable",
+      "reason": "never_referenced",
+      "detail": "符号 unrefpkg.api.untouched 在项目与依赖源码中从未被任何调用点引用（无入边）。",
+      "path": [],
+      "evidence": {}
+    },
+    {
+      "vuln_id": "VULN-006",
+      "dependency": "missingpkg",
+      "symbol": "missingpkg.core.leak",
+      "status": "dependency_missing",
+      "reason": "dependency_not_installed",
+      "detail": "依赖 missingpkg 不在依赖清单中，也未提供其源码；项目未携带该依赖，漏洞符号 missingpkg.core.leak 不可能被调用。",
+      "path": [],
+      "evidence": {}
+    },
+    {
+      "vuln_id": "VULN-007",
+      "dependency": "reflpkg",
+      "symbol": "reflpkg.reflect.target",
+      "status": "reachable",
+      "reason": "path_from_entry_exists",
+      "detail": "存在从入口到 reflpkg.reflect.target 的完整调用链（1 跳，经过的边类型: config）。",
+      "path": [
+        {
+          "from": "<config>",
+          "to": "reflpkg.reflect.target",
+          "kind": "config",
+          "file": "examples/demo_app/config/plugins.json",
+          "line": 1
+        }
+      ],
+      "evidence": {}
+    }
+  ],
+  "timings": {
+    "collect_files_seconds": 0.000479,
+    "build_graph_seconds": 0.000633,
+    "analyze_seconds": 5.4e-05,
+    "total_seconds": 0.001166
+  }
+}

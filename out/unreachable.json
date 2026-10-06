@@ -1,0 +1,71 @@
+[
+  {
+    "vuln_id": "VULN-003",
+    "dependency": "condpkg",
+    "symbol": "condpkg.deep.run",
+    "status": "unreachable",
+    "reason": "blocked_by_condition",
+    "detail": "从入口到 condpkg.deep.run 的全部路径都经过可静态求值为假的条件分支，调用被条件挡死。",
+    "path": [],
+    "evidence": {
+      "blocked_path": [
+        {
+          "from": "main.main",
+          "to": "util.process",
+          "kind": "static",
+          "file": "examples/demo_app/app/main.py",
+          "line": 8
+        },
+        {
+          "from": "util.process",
+          "to": "condpkg.deep.run",
+          "kind": "static",
+          "file": "examples/demo_app/app/util.py",
+          "line": 10
+        }
+      ],
+      "blockers": [
+        {
+          "file": "examples/demo_app/app/util.py",
+          "line": 10,
+          "guard": "ENABLE_LEGACY",
+          "caller": "util.process"
+        }
+      ]
+    }
+  },
+  {
+    "vuln_id": "VULN-004",
+    "dependency": "unrefpkg",
+    "symbol": "unrefpkg.api.handle",
+    "status": "unreachable",
+    "reason": "no_path_from_entry",
+    "detail": "符号 unrefpkg.api.handle 被项目内代码引用，但引用点本身不在任何入口的可达闭包内。",
+    "path": [],
+    "evidence": {
+      "referenced_from": [
+        "plugins.never_called"
+      ]
+    }
+  },
+  {
+    "vuln_id": "VULN-005",
+    "dependency": "unrefpkg",
+    "symbol": "unrefpkg.api.untouched",
+    "status": "unreachable",
+    "reason": "never_referenced",
+    "detail": "符号 unrefpkg.api.untouched 在项目与依赖源码中从未被任何调用点引用（无入边）。",
+    "path": [],
+    "evidence": {}
+  },
+  {
+    "vuln_id": "VULN-006",
+    "dependency": "missingpkg",
+    "symbol": "missingpkg.core.leak",
+    "status": "dependency_missing",
+    "reason": "dependency_not_installed",
+    "detail": "依赖 missingpkg 不在依赖清单中，也未提供其源码；项目未携带该依赖，漏洞符号 missingpkg.core.leak 不可能被调用。",
+    "path": [],
+    "evidence": {}
+  }
+]
