@@ -1,0 +1,187 @@
+{
+  "now": 1759708800.0,
+  "applied": true,
+  "integrity_ok": true,
+  "cleanup_aborted": false,
+  "total_records": 11,
+  "elapsed_seconds": null,
+  "policy": {
+    "retention_seconds": 7776000.0,
+    "grace_seconds": 0.0,
+    "skew_tolerance_seconds": 86400.0
+  },
+  "counts": {
+    "delete": 2,
+    "referenced": 3,
+    "held": 1,
+    "active": 3,
+    "anomaly": 2,
+    "integrity_violations": 0
+  },
+  "entries": [
+    {
+      "record_id": "cfg-ancient",
+      "verdict": "delete",
+      "reasons": [
+        "deleted:idle_expired"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1725148800.0,
+      "last_accessed_at": null,
+      "age_seconds": 34560000.0,
+      "idle_seconds": 34560000.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-old-ref",
+      "verdict": "referenced",
+      "reasons": [
+        "spared:referenced_by"
+      ],
+      "referrers": [
+        "svc-login"
+      ],
+      "anomalies": [],
+      "created_at": 1725148800.0,
+      "last_accessed_at": null,
+      "age_seconds": 34560000.0,
+      "idle_seconds": 34560000.0,
+      "hold": false
+    },
+    {
+      "record_id": "svc-login",
+      "verdict": "active",
+      "reasons": [
+        "spared:not_expired_active"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1759536000.0,
+      "last_accessed_at": null,
+      "age_seconds": 172800.0,
+      "idle_seconds": 172800.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-legal-hold",
+      "verdict": "held",
+      "reasons": [
+        "spared:hold_pause"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1414108800.0,
+      "last_accessed_at": null,
+      "age_seconds": 345600000.0,
+      "idle_seconds": 345600000.0,
+      "hold": true
+    },
+    {
+      "record_id": "cfg-recent",
+      "verdict": "active",
+      "reasons": [
+        "spared:not_expired_active"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1758672000.0,
+      "last_accessed_at": null,
+      "age_seconds": 1036800.0,
+      "idle_seconds": 1036800.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-touched",
+      "verdict": "active",
+      "reasons": [
+        "spared:not_expired_active"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1733788800.0,
+      "last_accessed_at": 1759363200.0,
+      "age_seconds": 25920000.0,
+      "idle_seconds": 345600.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-future-ts",
+      "verdict": "anomaly",
+      "reasons": [
+        "spared:timestamp_anomaly"
+      ],
+      "referrers": [],
+      "anomalies": [
+        "future_timestamp_beyond_skew"
+      ],
+      "created_at": 1791244800.0,
+      "last_accessed_at": null,
+      "age_seconds": -31536000.0,
+      "idle_seconds": -31536000.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-access-before-create",
+      "verdict": "anomaly",
+      "reasons": [
+        "spared:timestamp_anomaly"
+      ],
+      "referrers": [],
+      "anomalies": [
+        "last_access_before_created"
+      ],
+      "created_at": 1757116800.0,
+      "last_accessed_at": 1751932800.0,
+      "age_seconds": 2592000.0,
+      "idle_seconds": 2592000.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-boundary",
+      "verdict": "delete",
+      "reasons": [
+        "deleted:idle_expired"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1751932800.0,
+      "last_accessed_at": null,
+      "age_seconds": 7776000.0,
+      "idle_seconds": 7776000.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-a",
+      "verdict": "referenced",
+      "reasons": [
+        "spared:referenced_by"
+      ],
+      "referrers": [
+        "cfg-b"
+      ],
+      "anomalies": [],
+      "created_at": 1716508800.0,
+      "last_accessed_at": null,
+      "age_seconds": 43200000.0,
+      "idle_seconds": 43200000.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-b",
+      "verdict": "referenced",
+      "reasons": [
+        "spared:referenced_by"
+      ],
+      "referrers": [
+        "cfg-a"
+      ],
+      "anomalies": [],
+      "created_at": 1716508800.0,
+      "last_accessed_at": null,
+      "age_seconds": 43200000.0,
+      "idle_seconds": 43200000.0,
+      "hold": false
+    }
+  ]
+}

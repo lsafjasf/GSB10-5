@@ -1,0 +1,115 @@
+{
+  "now": 1757116800.0,
+  "applied": true,
+  "integrity_ok": true,
+  "cleanup_aborted": false,
+  "total_records": 6,
+  "elapsed_seconds": null,
+  "policy": {
+    "retention_seconds": 7776000.0,
+    "grace_seconds": 0.0,
+    "skew_tolerance_seconds": 86400.0
+  },
+  "counts": {
+    "delete": 1,
+    "referenced": 1,
+    "held": 1,
+    "active": 0,
+    "anomaly": 3,
+    "integrity_violations": 0
+  },
+  "entries": [
+    {
+      "record_id": "cfg-ancient",
+      "verdict": "delete",
+      "reasons": [
+        "deleted:idle_expired"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1725148800.0,
+      "last_accessed_at": null,
+      "age_seconds": 31968000.0,
+      "idle_seconds": 31968000.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-old-ref",
+      "verdict": "referenced",
+      "reasons": [
+        "spared:referenced_by"
+      ],
+      "referrers": [
+        "svc-login"
+      ],
+      "anomalies": [],
+      "created_at": 1725148800.0,
+      "last_accessed_at": null,
+      "age_seconds": 31968000.0,
+      "idle_seconds": 31968000.0,
+      "hold": false
+    },
+    {
+      "record_id": "svc-login",
+      "verdict": "anomaly",
+      "reasons": [
+        "spared:timestamp_anomaly"
+      ],
+      "referrers": [],
+      "anomalies": [
+        "future_timestamp_beyond_skew"
+      ],
+      "created_at": 1759536000.0,
+      "last_accessed_at": null,
+      "age_seconds": -2419200.0,
+      "idle_seconds": -2419200.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-legal-hold",
+      "verdict": "held",
+      "reasons": [
+        "spared:hold_pause"
+      ],
+      "referrers": [],
+      "anomalies": [],
+      "created_at": 1414108800.0,
+      "last_accessed_at": null,
+      "age_seconds": 343008000.0,
+      "idle_seconds": 343008000.0,
+      "hold": true
+    },
+    {
+      "record_id": "cfg-recent",
+      "verdict": "anomaly",
+      "reasons": [
+        "spared:timestamp_anomaly"
+      ],
+      "referrers": [],
+      "anomalies": [
+        "future_timestamp_beyond_skew"
+      ],
+      "created_at": 1758672000.0,
+      "last_accessed_at": null,
+      "age_seconds": -1555200.0,
+      "idle_seconds": -1555200.0,
+      "hold": false
+    },
+    {
+      "record_id": "cfg-touched",
+      "verdict": "anomaly",
+      "reasons": [
+        "spared:timestamp_anomaly"
+      ],
+      "referrers": [],
+      "anomalies": [
+        "future_timestamp_beyond_skew"
+      ],
+      "created_at": 1733788800.0,
+      "last_accessed_at": 1759363200.0,
+      "age_seconds": 23328000.0,
+      "idle_seconds": -2246400.0,
+      "hold": false
+    }
+  ]
+}

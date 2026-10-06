@@ -1,0 +1,7 @@
+records=1000000 policy=retention 90d + grace 1d
+dataset_build_seconds=2.220
+cleanup_eval_seconds=13.820
+counts={'delete': 648142, 'referenced': 120000, 'held': 49658, 'active': 152015, 'anomaly': 30185, 'integrity_violations': 0}
+peak_rss_mb=1281.4  (ru_maxrss, 进程级峰值)
+tracemalloc_peak_mb=351.0  (Python 分配峰值)
+total_seconds=16.041

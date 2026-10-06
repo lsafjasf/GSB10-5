@@ -1,0 +1,31 @@
+test_accurate_clock_scenario (test_retention.TestClockScenarios.test_accurate_clock_scenario) ... ok
+test_regressed_clock_keeps_everything (test_retention.TestClockScenarios.test_regressed_clock_keeps_everything) ... ok
+test_boundary_idle_equal_to_retention_is_deleted (test_retention.TestExpiredRules.test_boundary_idle_equal_to_retention_is_deleted) ... ok
+test_grace_period_protects_against_slow_clock (test_retention.TestExpiredRules.test_grace_period_protects_against_slow_clock) ... ok
+test_old_unreferenced_unheld_record_is_deleted (test_retention.TestExpiredRules.test_old_unreferenced_unheld_record_is_deleted) ... ok
+test_recent_access_refreshes_idle_clock (test_retention.TestExpiredRules.test_recent_access_refreshes_idle_clock) ... ok
+test_recent_record_is_active (test_retention.TestExpiredRules.test_recent_record_is_active) ... ok
+test_held_record_survives_even_if_ancient (test_retention.TestHoldPause.test_held_record_survives_even_if_ancient) ... ok
+test_hold_lifted_allows_cleanup (test_retention.TestHoldPause.test_hold_lifted_allows_cleanup) ... ok
+test_clean_dataset_passes_integrity (test_retention.TestIntegrityValidation.test_clean_dataset_passes_integrity) ... ok
+test_dangling_reference_aborts_cleanup (test_retention.TestIntegrityValidation.test_dangling_reference_aborts_cleanup) ... ok
+test_duplicate_id_aborts_cleanup (test_retention.TestIntegrityValidation.test_duplicate_id_aborts_cleanup) ... ok
+test_engine_imports_only_stdlib (test_retention.TestNoForbiddenDependencies.test_engine_imports_only_stdlib) ... ok
+test_engine_never_reads_wall_clock (test_retention.TestNoForbiddenDependencies.test_engine_never_reads_wall_clock) ... ok
+test_mutual_reference_cycle_survives (test_retention.TestReferencedSpared.test_mutual_reference_cycle_survives) ... ok
+test_orphan_after_delete_aborts_instead_of_implicit_cascade (test_retention.TestReferencedSpared.test_orphan_after_delete_aborts_instead_of_implicit_cascade) ... ok
+test_referenced_record_survives_and_is_listed (test_retention.TestReferencedSpared.test_referenced_record_survives_and_is_listed) ... ok
+test_self_reference_counts_as_reference (test_retention.TestReferencedSpared.test_self_reference_counts_as_reference) ... ok
+test_access_before_created_is_anomaly (test_retention.TestTimeAnomalies.test_access_before_created_is_anomaly) ... ok
+test_anomaly_takes_priority_over_delete (test_retention.TestTimeAnomalies.test_anomaly_takes_priority_over_delete) ... ok
+test_future_created_at_is_anomaly_not_deleted (test_retention.TestTimeAnomalies.test_future_created_at_is_anomaly_not_deleted) ... ok
+test_negative_timestamp_is_anomaly (test_retention.TestTimeAnomalies.test_negative_timestamp_is_anomaly) ... ok
+test_non_finite_timestamp_is_anomaly (test_retention.TestTimeAnomalies.test_non_finite_timestamp_is_anomaly) ... ok
+test_small_future_skew_within_tolerance_is_allowed (test_retention.TestTimeAnomalies.test_small_future_skew_within_tolerance_is_allowed) ... ok
+test_apply_cleanup_refuses_unapplied_report (test_retention.TestTraceability.test_apply_cleanup_refuses_unapplied_report) ... ok
+test_manifest_and_physical_delete (test_retention.TestTraceability.test_manifest_and_physical_delete) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.001s
+
+OK
