@@ -1,0 +1,12 @@
+{
+  "module": "payment",
+  "errors": [
+    {"code": "E0201001", "name": "VALIDATION_FAILED", "default_message": "Payment request validation failed"},
+    {"code": "E0202001", "name": "PAYMENT_DENIED", "default_message": "Payment was denied"},
+    {"code": "E0202002", "name": "INSUFFICIENT_FUNDS", "default_message": "Insufficient balance"},
+    {"code": "E0203001", "name": "ORDER_NOT_FOUND", "default_message": "Order not found"},
+    {"code": "E0204001", "name": "PAYMENT_ALREADY_DONE", "default_message": "Payment already completed"},
+    {"code": "E0205001", "name": "GATEWAY_TIMEOUT", "default_message": "Payment gateway timeout"},
+    {"code": "E0102002", "name": "RISK_REJECTED", "default_message": "Rejected by risk control"}
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "fallback_default": [
+    {
+      "code": "E0101001",
+      "text": "请求参数无效",
+      "source": "translated"
+    },
+    {
+      "code": "E0205001",
+      "text": "Payment gateway timeout",
+      "source": "default"
+    },
+    {
+      "code": "E0104999",
+      "text": "Unexpected auth error",
+      "source": "default"
+    },
+    {
+      "code": "ERR0001A",
+      "text": "Login failed",
+      "source": "default"
+    },
+    {
+      "code": "E9999999",
+      "text": "E9999999",
+      "source": "missing"
+    }
+  ],
+  "fallback_code": {
+    "code": "E0205001",
+    "text": "E0205001",
+    "source": "code"
+  }
+}

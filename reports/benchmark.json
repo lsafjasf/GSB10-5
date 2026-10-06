@@ -1,0 +1,13 @@
+{
+  "count": 100000,
+  "python": "3.12.3",
+  "generation_ms": 81.9,
+  "validation_ms": 1137.2,
+  "coverage_ms": 168.5,
+  "translate_all_ms": 30.5,
+  "stability_ms": 46.7,
+  "memory_peak_mb": 78.6,
+  "issues": 0,
+  "coverage_percent": 90.0,
+  "stability_breaking": false
+}

@@ -1,0 +1,46 @@
+{
+  "baseline_version": "v2026.09",
+  "released_count": 13,
+  "current_count": 15,
+  "added_count": 3,
+  "removed_count": 1,
+  "repurposed_count": 1,
+  "message_drift_count": 1,
+  "has_breaking_changes": true,
+  "added": [
+    {
+      "code": "E0102004",
+      "name": "FORBIDDEN"
+    },
+    {
+      "code": "E0104999",
+      "name": "AUTH_FALLBACK"
+    },
+    {
+      "code": "ERR0001A",
+      "name": "LOGIN_FAILED"
+    }
+  ],
+  "removed": [
+    {
+      "code": "E0209001",
+      "name": "PAYMENT_SYSTEM_ERROR"
+    }
+  ],
+  "repurposed": [
+    {
+      "code": "E0103001",
+      "module": "auth",
+      "old_name": "USER_NOT_FOUND",
+      "new_name": "ACCOUNT_DISABLED"
+    }
+  ],
+  "message_drift": [
+    {
+      "code": "E0201001",
+      "module": "payment",
+      "old_message": "Invalid payment request",
+      "new_message": "Payment request validation failed"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "total_codes": 15,
+  "has_errors": true,
+  "issues": [
+    {
+      "severity": "ERROR",
+      "kind": "duplicate_code",
+      "code": "E0102003",
+      "module": "auth,auth",
+      "message": "码 E0102003 重复注册（auth 与 auth，错误名同为 TOKEN_EXPIRED）"
+    },
+    {
+      "severity": "WARN",
+      "kind": "reserved_serial",
+      "code": "E0104999",
+      "module": "auth",
+      "message": "序号 999 落在 900-999 保留段，请确认是否为兜底错误"
+    },
+    {
+      "severity": "ERROR",
+      "kind": "malformed_code",
+      "code": "ERR0001A",
+      "module": "auth",
+      "message": "错误码不符合 E+2位域+2位类别+3位序号 的 8 位规则"
+    },
+    {
+      "severity": "ERROR",
+      "kind": "area_mismatch",
+      "code": "E0102002",
+      "module": "payment",
+      "message": "码的域 01 不属于模块 'payment'（该模块只允许域 02）"
+    },
+    {
+      "severity": "ERROR",
+      "kind": "code_redefined",
+      "code": "E0102002",
+      "module": "auth,payment",
+      "message": "码 E0102002 同码异义：'auth/FORBIDDEN' 与 'payment/RISK_REJECTED'"
+    },
+    {
+      "severity": "WARN",
+      "kind": "duplicate_name",
+      "code": null,
+      "module": "auth",
+      "message": "错误名 'FORBIDDEN' 绑定了多个码：E0102002, E0102004"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "locale": "zh-CN",
+  "total": 15,
+  "translated": 12,
+  "missing_count": 3,
+  "coverage_percent": 80.0,
+  "by_module": {
+    "auth": {
+      "total": 9,
+      "translated": 7,
+      "coverage_percent": 77.78
+    },
+    "payment": {
+      "total": 6,
+      "translated": 5,
+      "coverage_percent": 83.33
+    }
+  },
+  "missing": [
+    {
+      "code": "E0104999",
+      "module": "auth",
+      "name": "AUTH_FALLBACK",
+      "default_message": "Unexpected auth error"
+    },
+    {
+      "code": "ERR0001A",
+      "module": "auth",
+      "name": "LOGIN_FAILED",
+      "default_message": "Login failed"
+    },
+    {
+      "code": "E0205001",
+      "module": "payment",
+      "name": "GATEWAY_TIMEOUT",
+      "default_message": "Payment gateway timeout"
+    }
+  ]
+}

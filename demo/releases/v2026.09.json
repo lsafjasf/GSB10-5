@@ -1,0 +1,19 @@
+{
+  "version": "v2026.09",
+  "released_at": "2026-09-01",
+  "codes": {
+    "E0101001": {"name": "INVALID_PARAM", "default_message": "Invalid request parameter", "module": "auth"},
+    "E0102001": {"name": "UNAUTHORIZED", "default_message": "Authentication required", "module": "auth"},
+    "E0102002": {"name": "FORBIDDEN", "default_message": "No permission", "module": "auth"},
+    "E0102003": {"name": "TOKEN_EXPIRED", "default_message": "Token has expired", "module": "auth"},
+    "E0103001": {"name": "USER_NOT_FOUND", "default_message": "User does not exist", "module": "auth"},
+    "E0104001": {"name": "ACCOUNT_LOCKED", "default_message": "Account is locked", "module": "auth"},
+    "E0201001": {"name": "VALIDATION_FAILED", "default_message": "Invalid payment request", "module": "payment"},
+    "E0202001": {"name": "PAYMENT_DENIED", "default_message": "Payment was denied", "module": "payment"},
+    "E0202002": {"name": "INSUFFICIENT_FUNDS", "default_message": "Insufficient balance", "module": "payment"},
+    "E0203001": {"name": "ORDER_NOT_FOUND", "default_message": "Order not found", "module": "payment"},
+    "E0204001": {"name": "PAYMENT_ALREADY_DONE", "default_message": "Payment already completed", "module": "payment"},
+    "E0205001": {"name": "GATEWAY_TIMEOUT", "default_message": "Payment gateway timeout", "module": "payment"},
+    "E0209001": {"name": "PAYMENT_SYSTEM_ERROR", "default_message": "Payment system error", "module": "payment"}
+  }
+}
