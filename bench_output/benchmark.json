@@ -1,0 +1,25 @@
+{
+  "n_images": 10000,
+  "image_size": [
+    256,
+    192
+  ],
+  "python": "3.12.3",
+  "platform": "linux",
+  "generation_seconds_total": 0.219,
+  "processing_seconds_total": 35.174,
+  "per_image_ms_mean": 3.517,
+  "per_image_ms_p50": 2.185,
+  "per_image_ms_p95": 3.801,
+  "per_image_ms_p99": 4.279,
+  "per_image_ms_max": 4.74,
+  "throughput_img_per_s": 284.3,
+  "memory_peak_tracemalloc_mb_sampled": 0.28,
+  "memory_ru_maxrss_mb": 15.4,
+  "memory_ru_maxrss_delta_mb": 1.9,
+  "decisions": {
+    "cropped": 10000
+  },
+  "subject_detected": 6259,
+  "oob_or_ratio_failures": 0
+}
