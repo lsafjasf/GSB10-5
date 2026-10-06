@@ -1,0 +1,97 @@
+{
+  "mapping_old_to_new": {
+    "3": 1,
+    "1": 2,
+    "5": 3,
+    "7": 4,
+    "8": 5
+  },
+  "issues": {
+    "dangling_citations": [
+      9
+    ],
+    "orphan_entries": [
+      2
+    ],
+    "numbering_gaps_in_old_list": [
+      4,
+      6
+    ]
+  },
+  "counts": {
+    "entries_total": 6,
+    "entries_cited": 5,
+    "citation_marks_rewritten": 5
+  },
+  "verification": {
+    "ok": true,
+    "checks": [
+      {
+        "name": "new_ids_contiguous_1_to_N",
+        "pass": true,
+        "detail": "新编号集合为 1..5 连续"
+      },
+      {
+        "name": "first_appearance_order",
+        "pass": true,
+        "detail": "新编号按正文首次出现顺序分配"
+      },
+      {
+        "name": "cited_count_matches_list",
+        "pass": true,
+        "detail": "正文被引条目数(5) == 文末条目数(5)"
+      },
+      {
+        "name": "rewrite_reconstruction",
+        "pass": true,
+        "detail": "由替换记录重建的正文与实际输出逐字节一致"
+      },
+      {
+        "name": "marker_count_preserved",
+        "pass": true,
+        "detail": "重写前后标记数一致（6，含原样保留的悬空引用）"
+      },
+      {
+        "name": "brackets_balanced",
+        "pass": true,
+        "detail": "方括号配平"
+      }
+    ]
+  },
+  "byte_compare": {
+    "body_identical_outside_markers": true,
+    "marker_segments_changed": 5,
+    "diffs": [
+      {
+        "offset": 29,
+        "type": "marker_renumbered",
+        "old": "[3]",
+        "new": "[1]"
+      },
+      {
+        "offset": 64,
+        "type": "marker_renumbered",
+        "old": "[1,5]",
+        "new": "[2,3]"
+      },
+      {
+        "offset": 102,
+        "type": "marker_renumbered",
+        "old": "[7-8]",
+        "new": "[4-5]"
+      },
+      {
+        "offset": 114,
+        "type": "marker_renumbered",
+        "old": "[3]",
+        "new": "[1]"
+      },
+      {
+        "offset": 215,
+        "type": "marker_renumbered",
+        "old": "[5,3]",
+        "new": "[3,1]"
+      }
+    ]
+  }
+}
