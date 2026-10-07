@@ -1,0 +1,10 @@
+[
+  {"rule_id": "CR006", "file": "pkg_b/user.py", "line": 3, "structure": "<module>"},
+  {"rule_id": "CR004", "file": "pkg_b/user.py", "line": 5, "structure": "<module>"},
+  {"rule_id": "CR004", "file": "real_issues.py", "line": 3, "structure": "<module>"},
+  {"rule_id": "CR001", "file": "real_issues.py", "line": 6, "structure": "make_user"},
+  {"rule_id": "CR002", "file": "real_issues.py", "line": 16, "structure": "read_config"},
+  {"rule_id": "CR003", "file": "real_issues.py", "line": 21, "structure": "run_expr"},
+  {"rule_id": "CR005", "file": "real_issues.py", "line": 25, "structure": "find_user"},
+  {"rule_id": "CR004", "file": "string_usage_decoy.py", "line": 2, "structure": "<module>"}
+]
