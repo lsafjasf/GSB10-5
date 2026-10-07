@@ -1,0 +1,38 @@
+== before suppression ==
+  QI combination        : age,gender,zipcode,occupation
+  transforms            : age_band:10,identity,zip_prefix:4,occupation_category
+  records               : 12825
+  equivalence classes   : 102
+  class size min/mean/median/max: 1 / 125.74 / 96.0 / 980
+  unique classes (k=1)  : 3 (3 records)
+  rare classes (k<5)    : 5 (8 records)
+  max re-ident prob     : 1.0000
+  k-anonymous at k=5    : NO
+  size histogram        : {"1": 3, "2": 1, "3-4": 1, "5-9": 1, "10-49": 24, "50+": 72}
+
+== after suppression (mode=drop) ==
+  QI combination        : age,gender,zipcode,occupation
+  transforms            : age_band:10,identity,zip_prefix:4,occupation_category
+  records               : 12817
+  equivalence classes   : 97
+  class size min/mean/median/max: 8 / 132.13 / 98 / 980
+  unique classes (k=1)  : 0 (0 records)
+  rare classes (k<5)    : 0 (0 records)
+  max re-ident prob     : 0.1250
+  k-anonymous at k=5    : YES
+  size histogram        : {"1": 0, "2": 0, "3-4": 0, "5-9": 1, "10-49": 24, "50+": 72}
+
+== before/after comparison ==
+metric                           before          after
+------------------------------------------------------
+equivalence classes                 102             97
+min class size                        1              8
+unique classes                        3              0
+unique records                        3              0
+rare classes (k<5)                    5              0
+rare records (k<5)                    8              0
+max re-ident prob                1.0000         0.1250
+k-anonymous                          NO            YES
+
+suppression stats: {"input_records": 12825, "output_records": 12817, "dropped": 8, "masked": 0}
+anonymized file written: data/demo_k5_drop.csv

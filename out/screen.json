@@ -1,0 +1,132 @@
+[
+  {
+    "combination": [
+      "age"
+    ],
+    "num_classes": 56,
+    "min_class_size": 1,
+    "unique_classes": 3,
+    "rare_classes": 3,
+    "rare_records": 3,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "gender"
+    ],
+    "num_classes": 2,
+    "min_class_size": 6095,
+    "unique_classes": 0,
+    "rare_classes": 0,
+    "rare_records": 0,
+    "max_reident_probability": 0.000164
+  },
+  {
+    "combination": [
+      "zipcode"
+    ],
+    "num_classes": 43,
+    "min_class_size": 1,
+    "unique_classes": 3,
+    "rare_classes": 3,
+    "rare_records": 3,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "occupation"
+    ],
+    "num_classes": 14,
+    "min_class_size": 2,
+    "unique_classes": 0,
+    "rare_classes": 2,
+    "rare_records": 5,
+    "max_reident_probability": 0.5
+  },
+  {
+    "combination": [
+      "age",
+      "gender"
+    ],
+    "num_classes": 109,
+    "min_class_size": 1,
+    "unique_classes": 3,
+    "rare_classes": 3,
+    "rare_records": 3,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "age",
+      "zipcode"
+    ],
+    "num_classes": 2114,
+    "min_class_size": 1,
+    "unique_classes": 50,
+    "rare_classes": 696,
+    "rare_records": 2176,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "age",
+      "occupation"
+    ],
+    "num_classes": 641,
+    "min_class_size": 1,
+    "unique_classes": 5,
+    "rare_classes": 5,
+    "rare_records": 5,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "gender",
+      "zipcode"
+    ],
+    "num_classes": 83,
+    "min_class_size": 1,
+    "unique_classes": 3,
+    "rare_classes": 3,
+    "rare_records": 3,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "gender",
+      "occupation"
+    ],
+    "num_classes": 27,
+    "min_class_size": 1,
+    "unique_classes": 1,
+    "rare_classes": 3,
+    "rare_records": 5,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "zipcode",
+      "occupation"
+    ],
+    "num_classes": 485,
+    "min_class_size": 1,
+    "unique_classes": 5,
+    "rare_classes": 5,
+    "rare_records": 5,
+    "max_reident_probability": 1.0
+  },
+  {
+    "combination": [
+      "age",
+      "gender",
+      "zipcode",
+      "occupation"
+    ],
+    "num_classes": 10685,
+    "min_class_size": 1,
+    "unique_classes": 9452,
+    "rare_classes": 10684,
+    "rare_records": 12025,
+    "max_reident_probability": 1.0
+  }
+]

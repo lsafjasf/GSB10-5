@@ -1,0 +1,72 @@
+{
+  "before": {
+    "fields": [
+      "age",
+      "gender",
+      "zipcode",
+      "occupation"
+    ],
+    "transforms": [
+      "identity",
+      "identity",
+      "identity",
+      "identity"
+    ],
+    "k_threshold": 5,
+    "total_records": 12825,
+    "num_classes": 10685,
+    "min_class_size": 1,
+    "max_class_size": 800,
+    "mean_class_size": 1.2003,
+    "median_class_size": 1,
+    "unique_classes": 9452,
+    "unique_records": 9452,
+    "rare_classes": 10684,
+    "rare_records": 12025,
+    "max_reident_probability": 1.0,
+    "size_histogram": {
+      "1": 9452,
+      "2": 1132,
+      "3-4": 100,
+      "5-9": 0,
+      "10-49": 0,
+      "50+": 1
+    },
+    "is_k_anonymous": false
+  },
+  "after": {
+    "fields": [
+      "age",
+      "gender",
+      "zipcode",
+      "occupation"
+    ],
+    "transforms": [
+      "age_band:10",
+      "identity",
+      "zip_prefix:4",
+      "occupation_category"
+    ],
+    "k_threshold": 5,
+    "total_records": 12825,
+    "num_classes": 102,
+    "min_class_size": 1,
+    "max_class_size": 980,
+    "mean_class_size": 125.7353,
+    "median_class_size": 96.0,
+    "unique_classes": 3,
+    "unique_records": 3,
+    "rare_classes": 5,
+    "rare_records": 8,
+    "max_reident_probability": 1.0,
+    "size_histogram": {
+      "1": 3,
+      "2": 1,
+      "3-4": 1,
+      "5-9": 1,
+      "10-49": 24,
+      "50+": 72
+    },
+    "is_k_anonymous": false
+  }
+}

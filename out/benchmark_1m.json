@@ -1,0 +1,22 @@
+{
+  "records": 1000000,
+  "qi_fields": [
+    "age",
+    "gender",
+    "zipcode",
+    "occupation"
+  ],
+  "k": 5,
+  "distinct_classes": 986176,
+  "pass1_counting_seconds": 7.862,
+  "pass2_locate_seconds": 0.014,
+  "total_seconds": 7.876,
+  "python_allocator_peak_mb": 127.9,
+  "process_peak_rss_mb": 254.4,
+  "rss_delta_mb": 221.7,
+  "risky_classes": 986176,
+  "risky_records": 1000000,
+  "unique_classes": 972484,
+  "min_class_size": 1,
+  "located_sample_records": 1000
+}
