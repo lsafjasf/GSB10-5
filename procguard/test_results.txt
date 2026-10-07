@@ -1,0 +1,23 @@
+test_escalate_to_kill_exactly_at_timeout (test_procguard.InjectedClockTests.test_escalate_to_kill_exactly_at_timeout) ... ok
+test_reentrant_signal_during_cleanup_is_recorded (test_procguard.InjectedClockTests.test_reentrant_signal_during_cleanup_is_recorded) ... ok
+test_term_succeeds_no_escalation (test_procguard.InjectedClockTests.test_term_succeeds_no_escalation) ... ok
+test_child_ignores_gentle_signal_force_kill (test_procguard.RealProcessTests.test_child_ignores_gentle_signal_force_kill) ... ok
+test_multilevel_derivation (test_procguard.RealProcessTests.test_multilevel_derivation) ... ok
+test_second_signal_during_cleanup (test_procguard.RealProcessTests.test_second_signal_during_cleanup) ... ok
+test_single_process (test_procguard.RealProcessTests.test_single_process) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.372s
+
+OK
+
+[ignore-term -> SIGKILL] pgid=121419 completed=True escalated=True term=0.300s kill=0.020s total=0.321s survivors=[-] signals_during_cleanup=[-]
+  TERM 阶段用时 0.300s（宽限期 0.3s 内无进程退出）
+
+[multilevel n=13] pgid=121421 completed=True escalated=False term=0.010s kill=0.000s total=0.010s survivors=[-] signals_during_cleanup=[-]
+  清理前 pgid=121421 内进程: 121421,121422,121423,121424,121425,121426,121427,121428,121429,121430,121431,121432,121433
+  清理后存活清单: []
+
+[signal-during-cleanup] pgid=121434 completed=True escalated=True term=0.800s kill=0.020s total=0.820s survivors=[-] signals_during_cleanup=[2]
+
+[single] pgid=121437 completed=True escalated=False term=0.010s kill=0.000s total=0.010s survivors=[-] signals_during_cleanup=[-]
