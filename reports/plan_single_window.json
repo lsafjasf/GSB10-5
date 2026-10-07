@@ -1,0 +1,58 @@
+{
+  "scenario": "S2 exactly one missed window",
+  "tasks": [
+    {
+      "task_id": "s2-sync",
+      "period": 300
+    }
+  ],
+  "window": {
+    "down_at": 1772928300,
+    "up_at": 1772928600,
+    "down_at_utc": "2026-03-08T00:05:00Z",
+    "up_at_utc": "2026-03-08T00:10:00Z",
+    "rule": "half-open [down_at, up_at): fires with down_at <= t < up_at are owed"
+  },
+  "total_compensations": 1,
+  "per_task": [
+    {
+      "task_id": "s2-sync",
+      "compensations": 1,
+      "first_fire_at": 1772928300,
+      "first_fire_at_utc": "2026-03-08T00:05:00Z",
+      "last_fire_at": 1772928300,
+      "last_fire_at_utc": "2026-03-08T00:05:00Z"
+    }
+  ],
+  "owed_fires": [
+    {
+      "key": "s2-sync@1772928300",
+      "fire_at": 1772928300,
+      "fire_at_utc": "2026-03-08T00:05:00Z"
+    }
+  ],
+  "first_run": {
+    "done": 1,
+    "skipped": 0,
+    "traces": [
+      {
+        "key": "s2-sync@1772928300",
+        "status": "done",
+        "fire_at": 1772928300,
+        "fire_at_utc": "2026-03-08T00:05:00Z",
+        "start": 1772928600.0,
+        "start_utc": "2026-03-08T00:10:00Z",
+        "end": 1772928600.0,
+        "end_utc": "2026-03-08T00:10:00Z"
+      }
+    ]
+  },
+  "duplicate_replay": {
+    "done": 0,
+    "skipped": 1,
+    "effect_apply_calls_total": 1,
+    "unique_effect_keys": 1,
+    "duplicate_side_effects": {},
+    "note": "replay of the identical plan produced 0 new side effects"
+  }
+}

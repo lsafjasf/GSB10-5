@@ -1,0 +1,47 @@
+{
+  "scenario": "100k tasks, 24h downtime",
+  "python": "3.12.3",
+  "num_tasks": 100000,
+  "fleet_mix": {
+    "every_60s": 10000,
+    "every_300s": 40000,
+    "every_3600s": 40000,
+    "every_86400s": 10000
+  },
+  "window": {
+    "down_at_utc": "2026-03-08T00:00:00Z",
+    "up_at_utc": "2026-03-09T00:00:00Z",
+    "hours": 24
+  },
+  "total_compensations": 26890000,
+  "plan_generation": {
+    "wall_seconds": 0.4951,
+    "memory_peak_bytes": 9604552,
+    "memory_peak_mb": 9.6,
+    "note": "O(num_tasks): one backlog descriptor per task, fires stay lazy"
+  },
+  "counting": {
+    "wall_seconds": 0.3314
+  },
+  "full_streaming_merge": {
+    "wall_seconds": 73.378,
+    "memory_peak_bytes": 15122432,
+    "memory_peak_mb": 15.12,
+    "items_streamed": 26890000,
+    "note": "one heap entry per task, advanced with heapreplace; memory stays O(num_tasks), no 27M-item list is ever built (memory delta measured via ru_maxrss high-water mark)"
+  },
+  "naive_materialisation_estimate": {
+    "bytes": 1505840000,
+    "mb": 1505.8,
+    "note": "what a list of all MissedFire objects would cost (estimated)"
+  },
+  "drain_time_examples": {
+    "at_1000_per_sec_hours": 7.47,
+    "at_10000_per_sec_hours": 0.75,
+    "note": "why the rate cap matters: the backlog is ~311x the live load, uncapped catch-up would be a self-inflicted spike"
+  },
+  "last_fire": {
+    "key": "task-086399@1773014399",
+    "fire_at": 1773014399
+  }
+}

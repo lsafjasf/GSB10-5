@@ -1,0 +1,23 @@
+{
+  "scenario": "S5 duplicate compensation of a 90-item plan",
+  "window": {
+    "down_at": 1772928000,
+    "up_at": 1772929800,
+    "down_at_utc": "2026-03-08T00:00:00Z",
+    "up_at_utc": "2026-03-08T00:30:00Z",
+    "rule": "half-open [down_at, up_at): fires with down_at <= t < up_at are owed"
+  },
+  "total_compensations": 90,
+  "first_run": {
+    "done": 90,
+    "skipped": 0
+  },
+  "replay": {
+    "done": 0,
+    "skipped": 90
+  },
+  "effect_apply_calls_total": 90,
+  "unique_effect_keys": 90,
+  "duplicate_side_effects": {},
+  "journal_keys": 90
+}

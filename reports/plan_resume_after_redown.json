@@ -1,0 +1,205 @@
+{
+  "scenario": "S4 second downtime during compensation, then resume",
+  "tasks": [
+    {
+      "task_id": "s4-a",
+      "period": 300
+    },
+    {
+      "task_id": "s4-b",
+      "period": 600
+    }
+  ],
+  "downtime_1": {
+    "down_at": 1772928900,
+    "up_at": 1772929900,
+    "down_at_utc": "2026-03-08T00:15:00Z",
+    "up_at_utc": "2026-03-08T00:31:40Z",
+    "rule": "half-open [down_at, up_at): fires with down_at <= t < up_at are owed"
+  },
+  "phase1_limits": {
+    "rate_per_sec": 2.0,
+    "max_concurrency": 4
+  },
+  "downtime_1_plan": {
+    "total": 6,
+    "per_task": [
+      {
+        "task_id": "s4-a",
+        "compensations": 4,
+        "first_fire_at": 1772928900,
+        "first_fire_at_utc": "2026-03-08T00:15:00Z",
+        "last_fire_at": 1772929800,
+        "last_fire_at_utc": "2026-03-08T00:30:00Z"
+      },
+      {
+        "task_id": "s4-b",
+        "compensations": 2,
+        "first_fire_at": 1772929200,
+        "first_fire_at_utc": "2026-03-08T00:20:00Z",
+        "last_fire_at": 1772929800,
+        "last_fire_at_utc": "2026-03-08T00:30:00Z"
+      }
+    ]
+  },
+  "second_downtime_at": 1772929902,
+  "second_downtime_at_utc": "2026-03-08T00:31:42Z",
+  "phase1_result": {
+    "done": 4,
+    "aborted": 1,
+    "journal_keys_after_crash": [
+      "s4-a@1772928900",
+      "s4-a@1772929200",
+      "s4-a@1772929500",
+      "s4-a@1772929800"
+    ],
+    "traces": [
+      {
+        "key": "s4-a@1772928900",
+        "status": "done",
+        "fire_at": 1772928900,
+        "fire_at_utc": "2026-03-08T00:15:00Z",
+        "start": 1772929900.0,
+        "start_utc": "2026-03-08T00:31:40Z",
+        "end": 1772929900.5,
+        "end_utc": "2026-03-08T00:31:40Z"
+      },
+      {
+        "key": "s4-a@1772929200",
+        "status": "done",
+        "fire_at": 1772929200,
+        "fire_at_utc": "2026-03-08T00:20:00Z",
+        "start": 1772929900.0,
+        "start_utc": "2026-03-08T00:31:40Z",
+        "end": 1772929900.5,
+        "end_utc": "2026-03-08T00:31:40Z"
+      },
+      {
+        "key": "s4-a@1772929500",
+        "status": "done",
+        "fire_at": 1772929500,
+        "fire_at_utc": "2026-03-08T00:25:00Z",
+        "start": 1772929901.0,
+        "start_utc": "2026-03-08T00:31:41Z",
+        "end": 1772929901.5,
+        "end_utc": "2026-03-08T00:31:41Z"
+      },
+      {
+        "key": "s4-a@1772929800",
+        "status": "done",
+        "fire_at": 1772929800,
+        "fire_at_utc": "2026-03-08T00:30:00Z",
+        "start": 1772929901.5,
+        "start_utc": "2026-03-08T00:31:41Z",
+        "end": 1772929902.0,
+        "end_utc": "2026-03-08T00:31:42Z"
+      },
+      {
+        "key": "s4-b@1772929200",
+        "status": "aborted",
+        "fire_at": 1772929200,
+        "fire_at_utc": "2026-03-08T00:20:00Z",
+        "start": 1772929900.5,
+        "start_utc": "2026-03-08T00:31:40Z",
+        "end": 1772929902.0,
+        "end_utc": "2026-03-08T00:31:42Z"
+      }
+    ]
+  },
+  "downtime_2": {
+    "down_at": 1772929902,
+    "up_at": 1772930200,
+    "down_at_utc": "2026-03-08T00:31:42Z",
+    "up_at_utc": "2026-03-08T00:36:40Z",
+    "rule": "half-open [down_at, up_at): fires with down_at <= t < up_at are owed"
+  },
+  "resume_plan": {
+    "rule": "owed = (downtime-1 fires not in journal) UNION (downtime-2 fires)",
+    "total": 3,
+    "per_task": [
+      {
+        "task_id": "s4-a",
+        "compensations": 1
+      },
+      {
+        "task_id": "s4-b",
+        "compensations": 2
+      }
+    ],
+    "owed_fires": [
+      {
+        "key": "s4-b@1772929200",
+        "fire_at": 1772929200,
+        "fire_at_utc": "2026-03-08T00:20:00Z"
+      },
+      {
+        "key": "s4-b@1772929800",
+        "fire_at": 1772929800,
+        "fire_at_utc": "2026-03-08T00:30:00Z"
+      },
+      {
+        "key": "s4-a@1772930100",
+        "fire_at": 1772930100,
+        "fire_at_utc": "2026-03-08T00:35:00Z"
+      }
+    ]
+  },
+  "phase2_limits": {
+    "rate_per_sec": 10.0,
+    "max_concurrency": 4
+  },
+  "phase2_result": {
+    "done": 3,
+    "skipped": 0,
+    "traces": [
+      {
+        "key": "s4-a@1772930100",
+        "status": "done",
+        "fire_at": 1772930100,
+        "fire_at_utc": "2026-03-08T00:35:00Z",
+        "start": 1772930200.0,
+        "start_utc": "2026-03-08T00:36:40Z",
+        "end": 1772930200.5,
+        "end_utc": "2026-03-08T00:36:40Z"
+      },
+      {
+        "key": "s4-b@1772929200",
+        "status": "done",
+        "fire_at": 1772929200,
+        "fire_at_utc": "2026-03-08T00:20:00Z",
+        "start": 1772930200.0,
+        "start_utc": "2026-03-08T00:36:40Z",
+        "end": 1772930205.0,
+        "end_utc": "2026-03-08T00:36:45Z"
+      },
+      {
+        "key": "s4-b@1772929800",
+        "status": "done",
+        "fire_at": 1772929800,
+        "fire_at_utc": "2026-03-08T00:30:00Z",
+        "start": 1772930200.0,
+        "start_utc": "2026-03-08T00:36:40Z",
+        "end": 1772930205.0,
+        "end_utc": "2026-03-08T00:36:45Z"
+      }
+    ]
+  },
+  "idempotency_data": {
+    "effect_apply_calls_total": 8,
+    "unique_effect_keys": 7,
+    "reapplied_keys": {
+      "s4-b@1772929200": 2
+    },
+    "duplicate_side_effects": 0,
+    "journal_keys_final": [
+      "s4-a@1772928900",
+      "s4-a@1772929200",
+      "s4-a@1772929500",
+      "s4-a@1772929800",
+      "s4-a@1772930100",
+      "s4-b@1772929200",
+      "s4-b@1772929800"
+    ],
+    "note": "the aborted job was re-applied on resume; the keyed upsert kept its side effect single"
+  }
+}
