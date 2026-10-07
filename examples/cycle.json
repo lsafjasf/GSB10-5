@@ -1,0 +1,10 @@
+{
+  "components": {
+    "auth-svc":   {"strong": ["user-svc"]},
+    "user-svc":   {"strong": ["audit-svc"]},
+    "audit-svc":  {"strong": ["auth-svc"]},
+    "gateway":    {"strong": ["auth-svc", "user-svc"]},
+    "db-schema":  {"strong": []},
+    "log-agent":  {"strong": ["db-schema"], "weak": ["audit-svc"]}
+  }
+}

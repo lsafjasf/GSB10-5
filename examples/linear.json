@@ -1,0 +1,9 @@
+{
+  "components": {
+    "base-image":  {"strong": []},
+    "runtime":     {"strong": ["base-image"]},
+    "db-schema":   {"strong": ["runtime"]},
+    "user-svc":    {"strong": ["db-schema"]},
+    "gateway":     {"strong": ["user-svc"]}
+  }
+}

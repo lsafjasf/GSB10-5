@@ -1,0 +1,11 @@
+{
+  "components": {
+    "base-image": {"strong": []},
+    "runtime":    {"strong": ["base-image"]},
+    "user-svc":   {"strong": ["runtime"]},
+    "order-svc":  {"strong": ["runtime"]},
+    "pay-svc":    {"strong": ["runtime"]},
+    "search-svc": {"strong": ["runtime"]},
+    "notify-svc": {"strong": ["runtime"]}
+  }
+}

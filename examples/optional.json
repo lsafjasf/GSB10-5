@@ -1,0 +1,9 @@
+{
+  "components": {
+    "app":        {"strong": ["db"], "weak": ["mq"], "optional": ["cache"]},
+    "db":         {"strong": []},
+    "mq":         {"strong": ["db"]},
+    "cache":      {"strong": [], "optional": ["app"]},
+    "report-svc": {"strong": ["app"], "optional": ["cache"]}
+  }
+}
