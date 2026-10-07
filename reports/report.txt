@@ -1,0 +1,99 @@
+==============================================================================
+CHANGE RISK SCORING - EVIDENCE REPORT
+==============================================================================
+
+[1] Weight fitting (logistic regression on 20000 labelled historical changes)
+    converged=True in 13 iterations, fit time=2.30s
+    base rollback rate = 0.119
+    intercept b0 = -9.828
+    factor                   fitted weight    +/- SE  generator true
+    size                             22.9%     0.098           20.0%
+    hotness                           9.7%     0.088           10.0%
+    test_gap                         21.1%     0.096           20.0%
+    author_inexperience              11.8%     0.094           10.0%
+    author_rollback_rate             11.0%     0.098           15.0%
+    review_gap                       13.8%     0.091           15.0%
+    schedule_pressure                 9.7%     0.091           10.0%
+
+[2] Contribution decomposition (example change)
+    change #7: +15/-13 lines, 3 files, reviewers=2, emergency=True
+    risk score = 42.3/100   predicted P(rollback) = 0.020
+    factor                    value(0-1)   weight   points    share
+    size                           0.369    22.9%     8.43    19.9%
+    hotness                        0.347     9.7%     3.38     8.0%
+    test_gap                       0.211    21.1%     4.46    10.5%
+    author_inexperience            0.258    11.8%     3.04     7.2%
+    author_rollback_rate           0.909    11.0%    10.02    23.7%
+    review_gap                     0.415    13.8%     5.73    13.6%
+    schedule_pressure              0.750     9.7%     7.24    17.1%
+
+[3] Validation against actual outcomes (rollback labels)
+    Spearman rank corr(score, rollback)   = +0.384
+    point-biserial corr(score, rollback)  = +0.400
+    ROC AUC, full 7-factor model          = 0.843
+    ROC AUC, size-only baseline           = 0.705
+    mean predicted P(rollback)            = 0.119
+    observed rollback rate                = 0.119
+    Brier score                           = 0.0820
+    calibration by predicted-risk decile (predicted | observed | n):
+        0.004 |   0.004 |  2000
+        0.011 |   0.010 |  2000
+        0.019 |   0.016 |  2000
+        0.031 |   0.029 |  2000
+        0.046 |   0.049 |  2000
+        0.069 |   0.071 |  2000
+        0.102 |   0.106 |  2000
+        0.157 |   0.151 |  2000
+        0.254 |   0.266 |  2000
+        0.493 |   0.485 |  2000
+
+    score bands (high-risk threshold = 49.9):
+    band                    n   rollback rate  share of rollbacks
+    [0,30)                796           0.3%               0.1%
+    [30,50)              9204           2.3%               9.0%
+    [50,65)              7942          14.8%              49.4%
+    65+                  2058          47.9%              41.5%
+
+[4] Weight sensitivity
+    (a) one factor +/-10% (difference redistributed to others)
+    factor                    delta mean |dscore|  rank corr   % reclassified
+    size                       -10%         0.598     0.9977            1.85%
+    size                        10%         0.598     0.9978            2.05%
+    hotness                    -10%         0.255     0.9996            0.75%
+    hotness                     10%         0.255     0.9996            0.65%
+    test_gap                   -10%         0.562     0.9981            2.10%
+    test_gap                    10%         0.562     0.9981            1.10%
+    author_inexperience        -10%         0.304     0.9994            0.85%
+    author_inexperience         10%         0.304     0.9994            0.90%
+    author_rollback_rate       -10%         0.273     0.9995            0.65%
+    author_rollback_rate        10%         0.273     0.9995            0.70%
+    review_gap                 -10%         0.351     0.9992            1.05%
+    review_gap                  10%         0.351     0.9992            1.10%
+    schedule_pressure          -10%         0.249     0.9996            0.55%
+    schedule_pressure           10%         0.249     0.9996            0.85%
+    (b) Monte Carlo: beta_j ~ Gamma(mean=fitted, sd=fitted SE)
+        draws                         = 300
+        score mean +/- std (all chg.) = 50.22 +/- 12.91  (5-95 pct: 28.66 - 71.45)
+        min rank correlation vs base  = 0.9543
+        high-risk verdict flip rate   = 7.48%
+        borderline changes (+/-2 pts around threshold): 263, verdict flip rate = 36.1%
+    Conclusion: ranking stable if min rank corr ~1 and flip rate low;
+    borderline verdicts are expected to be less stable and are flagged.
+
+[5] Benchmark: 100,000 changes scored
+    total wall time      = 2.292 s
+    per change           = 22.92 us
+    throughput           = 43,637 changes/s
+    peak RSS (process)   = 243.9 MB
+    peak RSS (streaming) = 243.9 MB
+    (peak RSS is whole-process via getrusage; streaming mode shows
+     the cost without retaining the 100k result list)
+
+[6] Mandated edge scenarios (see tests/test_risk_score.py)
+    single factor extreme (schedule)     score=  21.7  P(rb)=0.001  dominant=schedule_pressure (42%)
+    many small risks accumulating        score=  62.2  P(rb)=0.249  dominant=size (28%)
+    all factors low                      score=  13.9  P(rb)=0.000  dominant=size (37%)
+
+==============================================================================
+Run tests:  python3 -m unittest discover -s tests -v
+==============================================================================
