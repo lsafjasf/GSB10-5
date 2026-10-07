@@ -1,0 +1,117 @@
+{
+  "conflicts": [
+    {
+      "type": "forbidden_translation",
+      "entry_id": "E001",
+      "source": "file",
+      "render": "档",
+      "segment": "b01",
+      "offset": 1,
+      "line": 1,
+      "col": 2,
+      "message": "使用了禁用的译名 '档'"
+    },
+    {
+      "type": "wrong_sense",
+      "entry_id": "E003",
+      "source": "mouse",
+      "render": "老鼠",
+      "expected_sense": "mouse.computer",
+      "actual_sense": "mouse.animal",
+      "segment": "b02",
+      "offset": 2,
+      "line": 1,
+      "col": 3,
+      "message": "译名 '老鼠' 属于义项 mouse.animal，本段应为义项 mouse.computer"
+    },
+    {
+      "type": "multiple_renderings",
+      "entry_id": "E005",
+      "sense_id": "E005",
+      "source": "API",
+      "renderings": [
+        {
+          "render": "API接口",
+          "kind": "synonym",
+          "segment": "b05",
+          "offset": 2,
+          "line": 1,
+          "col": 3
+        },
+        {
+          "render": "应用程序接口",
+          "kind": "canonical",
+          "segment": "b04",
+          "offset": 1,
+          "line": 1,
+          "col": 2
+        }
+      ],
+      "message": "义项 E005 使用了 2 种译名且未声明 allow_multiple: API接口、应用程序接口"
+    },
+    {
+      "type": "multiple_renderings",
+      "entry_id": "E008",
+      "sense_id": "E008",
+      "source": "cache",
+      "renderings": [
+        {
+          "render": "缓存",
+          "kind": "canonical",
+          "segment": "b08",
+          "offset": 2,
+          "line": 1,
+          "col": 3
+        },
+        {
+          "render": "高速缓存",
+          "kind": "synonym",
+          "segment": "b09",
+          "offset": 0,
+          "line": 1,
+          "col": 1
+        }
+      ],
+      "message": "义项 E008 使用了 2 种译名且未声明 allow_multiple: 缓存、高速缓存"
+    }
+  ],
+  "review": [
+    {
+      "type": "ambiguous_sense",
+      "entry_id": "E003",
+      "source": "mouse",
+      "segment": "b03",
+      "offset": 4,
+      "line": 1,
+      "col": 5,
+      "context": "The mouse is here.",
+      "message": "无法根据 cue 词确定义项，需人工确认"
+    },
+    {
+      "type": "unlisted_translation",
+      "entry_id": "E007",
+      "source": "network",
+      "segment": "b06",
+      "message": "译文中未出现该条目的任何登记译名，可能漏译或使用了未登记译名"
+    },
+    {
+      "type": "forbidden_unverified",
+      "entry_id": "E006",
+      "render": "资料",
+      "segment": "b07",
+      "offset": 2,
+      "line": 1,
+      "col": 3,
+      "message": "纯中文文档中出现禁用译名，需人工确认"
+    }
+  ],
+  "termbase_issues": [],
+  "stats": {
+    "segments": 9,
+    "entries": 12,
+    "renders": 20,
+    "source_matches": 9,
+    "target_matches": 8,
+    "elapsed_sec": 0.0
+  }
+}

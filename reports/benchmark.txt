@@ -1,0 +1,14 @@
+entries                      100000
+corpus_chars                 1000163
+corpus_segments              4955
+generate_sec                 0.2
+load_termbase_sec            6.02
+build_matchers_sec           5.63
+check_sec                    2.81
+total_check_pipeline_sec     14.46
+chars_per_sec                355969
+tracemalloc_peak_mb          582.0
+rss_peak_mb(baseline 57)     1652.5
+conflicts_found              0
+review_items                 0
+termbase_issues              6060

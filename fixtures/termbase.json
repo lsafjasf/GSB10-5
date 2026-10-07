@@ -1,0 +1,34 @@
+{
+  "entries": [
+    {"id": "E001", "source": "file", "canonical": "文件",
+     "synonyms": ["档案"], "forbidden": ["档"], "allow_multiple": true,
+     "safe_embeddings": ["归档", "档位", "入档"]},
+    {"id": "E002", "source": "directory", "canonical": "目录",
+     "forbidden": ["目次"]},
+    {"id": "E003", "source": "mouse", "senses": [
+      {"id": "mouse.computer", "canonical": "鼠标",
+       "cues": {"positive": ["click", "cursor", "点击", "指针"],
+                "negative": ["cat", "猫"]}},
+      {"id": "mouse.animal", "canonical": "老鼠",
+       "cues": {"positive": ["cat", "cheese", "猫", "奶酪"],
+                "negative": ["click", "点击"]}}
+    ]},
+    {"id": "E004", "source": "bank", "senses": [
+      {"id": "bank.finance", "canonical": "银行",
+       "cues": {"positive": ["account", "money", "deposit", "账户", "存款"]}},
+      {"id": "bank.river", "canonical": "河岸",
+       "cues": {"positive": ["river", "water", "河", "水"]}}
+    ]},
+    {"id": "E005", "source": "API", "canonical": "应用程序接口",
+     "synonyms": ["API接口"]},
+    {"id": "E006", "source": "data", "canonical": "数据",
+     "forbidden": ["资料"]},
+    {"id": "E007", "source": "network", "canonical": "网络"},
+    {"id": "E008", "source": "cache", "canonical": "缓存",
+     "synonyms": ["高速缓存"]},
+    {"id": "E009", "source": "machine learning", "canonical": "机器学习"},
+    {"id": "E010", "source": "run", "canonical": "运行"},
+    {"id": "E011", "source": "index", "canonical": "索引"},
+    {"id": "E012", "source": "save", "canonical": "保存"}
+  ]
+}
