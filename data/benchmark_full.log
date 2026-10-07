@@ -1,0 +1,17 @@
+{
+  "rows": 1000000,
+  "expressions": 1002,
+  "evaluations": 1002000000,
+  "compile_seconds": 0.0173,
+  "row_generation_seconds": 1.8452,
+  "eval_seconds": 767.2822,
+  "eval_per_ns": 765.8,
+  "matched_rows_per_expr_avg": 472009.1,
+  "errors": {
+    "field_missing": 1000000,
+    "type_mismatch": 1000000
+  },
+  "peak_rss_mb": 315.4,
+  "python": "3.12.3",
+  "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+}
