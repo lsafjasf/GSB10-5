@@ -1,0 +1,163 @@
+{
+  "categories": {
+    "long": {
+      "n": 72,
+      "answered": 72,
+      "rejected": 0,
+      "correct": 72,
+      "mixed_ok": 0,
+      "accuracy_on_answered": 1.0,
+      "rejection_rate": 0.0
+    },
+    "short": {
+      "n": 72,
+      "answered": 40,
+      "rejected": 32,
+      "correct": 40,
+      "mixed_ok": 0,
+      "accuracy_on_answered": 1.0,
+      "rejection_rate": 0.4444
+    },
+    "tiny": {
+      "n": 72,
+      "answered": 0,
+      "rejected": 72,
+      "correct": 72,
+      "mixed_ok": 0,
+      "accuracy_on_answered": 0.0,
+      "rejection_rate": 1.0
+    },
+    "digits": {
+      "n": 8,
+      "answered": 0,
+      "rejected": 8,
+      "correct": 8,
+      "mixed_ok": 0,
+      "accuracy_on_answered": 0.0,
+      "rejection_rate": 1.0
+    },
+    "symbols": {
+      "n": 8,
+      "answered": 0,
+      "rejected": 8,
+      "correct": 8,
+      "mixed_ok": 0,
+      "accuracy_on_answered": 0.0,
+      "rejection_rate": 1.0
+    },
+    "mixed": {
+      "n": 12,
+      "answered": 12,
+      "rejected": 0,
+      "correct": 12,
+      "mixed_ok": 12,
+      "accuracy_on_answered": 1.0,
+      "rejection_rate": 0.0
+    }
+  },
+  "reject_reasons": {
+    "low_confidence": 32,
+    "too_few_letters": 73,
+    "no_letters": 15
+  },
+  "confidence_histogram": {
+    "bins": [
+      "0.0-0.1",
+      "0.1-0.2",
+      "0.2-0.3",
+      "0.3-0.4",
+      "0.4-0.5",
+      "0.5-0.6",
+      "0.6-0.7",
+      "0.7-0.8",
+      "0.8-0.9",
+      "0.9-1.0"
+    ],
+    "correct": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124
+    ],
+    "wrong": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "rejected": [
+      88,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      4,
+      27,
+      0
+    ]
+  },
+  "per_language_long": {
+    "ar": {
+      "correct": 6,
+      "answered": 6
+    },
+    "de": {
+      "correct": 6,
+      "answered": 6
+    },
+    "en": {
+      "correct": 6,
+      "answered": 6
+    },
+    "es": {
+      "correct": 6,
+      "answered": 6
+    },
+    "fr": {
+      "correct": 6,
+      "answered": 6
+    },
+    "hi": {
+      "correct": 6,
+      "answered": 6
+    },
+    "ja": {
+      "correct": 6,
+      "answered": 6
+    },
+    "ko": {
+      "correct": 6,
+      "answered": 6
+    },
+    "pt": {
+      "correct": 6,
+      "answered": 6
+    },
+    "ru": {
+      "correct": 6,
+      "answered": 6
+    },
+    "th": {
+      "correct": 6,
+      "answered": 6
+    },
+    "zh": {
+      "correct": 6,
+      "answered": 6
+    }
+  }
+}

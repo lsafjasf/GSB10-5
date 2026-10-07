@@ -1,0 +1,11 @@
+texts            : 100000 (avg 93 chars)
+answered         : 79757 (79.76%)
+total time       : 60.80 s
+per text         : 608.0 us
+throughput       : 1,645 texts/s
+VmHWM baseline   : 13.8 MiB (解释器+导入)
+VmHWM +model     : 15.0 MiB (+1.2 MiB, profiles.json)
+VmHWM +100k输入  : 28.2 MiB (+13.1 MiB)
+VmHWM 识别循环后 : 28.3 MiB (+0.1 MiB, 识别本身增量)
+python heap peak : 0.13 MiB (tracemalloc, 循环期间)
+python           : 3.12.3
